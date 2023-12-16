@@ -4,7 +4,8 @@ This example aims to reproduce [Figure 22](https://ipc-sim.github.io/file/IPC-sq
 the paper "[Incremental Potential Contact: Intersection- and Inversion-free Large Deformation
 Dynamics](https://ipc-sim.github.io/)".
 
-<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/IPC/results/ipc_side.png?raw=true" width=45%/> <img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/IPC/results/ipc_back.png?raw=true" width=45%/>
+[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/IPC/results/ipc_side.png?raw=true" width=45%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/IPC/results/ipc_side.png?raw=true)
+[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/IPC/results/ipc_back.png?raw=true" width=45%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/IPC/results/ipc_back.png?raw=true)
 
 ## Data
 
