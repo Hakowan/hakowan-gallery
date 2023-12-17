@@ -3,7 +3,6 @@
 import hakowan as hkw
 import lagrange
 import numpy as np
-import math
 
 # Step 1: Preprocess data.
 
