@@ -16,6 +16,9 @@ front_view = base.rotate(axis=[0, 1, 0], angle=math.pi)
 top_view = base.rotate(axis=[1, 0, 0], angle=math.pi / 2)
 side_view = base.rotate(axis=[0, 1, 0], angle=math.pi / 2)
 
-hkw.render(front_view, filename="results/foot_front.png")
-hkw.render(top_view, filename="results/foot_top.png")
-hkw.render(side_view, filename="results/foot_side.png")
+config = hkw.config()
+config.sensor.location = [0, 0, 3.5]
+
+hkw.render(front_view, config, filename="results/foot_front.png")
+hkw.render(top_view, config, filename="results/foot_top.png")
+hkw.render(side_view, config, filename="results/foot_side.png")
