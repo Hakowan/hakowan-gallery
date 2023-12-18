@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+
+import hakowan as hkw
+import math
+
+base = hkw.layer("data/foot.ply")
+base = base.transform(hkw.transform.Compute(component="comp"))
+base = base.channel(
+    material=hkw.material.Principled(
+        color=hkw.texture.ScalarField("comp", colormap="set1", categories=28),
+        roughness=0.2,
+    )
+)
+
+front_view = base.rotate(axis=[0, 1, 0], angle=math.pi)
+top_view = base.rotate(axis=[1, 0, 0], angle=math.pi / 2)
+side_view = base.rotate(axis=[0, 1, 0], angle=math.pi / 2)
+
+hkw.render(front_view, filename="results/foot_front.png")
+hkw.render(top_view, filename="results/foot_top.png")
+hkw.render(side_view, filename="results/foot_side.png")
