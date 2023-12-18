@@ -2,9 +2,9 @@
 
 This example illustrates the disconnected components of a given mesh.
 
-[<img width=30% src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Components/results/foot_front.png?raw=true"/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Components/results/foot_front.png?raw=true)
-[<img width=30% src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Components/results/foot_side.png?raw=true"/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Components/results/foot_side.png?raw=true)
-[<img width=30% src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Components/results/foot_top.png?raw=true"/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Components/results/foot_top.png?raw=true)
+[<img width=40% src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Components/results/foot_front.png?raw=true"/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Components/results/foot_front.png?raw=true)
+[<img width=40% src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Components/results/foot_side.png?raw=true"/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Components/results/foot_side.png?raw=true)
+[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Components/results/foot_top.png?raw=true"/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Components/results/foot_top.png?raw=true)
 
 ## Data
 
