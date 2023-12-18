@@ -36,7 +36,7 @@ hkw.render(fig3, config, filename="results/fig3.png")
 fig10 = (
     base.data("data/fig10_uniform.obj")
     .rotate(axis=[1, 0, 0], angle=-math.pi / 4)
-    .rotate(axis=[0, 1, 0], angle=3 * math.pi / 4)
+    .rotate(axis=[0, 1, 0], angle=3 * math.pi / 4, in_place=True)
 )
 
 # Render!
