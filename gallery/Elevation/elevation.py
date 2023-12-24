@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import hakowan as hkw
-import lagrange
 from image2mesh import image2mesh
 
 # Step 1: Generate a mesh from a heightmap.
