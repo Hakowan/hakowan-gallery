@@ -3,7 +3,7 @@
 This example aims to generate 3D visualization of both sides of the moon.
 
 [<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Moon/results/moon.png?raw=true" width=45%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Moon/results/moon.png?raw=true)
-[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Moon/results/moon_back.png?raw=true" width=45%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Moon/results/moon_back.png?raw=true)
+[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Moon/results/moon_backside.png?raw=true" width=45%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Moon/results/moon_backside.png?raw=true)
 
 ## Data
 
