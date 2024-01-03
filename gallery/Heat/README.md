@@ -4,7 +4,8 @@ This example reproduced [this
 figure](https://www.cs.cmu.edu/~kmcrane/Projects/HeatMethod/teaser.png) from the paper "[The Heat
 Method for Distance Computation](https://www.cs.cmu.edu/~kmcrane/Projects/HeatMethod/index.html)".
 
-[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Heat/results/bunny_heat.png?raw=true"/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Heat/results/bunny_heat.png?raw=true)
+[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Heat/results/bunny_heat.png?raw=true" width=45%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Heat/results/bunny_heat.png?raw=true)
+[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Heat/results/bunny_heat_back.png?raw=true" width=45%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Heat/results/bunny_heat_back.png?raw=true)
 
 ## Data
 
