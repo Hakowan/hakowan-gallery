@@ -4,6 +4,9 @@ import hakowan as hkw
 import lagrange
 import numpy as np
 
+config = hkw.config()
+config.sensor.location = [0, 0, 3]
+
 emitter = hkw.layer("data/emitter.msh").channel(
     material=hkw.material.RoughPlastic("Ivory")
 )
@@ -27,8 +30,9 @@ for i in [10, 30, 60, 133]:
             )
         )
         .transform(hkw.transform.Norm("velocity", "speed"))
-        .transform(hkw.transform.Filter(data=None, condition=lambda p: p[2] <= 0))
     )
-    config = hkw.config()
-    config.sensor.location = [0, 0, 3]
+
+    hkw.render(fluid + emitter, config, filename=f"results/waterbell_{i:03}_all.png")
+
+    fluid = fluid.transform(hkw.transform.Filter(data=None, condition=lambda p: p[2] <= 0))
     hkw.render(fluid + emitter, config, filename=f"results/waterbell_{i:03}.png")
