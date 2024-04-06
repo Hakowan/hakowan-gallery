@@ -5,18 +5,14 @@ import hakowan as hkw
 # Handle layer with rough plastic material.
 handles = (
     hkw.layer()
-    .channel(
-        material=hkw.material.RoughPlastic("steelblue"),
-    )
+    .material("RoughPlastic", "steelblue")
     .transform(hkw.transform.Filter(data="label", condition=lambda x: x in [1, 2]))
 )
 
 # Deformed region with smooth conductor material.
 deformed_region = (
     hkw.layer()
-    .channel(
-        material=hkw.material.Conductor("Hg"),
-    )
+    .material("Conductor", "Hg")
     .transform(hkw.transform.Filter(data="label", condition=lambda x: x == 0))
 )
 

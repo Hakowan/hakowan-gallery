@@ -1,33 +1,29 @@
 #!/usr/bin/env python
 
-import lagrange
 import hakowan as hkw
 
-mesh = lagrange.io.load_mesh("data/powell_sabin.ply")
-normal_id = lagrange.compute_facet_normal(mesh)
-normal_name = mesh.get_attribute_name(normal_id)
+base = hkw.layer("data/powell_sabin.ply").transform(
+    hkw.transform.Compute(component="comp_ids")
+)
 
-num_comps = lagrange.compute_components(mesh, "comp_ids")
-
-base = hkw.layer(mesh).channel(normal=normal_name)
-
-vertices = base.mark(hkw.mark.Point).channel(
-    material=hkw.material.Principled(
-        color=hkw.texture.ScalarField(
+vertices = (
+    base.mark("Point")
+    .channel(
+        size=0.015,
+    )
+    .material(
+        "Principled",
+        hkw.texture.ScalarField(
             "vertex_label", colormap=["steelblue", "green", "yellow", "red"]
         ),
         roughness=0,
         metallic=0.3,
-    ),
-    size=0.015,
-)
-edges = base.mark(hkw.mark.Curve).channel(
-    material=hkw.material.Conductor("Cr"), size=0.005
-)
-surface = base.mark(hkw.mark.Surface).channel(
-    material=hkw.material.Principled(
-        color=hkw.texture.ScalarField("comp_ids", colormap="set1", categories=num_comps)
     )
+)
+edges = base.mark("Curve").material("Conductor", "Cr").channel(size=0.005)
+surface = base.mark("Surface").material(
+    "Principled",
+    color=hkw.texture.ScalarField("comp_ids", colormap="set1", categories=True),
 )
 
 config = hkw.config()

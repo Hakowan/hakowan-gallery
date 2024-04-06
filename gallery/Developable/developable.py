@@ -4,11 +4,9 @@ import hakowan as hkw
 
 base = (
     hkw.layer()
-    .channel(
-        normal="normal",
-        material=hkw.material.Principled(
-            "lightsteelblue", roughness=0.5, metallic=0.8, two_sided=True
-        ),
+    .channel(normal="normal")
+    .material(
+        "Principled", "lightsteelblue", roughness=0.5, metallic=0.8, two_sided=True
     )
     .transform(hkw.transform.Compute(facet_normal="normal"))
 )

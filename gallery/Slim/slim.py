@@ -7,14 +7,13 @@ import math
 # Generate base layer setting.
 # We are using image-based texture for color in this example.
 # The UV is scaled by 10 times for visualizaiton purposes.
-base = hkw.layer().channel(
-    material=hkw.material.Principled(
-        color=hkw.texture.Image(
-            filename=pathlib.Path("data/texture.png"),
-            uv=hkw.attribute("texcoord", scale=10),
-        ),
-        roughness=0.2,
-    )
+base = hkw.layer().material(
+    "Principled",
+    color=hkw.texture.Image(
+        filename=pathlib.Path("data/texture.png"),
+        uv=hkw.attribute("texcoord", scale=10),
+    ),
+    roughness=0.2,
 )
 
 # Figure 3
@@ -25,7 +24,7 @@ config = hkw.config()
 config.sensor.location = [0, 0, 3]
 
 # Render!
-hkw.render(fig3, config, filename="results/fig3.png")
+#hkw.render(fig3, config, filename="results/fig3.png")
 
 # Figure 10
 
@@ -36,7 +35,7 @@ hkw.render(fig3, config, filename="results/fig3.png")
 fig10 = (
     base.data("data/fig10_uniform.obj")
     .rotate(axis=[1, 0, 0], angle=-math.pi / 4)
-    .rotate(axis=[0, 1, 0], angle=3 * math.pi / 4, in_place=True)
+    .rotate(axis=[0, 1, 0], angle=3 * math.pi / 4)
 )
 
 # Render!

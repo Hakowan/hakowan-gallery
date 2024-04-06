@@ -15,10 +15,10 @@ with open("data/fertility_skeleton.obj", "r") as fin:
 
 
 # Step 2: Load base mesh with glass like material.
-base = hkw.layer("data/fertility.obj").channel(material=hkw.material.ThinDielectric())
+base = hkw.layer("data/fertility.obj").material("ThinDielectric")
 
-skeleton_base = hkw.layer(skeleton).channel(material=hkw.material.Conductor("Cr"))
-skeleton_edges = skeleton_base.mark(hkw.mark.Curve).channel(size=0.01)
+skeleton_base = hkw.layer(skeleton).material("Conductor", "Cr")
+skeleton_edges = skeleton_base.mark("Curve").channel(size=0.01)
 
 # Step 3: Combine all layers
 all_layers = (base + skeleton_base + skeleton_edges).rotate(

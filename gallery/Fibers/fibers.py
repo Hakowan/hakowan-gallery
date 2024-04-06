@@ -16,11 +16,7 @@ root_layer = hkw.layer()
 colormap = hkw.common.colormap.named_colormaps.paired
 for i, fiber in enumerate(fiber_set):
     c = colormap(i / (num_fibers - 1)).data.tolist()
-    l = (
-        hkw.layer(fiber)
-        .mark(hkw.mark.Curve)
-        .channel(size=0.3, material=hkw.material.Plastic(c))
-    )
+    l = hkw.layer(fiber).mark("Curve").channel(size=0.3).material("Plastic", c)
     root_layer.children.append(l)
 
 # Step 3: Render

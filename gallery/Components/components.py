@@ -4,13 +4,11 @@ import hakowan as hkw
 import math
 
 base = hkw.layer("data/foot.ply")
-base = base.transform(hkw.transform.Compute(component="comp"))
-base = base.channel(
-    material=hkw.material.Principled(
-        color=hkw.texture.ScalarField("comp", colormap="set1", categories=28),
-        roughness=0.2,
-    )
-)
+base = base.material(
+    "Principled",
+    color=hkw.texture.ScalarField("comp", colormap="set1", categories=True),
+    roughness=0.2,
+).transform(hkw.transform.Compute(component="comp"))
 
 front_view = base.rotate(axis=[0, 1, 0], angle=math.pi)
 top_view = base.rotate(axis=[1, 0, 0], angle=math.pi / 2)

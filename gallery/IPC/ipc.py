@@ -7,13 +7,13 @@ import math
 # Create a ball layer. The ball geometry will be speicified later.
 # Approximate the original IPC figure with pinkish material.
 
-ball = hkw.layer().channel(material=hkw.material.RoughPlastic("salmon", alpha=0.02))
+ball = hkw.layer().material("RoughPlastic", "salmon", alpha=0.02)
 
 # Step 2:
 # Create a plate layer containing the collision plate.
 # Use glass-like material so one can see the collision-induced deformation clearly.
 
-plate = hkw.layer("data/plate2.obj").channel(material=hkw.material.ThinDielectric())
+plate = hkw.layer("data/plate2.obj").material("ThinDielectric")
 
 # Step 3: Adjust configuration.
 

@@ -30,7 +30,7 @@ for chain in chains:
 
 # Compute layout charts.
 involved_vertices = np.unique(np.hstack(chains)).tolist()
-num_charts = lagrange.compute_components(
+lagrange.compute_components(
     ref_mesh,
     output_attribute_name="chart",
     connectivity_type=lagrange.ConnectivityType.Vertex,
@@ -42,19 +42,19 @@ base = hkw.layer(ref_mesh)
 
 # Mesh layer contains the base geometry.
 # Use chart attribute as scalar field texture.
-mesh_layer = base.channel(
-    material=hkw.material.Principled(
-        color=hkw.texture.ScalarField("chart", colormap="set1", categories=num_charts),
-        roughness=0.0,
-        metallic=0.0,
-    )
+mesh_layer = base.material(
+    "Principled",
+    color=hkw.texture.ScalarField("chart", colormap="set1", categories=True),
+    roughness=0.0,
+    metallic=0.0,
 )
 
 # Chain layer contains the layout boundaries.
 chains_layer = (
     hkw.layer(chains_mesh)
-    .mark(hkw.mark.Curve)
-    .channel(material=hkw.material.Conductor("Cr"), size=0.02)
+    .mark("Curve")
+    .material("Conductor", "Cr")
+    .channel(size=0.02)
 )
 
 # Update camera location for better viewing angle.

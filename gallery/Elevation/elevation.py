@@ -10,12 +10,11 @@ usgs_data = image2mesh("data/USGS_1_n35w112.tif")
 # Note that we use a custom colormap here.
 usgs_map = (
     hkw.layer(usgs_data)
-    .channel(
-        material=hkw.material.Principled(
-            color=hkw.texture.ScalarField(
-                "elevation", colormap=["#15A887", "#8C4E37", "#E9ECF2"]
-            )
-        )
+    .material(
+        "Principled",
+        hkw.texture.ScalarField(
+            "elevation", colormap=["#15A887", "#8C4E37", "#E9ECF2"]
+        ),
     )
     .transform(hkw.transform.Compute(z="elevation"))
 )
