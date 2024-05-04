@@ -8,9 +8,7 @@ base = hkw.layer("data/powell_sabin.ply").transform(
 
 vertices = (
     base.mark("Point")
-    .channel(
-        size=0.015,
-    )
+    .channel(size=0.015)
     .material(
         "Principled",
         hkw.texture.ScalarField(
