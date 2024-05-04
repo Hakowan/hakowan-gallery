@@ -6,6 +6,9 @@ import math
 # Step 1:
 # Create a ball layer. The ball geometry will be speicified later.
 # Approximate the original IPC figure with pinkish material.
+# Note that Hakowan supports any valid CSS color names as well as hex code codes.
+#
+# See [CSS colors](https://www.w3schools.com/cssref/css_colors.php).
 
 ball = hkw.layer().material("RoughPlastic", "salmon", alpha=0.02)
 
@@ -16,6 +19,8 @@ ball = hkw.layer().material("RoughPlastic", "salmon", alpha=0.02)
 plate = hkw.layer("data/plate2.obj").material("ThinDielectric")
 
 # Step 3: Adjust configuration.
+# For this visualization, it is best to use orthographic projection and avoid perspective
+# distortion.
 
 config = hkw.config()
 # Use orthographic camera for better visualization of the collision.
@@ -24,11 +29,12 @@ config.sensor = hkw.setup.sensor.Orthographic()
 config.integrator = hkw.setup.integrator.VolPath()
 
 # Step 4: Render!
+# We have 4 different results sampled at different time during the simulation.
+# We will create two visualizations for each result: side view and back view.
 
 for i in [7, 8, 9, 10]:
     # Set the data component of the ball layer.
-    ball_mesh = f"data/{i}.obj"
-    ball = ball.data(ball_mesh)
+    ball = ball.data(f"data/{i}.obj")
 
     # The side view shows the ball-plate collision from the side.
     side_view = ball + plate
