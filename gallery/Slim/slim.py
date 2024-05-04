@@ -4,9 +4,12 @@ import hakowan as hkw
 import pathlib
 import math
 
-# Generate base layer setting.
-# We are using image-based texture for color in this example.
-# The UV is scaled by 10 times for visualizaiton purposes.
+# First, we define a base layer with the desired material+texture setup.
+# This base layer serves as a template, where we will extend it with different
+# data components later.
+#
+# Note that we are using image-based texture for color in this example.
+# The UV is scaled by 10 times to have more repetitions of the texture.
 base = hkw.layer().material(
     "Principled",
     color=hkw.texture.Image(
@@ -24,7 +27,7 @@ config = hkw.config()
 config.sensor.location = [0, 0, 3]
 
 # Render!
-#hkw.render(fig3, config, filename="results/fig3.png")
+hkw.render(fig3, config, filename="results/fig3.png")
 
 # Figure 10
 
