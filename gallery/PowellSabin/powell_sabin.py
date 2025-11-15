@@ -3,7 +3,7 @@
 import hakowan as hkw
 
 base = hkw.layer("data/powell_sabin.ply").transform(
-    hkw.transform.Compute(component="comp_ids")
+    hkw.transform.Compute(component="comp_ids", facet_normal="face_normal")
 )
 
 vertices = (
