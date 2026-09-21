@@ -1,0 +1,37 @@
+{
+  "backends": [
+    "mitsuba",
+    "webgl"
+  ],
+  "features": [
+    "surface",
+    "curve",
+    "tetrahedral",
+    "clipping",
+    "categorical",
+    "glass"
+  ],
+  "id": "tetwild-cutaway",
+  "inputs": [
+    {
+      "geometry": "tetrahedral",
+      "id": "tetrahedral",
+      "path": "data/bust.msh"
+    }
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "kind": "image",
+      "path": "results/bust.webp"
+    },
+    {
+      "backend": "webgl",
+      "kind": "interactive",
+      "path": "results/bust.html"
+    }
+  ],
+  "script": "tetwild.py",
+  "summary": "Compare tetrahedral boundaries, clipped interiors, edges, and glass.",
+  "title": "TetWild Cutaway"
+}

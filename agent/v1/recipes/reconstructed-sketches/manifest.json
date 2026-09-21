@@ -1,0 +1,36 @@
+{
+  "backends": [
+    "mitsuba",
+    "webgl"
+  ],
+  "features": [
+    "curve",
+    "line-art",
+    "materials",
+    "camera",
+    "environment"
+  ],
+  "id": "reconstructed-sketches",
+  "inputs": [
+    {
+      "geometry": "curve",
+      "id": "sketch",
+      "path": "data/Prof2task2_guitar_01_rough.obj"
+    }
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "kind": "image",
+      "path": "results/Prof2task2_guitar_01_rough_dark.webp"
+    },
+    {
+      "backend": "webgl",
+      "kind": "interactive",
+      "path": "results/Prof2task2_guitar_01_rough.html"
+    }
+  ],
+  "script": "sketch.py",
+  "summary": "Render reconstructed line drawings with light and dark materials.",
+  "title": "Reconstructed 3D Sketches"
+}

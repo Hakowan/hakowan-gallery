@@ -1,0 +1,54 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.5.3",
+  "input_ids": [
+    "mesh"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 83112,
+      "exists": true,
+      "kind": "image",
+      "path": "results/moon.webp",
+      "sha256": "97bd2be16bc2b1d66110d7e8748ed88cc62df5454f7e33f1c99f4a54b1c823b0"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 610467,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/moon.html",
+      "sha256": "1b7efab9b2c3772a11bb6c63d905d5867c65da6a85f20d334fa8726a6d4f44cf"
+    }
+  ],
+  "recipe": "moon-textures",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 23023412,
+      "path": "data/ldem_16_uint.png",
+      "sha256": "79f263c524c29c6082e6247dd2f36d63bad0ced6a410fd145255a243d5a6c4be"
+    },
+    {
+      "bytes": 47026920,
+      "path": "data/lroc_color_poles_8k.png",
+      "sha256": "e79d0d77a11d65d92d273d5e9f2cba0ef862de32e16f00c8a4557212f90928ce"
+    },
+    {
+      "bytes": 77415,
+      "path": "data/moon.ply",
+      "sha256": "06c2a2900f2fac3d9ce10401b51b87b92bd59c1923bacf3a644c6d170a274a34"
+    },
+    {
+      "bytes": 1014,
+      "path": "moon.py",
+      "sha256": "8b69e67f599babe3499452147457f62d58ffe2f3ee48db1c002bcbab9e2896f8"
+    },
+    {
+      "bytes": 461,
+      "path": "recipe.toml",
+      "sha256": "21a19fc7ed5a47f06f2352bd8cfdc21ff5d34380e805bfada35f6aae4bfd3fdb"
+    }
+  ]
+}

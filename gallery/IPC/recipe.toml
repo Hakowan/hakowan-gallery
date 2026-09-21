@@ -1,0 +1,24 @@
+id = "ipc-collision"
+title = "Incremental Potential Contact"
+script = "ipc.py"
+summary = "Compare deforming collision states against a transparent contact plate."
+features = ["surface", "deformation", "glass", "orthographic", "multi-view"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "ball"
+path = "data/10.obj"
+geometry = "surface"
+[[inputs]]
+id = "plate"
+path = "data/plate2.obj"
+geometry = "surface"
+
+[[outputs]]
+path = "results/ipc_side_10.webp"
+kind = "image"
+backend = "mitsuba"
+[[outputs]]
+path = "results/ipc.html"
+kind = "interactive"
+backend = "webgl"

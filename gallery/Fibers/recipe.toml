@@ -1,0 +1,20 @@
+id = "fiber-curves"
+title = "Fiber Curves"
+script = "fibers.py"
+summary = "Render separated yarn fibers as individually colored curves."
+features = ["curve", "categorical", "composition", "materials"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "fibers"
+path = "data/fibers.obj"
+geometry = "curve"
+
+[[outputs]]
+path = "results/fibers.webp"
+kind = "image"
+backend = "mitsuba"
+[[outputs]]
+path = "results/fibers.html"
+kind = "interactive"
+backend = "webgl"

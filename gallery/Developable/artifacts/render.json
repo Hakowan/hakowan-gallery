@@ -1,0 +1,59 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.5.3",
+  "input_ids": [
+    "mesh"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 62132,
+      "exists": true,
+      "kind": "image",
+      "path": "results/mask_0.webp",
+      "sha256": "82d225b9e3a901417ae141ea2eebfb76c70b462beb7d9ff0ab11a71153a48b36"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 4978492,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/mask.html",
+      "sha256": "9602d17ea53d74249bfdd7317a76bffa4190599a50508f71a1a8c56b4aaacb93"
+    }
+  ],
+  "recipe": "developable-flow",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 180218,
+      "path": "data/mask_flow1.obj",
+      "sha256": "1ac1165be6d057c154fd0c750b63e8c641df2b54d05f373b776cc8103bcbbabd"
+    },
+    {
+      "bytes": 180226,
+      "path": "data/mask_flow2.obj",
+      "sha256": "95db9876ff24ce16aa76b32a714ff36bb2d388f4ee2f5e0abe4358e45afa889c"
+    },
+    {
+      "bytes": 741735,
+      "path": "data/mask_flow3.obj",
+      "sha256": "979e0c1c334fe0be64f6e098000ec730bbc5d88e7bbadc2eaf88b5e764b3f716"
+    },
+    {
+      "bytes": 180261,
+      "path": "data/mask_triangulated.obj",
+      "sha256": "a5f0589cb47c9ab291f54a5afaa796afd9d2cd8c8acddb7fb0f444d40b5b12a5"
+    },
+    {
+      "bytes": 1097,
+      "path": "developable.py",
+      "sha256": "67154d1df8bdd8ee1aba523868ea6386da86c468c67ae055ff8fddcdea5ba542"
+    },
+    {
+      "bytes": 495,
+      "path": "recipe.toml",
+      "sha256": "b24619c20a16892f75cb0aa0fe2fb029a718998a2b979d20436488fd4316646b"
+    }
+  ]
+}

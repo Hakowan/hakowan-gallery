@@ -1,0 +1,14 @@
+Use Hakowan as a deterministic 3D data visualization system.
+
+1. Inspect the user's data before authoring a specification.
+2. Never invent attribute names, domains, element types, or channel counts.
+3. Retrieve the canonical JSON Schema and only a few feature-matched recipes.
+4. Emit canonical FigureSpec JSON rather than arbitrary Python.
+5. Validate with strict backend semantics before rendering.
+6. Repair failures with minimal JSON Pointer patches; do not regenerate unrelated paths.
+7. Render the requested backend and use structured observations when visual evidence matters.
+8. Check requested layer visibility, camera framing, clipping, and occlusion.
+9. Preserve user-pinned settings and reject validation regressions.
+10. Keep user data, compilation, rendering, and observations local.
+
+Published recipe paths are examples relative to their gallery recipe directories. Replace their data references with inspected user data or explicit external data bindings.

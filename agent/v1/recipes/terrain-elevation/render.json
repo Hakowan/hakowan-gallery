@@ -1,0 +1,49 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.5.3",
+  "input_ids": [
+    "terrain"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 211794,
+      "exists": true,
+      "kind": "image",
+      "path": "results/usgs_1_n35112.webp",
+      "sha256": "6296940b967d281abceda142c20e985ef375623053326b6e3508b68ffd047e01"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 23522203,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/usgs_1_n35112.html",
+      "sha256": "929ff99c620e50f50b5d2b6a2b8e05b2a84e1fbcadf164ce75f4ea5c48c969b3"
+    }
+  ],
+  "recipe": "terrain-elevation",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 53070366,
+      "path": "data/USGS_1_n35w112.tif",
+      "sha256": "395db025e9a89bc01a0a60736ef0995e15bd7a968d18ee809a612cd8fa0ac0dc"
+    },
+    {
+      "bytes": 1481,
+      "path": "elevation.py",
+      "sha256": "44a90578b8b19053097a59ba6181d63c4d08101c5389f63cb936fdc0648bba8b"
+    },
+    {
+      "bytes": 1582,
+      "path": "image2mesh.py",
+      "sha256": "af06a75575a31e255aed265522e4ea10fab3660360755c51de339db45493d70e"
+    },
+    {
+      "bytes": 505,
+      "path": "recipe.toml",
+      "sha256": "fa7bc6d338b92ddb2e0ab7ee03de0d1590e4d0c91cfc2488acadc61ff1ce128f"
+    }
+  ]
+}

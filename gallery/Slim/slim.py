@@ -4,6 +4,8 @@ import hakowan as hkw
 import pathlib
 import math
 
+hkw.set_default_backend("mitsuba")
+
 # First, we define a base layer with the desired material+texture setup.
 # This base layer serves as a template, where we will extend it with different
 # data components later.
@@ -22,12 +24,13 @@ base = hkw.layer().material(
 # Figure 3
 fig3 = base.data("data/fig3.obj").rotate(axis=[0, 1, 0], angle=math.pi)
 
-# Move the camera position closer.
-config = hkw.config()
-config.sensor.location = [0, 0, 3]
+# Reuse one declarative camera for both models.
+scene = hkw.SceneSettings(camera=hkw.PerspectiveCamera(eye=(0, 0, 3)))
+RECIPE_FIGURE = hkw.Figure(fig3, scene)
+RECIPE_INSPECTIONS = {"mesh": "data/fig3.obj"}
 
-# Render!
-hkw.render(fig3, config, filename="results/fig3.png")
+hkw.render(RECIPE_FIGURE, filename="results/fig3.webp")
+hkw.render(RECIPE_FIGURE, backend="webgl", filename="results/fig3.html")
 
 # Figure 10
 
@@ -41,5 +44,7 @@ fig10 = (
     .rotate(axis=[0, 1, 0], angle=3 * math.pi / 4)
 )
 
-# Render!
-hkw.render(fig10, config, filename="results/fig10.png")
+# Render both outputs from the same declared scene.
+fig10_figure = hkw.Figure(fig10, scene)
+hkw.render(fig10_figure, filename="results/fig10.webp")
+hkw.render(fig10_figure, backend="webgl", filename="results/fig10.html")

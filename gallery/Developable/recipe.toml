@@ -1,0 +1,20 @@
+id = "developable-flow"
+title = "Developable Surface Flow"
+script = "developable.py"
+summary = "Compare successive developable-surface optimization iterations."
+features = ["surface", "computed-normal", "comparison", "camera"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "mesh"
+path = "data/mask_triangulated.obj"
+geometry = "surface"
+
+[[outputs]]
+path = "results/mask_0.webp"
+kind = "image"
+backend = "mitsuba"
+[[outputs]]
+path = "results/mask.html"
+kind = "interactive"
+backend = "webgl"

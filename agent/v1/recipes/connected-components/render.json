@@ -1,0 +1,60 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.5.3",
+  "input_ids": [
+    "mesh"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 26732,
+      "exists": true,
+      "kind": "image",
+      "path": "results/foot_front.webp",
+      "sha256": "b4537538cbc9fba28e8934ad6604f65327ce5f6390256c8bec7c638e5197932e"
+    },
+    {
+      "backend": "mitsuba",
+      "bytes": 53858,
+      "exists": true,
+      "kind": "image",
+      "path": "results/foot_top.webp",
+      "sha256": "519d317a3b3508ce5f22019176d8a474c37e4d8b1b37fe4bd5e858db36441c2d"
+    },
+    {
+      "backend": "mitsuba",
+      "bytes": 33704,
+      "exists": true,
+      "kind": "image",
+      "path": "results/foot_side.webp",
+      "sha256": "77945453d9ce78e0c2a02882f7da8e4cd3384985045f1de79fc52a776f9b4fd3"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 35155800,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/foot.html",
+      "sha256": "8adee77ff4e19dfcaecec5084363c320dfaa70a6a6741f848b42dc31d0086aa6"
+    }
+  ],
+  "recipe": "connected-components",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 1104,
+      "path": "components.py",
+      "sha256": "195b79695383d98b951ebd364794c44e8256408d3b76dd432f7a83423478e0e7"
+    },
+    {
+      "bytes": 7265056,
+      "path": "data/foot.ply",
+      "sha256": "e2f9203b0610cb874993148a78b9f3c79221bf64c43760fb73acf73c0e2a234f"
+    },
+    {
+      "bytes": 662,
+      "path": "recipe.toml",
+      "sha256": "e3f35d73551636dedc95736dd074045f2b4b7c7630268bee1ec8655ae5a555de"
+    }
+  ]
+}

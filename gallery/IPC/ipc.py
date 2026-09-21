@@ -2,6 +2,9 @@
 
 import hakowan as hkw
 import math
+import lagrange
+
+hkw.set_default_backend("mitsuba")
 
 # Step 1:
 # Create a ball layer. The ball geometry will be speicified later.
@@ -18,14 +21,10 @@ ball = hkw.layer().material("RoughPlastic", "salmon", alpha=0.02)
 
 plate = hkw.layer("data/plate2.obj").material("ThinDielectric")
 
-# Step 3: Adjust configuration.
-# For this visualization, it is best to use orthographic projection and avoid perspective
-# distortion.
-
-config = hkw.config()
-# Use orthographic camera for better visualization of the collision.
-config.sensor = hkw.setup.sensor.Orthographic()
-# Use volume path integrator to reduce rendering noise.
+# Step 3: Declare the orthographic scene. The volume integrator remains a
+# renderer-specific override.
+scene = hkw.SceneSettings(camera=hkw.OrthographicCamera())
+config = scene.to_config()
 config.integrator = hkw.setup.integrator.VolPath()
 
 # Step 4: Render!
@@ -33,14 +32,37 @@ config.integrator = hkw.setup.integrator.VolPath()
 # We will create two visualizations for each result: side view and back view.
 
 for i in [7, 8, 9, 10]:
-    # Set the data component of the ball layer.
-    ball = ball.data(f"data/{i}.obj")
+    frame_ball = ball.data(f"data/{i}.obj")
 
     # The side view shows the ball-plate collision from the side.
-    side_view = ball + plate
-    hkw.render(side_view, config, filename=f"results/ipc_side_{i}.png")
+    side_view = frame_ball + plate
+    hkw.render(
+        hkw.Figure(side_view, scene),
+        config,
+        filename=f"results/ipc_side_{i}.webp",
+    )
 
     # The back view shows the ball-plate collision from behind the plate.
-    # Rotation matrix to rotate around y-axis by 90 degrees.
-    back_view = (ball + plate).rotate(axis=[0, 1, 0], angle=-math.pi / 2)
-    hkw.render(back_view, config, filename=f"results/ipc_back_{i}.png")
+    back_view = side_view.rotate(axis=[0, 1, 0], angle=-math.pi / 2)
+    hkw.render(
+        hkw.Figure(back_view, scene),
+        config,
+        filename=f"results/ipc_back_{i}.webp",
+    )
+
+# Export a decimated final collision state as an interactive WebGL demo.
+interactive_mesh = lagrange.io.load_mesh("data/10.obj")
+decimation_options = lagrange.decimation.DecimationOptions()
+decimation_options.max_facets = 50_000
+interactive_mesh = lagrange.decimation.decimate_quadric(
+    interactive_mesh,
+    decimation_options,
+)
+interactive_view = ball.data(interactive_mesh) + plate
+RECIPE_FIGURE = hkw.Figure(side_view, scene)
+RECIPE_INSPECTIONS = {"ball": "data/10.obj", "plate": "data/plate2.obj"}
+hkw.render(
+    hkw.Figure(interactive_view, scene),
+    backend="webgl",
+    filename="results/ipc.html",
+)

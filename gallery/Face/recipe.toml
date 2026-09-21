@@ -1,0 +1,31 @@
+id = "face-uv-texture"
+title = "Face Texture and UV Layout"
+script = "face.py"
+summary = "Compare a surface, checkerboard texture, and normalized UV layout."
+features = ["surface", "texture", "uv", "normal", "comparison", "camera-fit"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "mesh"
+path = "data/canonical_face_model.obj"
+geometry = "surface"
+
+[[outputs]]
+path = "results/face.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/face_checkerboard.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/face_uv.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/face_all.html"
+kind = "interactive"
+backend = "webgl"

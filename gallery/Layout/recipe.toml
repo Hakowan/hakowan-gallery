@@ -1,0 +1,29 @@
+id = "layout-embedding"
+title = "Layout Embedding"
+script = "layout.py"
+summary = "Render categorical surface charts with boundary curves and glass comparison."
+features = ["surface", "curve", "categorical", "legend", "glass", "comparison"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "surface"
+path = "data/teaser_pig_bnb_target.obj"
+geometry = "surface"
+[[inputs.attributes]]
+name = "chart"
+element = "facet"
+channels = 1
+usage = "scalar"
+[[inputs]]
+id = "layout"
+path = "data/teaser_pig_bnb.lem"
+geometry = "layout"
+
+[[outputs]]
+path = "results/pig_embedded.webp"
+kind = "image"
+backend = "mitsuba"
+[[outputs]]
+path = "results/pig_embedded.html"
+kind = "interactive"
+backend = "webgl"

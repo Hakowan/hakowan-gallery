@@ -1,0 +1,41 @@
+{
+  "backends": [
+    "mitsuba",
+    "webgl"
+  ],
+  "features": [
+    "surface",
+    "point",
+    "curve",
+    "glass",
+    "composition"
+  ],
+  "id": "surface-skeleton",
+  "inputs": [
+    {
+      "geometry": "surface",
+      "id": "surface",
+      "path": "data/fertility.obj"
+    },
+    {
+      "geometry": "curve",
+      "id": "skeleton",
+      "path": "data/fertility_skeleton.obj"
+    }
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "kind": "image",
+      "path": "results/fertility_skeleton.webp"
+    },
+    {
+      "backend": "webgl",
+      "kind": "interactive",
+      "path": "results/fertility_skeleton.html"
+    }
+  ],
+  "script": "skeleton.py",
+  "summary": "Overlay skeleton joints and edges inside a transparent surface.",
+  "title": "Surface Skeleton"
+}

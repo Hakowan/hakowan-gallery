@@ -1,0 +1,109 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.5.3",
+  "input_ids": [
+    "surface"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 32778,
+      "exists": true,
+      "kind": "image",
+      "path": "results/bust.webp",
+      "sha256": "eb95a0c042ab07f24bdbbb58bf8947570cf553d1e96c87ca2ad0b7949ebd7db7"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 609569,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/bust_all.html",
+      "sha256": "ddaa098e124ce2be30330b58f0b313e1befaee1809f917ce1055097553543daf"
+    }
+  ],
+  "recipe": "mean-curvature-flow",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 2500194,
+      "path": "data/bust.ply",
+      "sha256": "179778d5cdd32cd096d184bdbd3b4d9de6c511bdaa3db6e14fabbcc877e84657"
+    },
+    {
+      "bytes": 3332809,
+      "path": "data/bust_02.obj",
+      "sha256": "f9513f32d85aec02235b09d31a0f7d141b804615cf99b991b4d8b5d3c3821748"
+    },
+    {
+      "bytes": 3332355,
+      "path": "data/bust_05.obj",
+      "sha256": "724369e9f8be370b93a88a2e254ccfc3d8a00794e9c1a29d89ab46afa4715c80"
+    },
+    {
+      "bytes": 3300241,
+      "path": "data/flow_00.ply",
+      "sha256": "98528e589dcd271c0e449ffbf044095610fd9e25b8fad10d3d59e9086583eead"
+    },
+    {
+      "bytes": 3300241,
+      "path": "data/flow_01.ply",
+      "sha256": "190f95a8bddb95c9e9404b8c0dbc9f7f9c205d7e96a993f02aab767e597107f7"
+    },
+    {
+      "bytes": 3300241,
+      "path": "data/flow_02.ply",
+      "sha256": "bc52acf38e0500daba38c085e146855383d5e40297b0dc40db65ac4323ca636d"
+    },
+    {
+      "bytes": 3300241,
+      "path": "data/flow_03.ply",
+      "sha256": "77a76c5b7e4d254dd192985f20304fcdbac2b195513c6f600c4774e5129de99c"
+    },
+    {
+      "bytes": 3300241,
+      "path": "data/flow_04.ply",
+      "sha256": "38134131584ac48bcd9a66e761c0102209dccffb36c5ad76b6988bb55feb8825"
+    },
+    {
+      "bytes": 3300241,
+      "path": "data/flow_05.ply",
+      "sha256": "e4fc42a94ca90ed7220cf472afbb190133997eaae187eca14794c827decf01e8"
+    },
+    {
+      "bytes": 3300241,
+      "path": "data/flow_06.ply",
+      "sha256": "9f9e2429f746a16960980b55c3a2db85b143b468d9aa6fdf455f6f216a13f15d"
+    },
+    {
+      "bytes": 3300241,
+      "path": "data/flow_07.ply",
+      "sha256": "d6bee6b01d6ce6ed846599438f1b50243601e5038d458c9d193be81e2f3b6273"
+    },
+    {
+      "bytes": 3300241,
+      "path": "data/flow_08.ply",
+      "sha256": "67bf8a16442bf773f8e9a447cbc5eeb4a0fb4f8b1f12a03994f26eec1fc66e2a"
+    },
+    {
+      "bytes": 3300241,
+      "path": "data/flow_09.ply",
+      "sha256": "43147a6dc3ef2cd39bbfc3149cf8783fc8adcacd889468c077d152496e7c7577"
+    },
+    {
+      "bytes": 1530,
+      "path": "flow.py",
+      "sha256": "b83ebc6b54051a054888f93f8c86eb5453d76878e00914866d76e643a66bf9a0"
+    },
+    {
+      "bytes": 1161,
+      "path": "mean_curvature.py",
+      "sha256": "2ac983129c387e0a9928ca23346910c3552ba67b8ea03a6921a01395ba2854ae"
+    },
+    {
+      "bytes": 589,
+      "path": "recipe.toml",
+      "sha256": "7b1e1240be4bb0fc1f80a510d3b6234c84d293d7cdd09a7f9d78c1fc3525c98b"
+    }
+  ]
+}

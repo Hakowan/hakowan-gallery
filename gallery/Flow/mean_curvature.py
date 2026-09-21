@@ -4,30 +4,19 @@ import igl
 from scipy.sparse.linalg import spsolve
 import scipy as sp
 import numpy as np
-from matplotlib.pyplot import subplot
 import lagrange
 
 v, f = igl.read_triangle_mesh("data/bust.ply")
-l = igl.cotmatrix(v, f)
-m = igl.massmatrix(v, f, igl.MASSMATRIX_TYPE_VORONOI)
-minv = sp.sparse.diags(1 / m.diagonal())
-
-n = igl.per_vertex_normals(v, f) * 0.5 + 0.5
-c = np.linalg.norm(n, axis=1)
+cotangent_laplacian = igl.cotmatrix(v, f)
+mass_matrix = igl.massmatrix(v, f, igl.MASSMATRIX_TYPE_VORONOI)
+minv = sp.sparse.diags(1 / mass_matrix.diagonal())
 
 v0 = v
 
-vs = [v]
-cs = [c]
 for i in range(10):
-    m = igl.massmatrix(v, f, igl.MASSMATRIX_TYPE_BARYCENTRIC)
-    s = m - 0.1 * l
-    b = m.dot(v)
-    v = spsolve(s, m.dot(v))
-    n = igl.per_vertex_normals(v, f) * 0.5 + 0.5
-    c = np.linalg.norm(n, axis=1)
-    vs.append(v)
-    cs.append(c)
+    mass_matrix = igl.massmatrix(v, f, igl.MASSMATRIX_TYPE_BARYCENTRIC)
+    system = mass_matrix - 0.1 * cotangent_laplacian
+    v = spsolve(system, mass_matrix.dot(v))
 
     mesh = lagrange.SurfaceMesh()
     mesh.add_vertices(v)

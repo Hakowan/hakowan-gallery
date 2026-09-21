@@ -1,0 +1,49 @@
+{
+  "backends": [
+    "mitsuba",
+    "webgl"
+  ],
+  "features": [
+    "surface",
+    "scalar-field",
+    "isocontour",
+    "legend",
+    "two-view"
+  ],
+  "id": "heat-geodesic",
+  "inputs": [
+    {
+      "attributes": [
+        {
+          "channels": 1,
+          "element": "indexed",
+          "name": "dist",
+          "usage": "scalar"
+        }
+      ],
+      "geometry": "surface",
+      "id": "mesh",
+      "path": "data/bunny_heat.ply"
+    }
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "kind": "image",
+      "path": "results/bunny_heat.webp"
+    },
+    {
+      "backend": "mitsuba",
+      "kind": "image",
+      "path": "results/bunny_heat_back.webp"
+    },
+    {
+      "backend": "webgl",
+      "kind": "interactive",
+      "path": "results/bunny_heat.html"
+    }
+  ],
+  "script": "heat.py",
+  "summary": "Render geodesic distance as a scalar colormap with dense isocontours.",
+  "title": "The Heat Method"
+}

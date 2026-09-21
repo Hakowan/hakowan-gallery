@@ -1,0 +1,20 @@
+id = "terrain-elevation"
+title = "Elevation Map"
+script = "elevation.py"
+summary = "Convert a height image to terrain and map elevation to color."
+features = ["surface", "heightmap", "scalar-field", "legend", "camera"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "terrain"
+path = "data/USGS_1_n35w112.tif"
+geometry = "heightmap"
+
+[[outputs]]
+path = "results/usgs_1_n35112.webp"
+kind = "image"
+backend = "mitsuba"
+[[outputs]]
+path = "results/usgs_1_n35112.html"
+kind = "interactive"
+backend = "webgl"

@@ -1,0 +1,25 @@
+id = "slim-uv-texture"
+title = "Scalable Locally Injective Maps"
+script = "slim.py"
+summary = "Render parameterized surfaces with a repeated image texture."
+features = ["surface", "uv", "image-texture", "rotation"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "mesh"
+path = "data/fig3.obj"
+geometry = "surface"
+[[inputs.attributes]]
+name = "texcoord"
+element = "indexed"
+channels = 2
+usage = "uv"
+
+[[outputs]]
+path = "results/fig3.webp"
+kind = "image"
+backend = "mitsuba"
+[[outputs]]
+path = "results/fig3.html"
+kind = "interactive"
+backend = "webgl"

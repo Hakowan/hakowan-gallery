@@ -1,0 +1,25 @@
+id = "mesh-deformation"
+title = "Mesh Deformation"
+script = "render.py"
+summary = "Compare deformed meshes while separating handles from the free region."
+features = ["surface", "filter", "comparison", "multi-view", "materials"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "mesh"
+path = "data/cylinder_1.msh"
+geometry = "surface"
+[[inputs.attributes]]
+name = "label"
+element = "facet"
+channels = 1
+usage = "scalar"
+
+[[outputs]]
+path = "results/cylinder_1.webp"
+kind = "image"
+backend = "mitsuba"
+[[outputs]]
+path = "results/cylinders.html"
+kind = "interactive"
+backend = "webgl"

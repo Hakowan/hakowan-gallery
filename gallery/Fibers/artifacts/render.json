@@ -1,0 +1,54 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.5.3",
+  "input_ids": [
+    "fibers"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 413496,
+      "exists": true,
+      "kind": "image",
+      "path": "results/fibers.webp",
+      "sha256": "43f3a3ec29ccf89ddfcda0fca3e5e5310665b9b912bdc1f2b03d379a18ea4a0d"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 3536733,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/fibers.html",
+      "sha256": "9ffe599b522594a81482fd393f9c9ed11dde7e69b0f03f61baa8e0b0c1b54d44"
+    }
+  ],
+  "recipe": "fiber-curves",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 1024,
+      "path": "curve_io.py",
+      "sha256": "2b7387780ce31e756e342575a0258c57b932fd7a18cb5d16685a4d359a6e82ca"
+    },
+    {
+      "bytes": 2325286,
+      "path": "data/fibers.obj",
+      "sha256": "066e939eaf7ef053ea63d23e07e400ba0b92cc61eed4c2f7164a2e4823e542d7"
+    },
+    {
+      "bytes": 572979,
+      "path": "data/yarn.obj",
+      "sha256": "fa4328b647140af90167fd7b4ea32dcb93fd6e4819c953aca7877fc3e57500c5"
+    },
+    {
+      "bytes": 1248,
+      "path": "fibers.py",
+      "sha256": "44085560eb83f7dccf1a5acdab22bf7d0ca4a5020df00f557a8d97a6f6a7972f"
+    },
+    {
+      "bytes": 460,
+      "path": "recipe.toml",
+      "sha256": "fe843451c1fbd7aaeaf438fcd0ac1fec35756ec918e4019df77f55931b203530"
+    }
+  ]
+}

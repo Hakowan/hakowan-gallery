@@ -1,0 +1,37 @@
+id = "sph-speed"
+title = "Smoothed Particle Hydrodynamics"
+script = "sph.py"
+summary = "Color a point-cloud fluid simulation by velocity magnitude."
+features = ["point-cloud", "vector-norm", "scalar-field", "legend", "filter"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "particles"
+path = "data/ParticleData_Fluid_0_10.vtk"
+geometry = "point-cloud"
+
+[[inputs.attributes]]
+name = "velocity"
+element = "vertex"
+channels = 3
+usage = "vector"
+
+[[inputs]]
+id = "emitter"
+path = "data/emitter.msh"
+geometry = "surface"
+
+[[outputs]]
+path = "results/waterbell_010_all.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/waterbell_010.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/waterbell_010_all.html"
+kind = "interactive"
+backend = "webgl"

@@ -1,0 +1,20 @@
+id = "moon-textures"
+title = "Moon"
+script = "moon.py"
+summary = "Render lunar color and elevation imagery as color and bump textures."
+features = ["surface", "image-texture", "bump-map", "z-up", "two-view"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "mesh"
+path = "data/moon.ply"
+geometry = "surface"
+
+[[outputs]]
+path = "results/moon.webp"
+kind = "image"
+backend = "mitsuba"
+[[outputs]]
+path = "results/moon.html"
+kind = "interactive"
+backend = "webgl"

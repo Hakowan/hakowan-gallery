@@ -1,0 +1,73 @@
+name: Publish agent corpus
+
+on:
+  pull_request:
+    paths:
+      - "gallery/**"
+      - ".github/workflows/publish-agent-corpus.yml"
+  push:
+    branches: [main]
+    paths:
+      - "gallery/**"
+      - ".github/workflows/publish-agent-corpus.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: agent-corpus-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify recipe artifacts are current
+        run: python gallery/render_gallery.py --check-artifacts
+
+      - name: Regenerate recipe documentation index
+        run: python gallery/render_gallery.py --index
+
+      - name: Build static agent corpus
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            python gallery/render_gallery.py --publish-dir agent/v1
+          else
+            python gallery/render_gallery.py --publish-dir _agent-preview/v1
+          fi
+
+      - name: Validate published index
+        run: |
+          python -c 'import json; from pathlib import Path; root = Path("agent/v1" if "${{ github.event_name }}" == "push" else "_agent-preview/v1"); data = json.loads((root / "index.json").read_text()); expected = len(list(Path("gallery").glob("*/recipe.toml"))); assert data["corpus_version"] == "1"; assert len(data["recipes"]) == expected'
+
+      - name: Commit updated corpus
+        id: commit-corpus
+        if: github.event_name == 'push'
+        run: |
+          git add agent/v1 gallery/README.md gallery/*/README.md
+          if git diff --cached --quiet; then
+            echo "Agent corpus already current."
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update published agent corpus [skip ci]"
+          git push
+          echo "committed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Request Pages rebuild for generated commit
+        if: github.event_name == 'push' && steps.commit-corpus.outputs.committed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds"
