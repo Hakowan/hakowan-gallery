@@ -1,6 +1,7 @@
 # UV Seams
 
-This example extracts discontinuities in an indexed UV attribute and overlays the resulting seam curves on the original surface. `Boundary(attributes=["texcoord"])` unifies the UV index buffer before selecting topological and attribute boundaries.
+This example visualize UV seams of a model. It assumes the UV coordinates are stored in the `texcoord` attribute. `Boundary(attributes=["texcoord"])` unifies the UV index buffer before selecting topological and attribute boundaries.
+
 
 [<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Seams/results/spot_seam.webp?raw=true"/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Seams/results/spot_seam.webp?raw=true)
 
