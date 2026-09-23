@@ -7,6 +7,7 @@ Generated from `recipe.toml` manifests. See [the manifest contract](RECIPE_MANIF
 | Recipe | Features | Backends | Result |
 |---|---|---|---|
 | [Connected Components](Components/README.md) | `surface, categorical, components, legend, multi-view` | `mitsuba, webgl` | [foot_front.webp](Components/results/foot_front.webp) |
+| [Cross-Field Streamlines](CrossField/README.md) | `surface, curve, cross-field, streamline, composition, z-up` | `mitsuba, webgl` | [shark_stream_lines.webp](CrossField/results/shark_stream_lines.webp) |
 | [Developable Surface Flow](Developable/README.md) | `surface, computed-normal, comparison, camera` | `mitsuba, webgl` | [mask_0.webp](Developable/results/mask_0.webp) |
 | [Elevation Map](Elevation/README.md) | `surface, heightmap, scalar-field, legend, camera` | `mitsuba, webgl` | [usgs_1_n35112.webp](Elevation/results/usgs_1_n35112.webp) |
 | [Face Texture and UV Layout](Face/README.md) | `surface, texture, uv, normal, comparison, camera-fit` | `mitsuba, webgl` | [face.webp](Face/results/face.webp) |
@@ -25,9 +26,11 @@ Generated from `recipe.toml` manifests. See [the manifest contract](RECIPE_MANIF
 | [Surface Skeleton](Skeleton/README.md) | `surface, point, curve, glass, composition` | `mitsuba, webgl` | [fertility_skeleton.webp](Skeleton/results/fertility_skeleton.webp) |
 | [TetWild Cutaway](TetWild/README.md) | `surface, curve, tetrahedral, clipping, categorical, glass` | `mitsuba, webgl` | [bust.webp](TetWild/results/bust.webp) |
 | [The Heat Method](Heat/README.md) | `surface, scalar-field, isocontour, legend, two-view` | `mitsuba, webgl` | [bunny_heat.webp](Heat/results/bunny_heat.webp) |
+| [UV Seams](Seams/README.md) | `surface, curve, uv, seams, boundary, composition` | `mitsuba, webgl` | [spot_seam.webp](Seams/results/spot_seam.webp) |
 
 ## Features
 
+- **boundary**: [UV Seams](Seams/README.md)
 - **bump-map**: [Moon](Moon/README.md)
 - **camera**: [Developable Surface Flow](Developable/README.md), [Elevation Map](Elevation/README.md), [Reconstructed 3D Sketches](Sketch/README.md)
 - **camera-fit**: [Face Texture and UV Layout](Face/README.md)
@@ -35,10 +38,11 @@ Generated from `recipe.toml` manifests. See [the manifest contract](RECIPE_MANIF
 - **clipping**: [TetWild Cutaway](TetWild/README.md)
 - **comparison**: [Developable Surface Flow](Developable/README.md), [Face Texture and UV Layout](Face/README.md), [Layout Embedding](Layout/README.md), [Mean Curvature Flow](Flow/README.md), [Mesh Deformation](Deformation/README.md)
 - **components**: [Connected Components](Components/README.md)
-- **composition**: [Fiber Curves](Fibers/README.md), [Spot](Spot/README.md), [Surface Skeleton](Skeleton/README.md)
+- **composition**: [Cross-Field Streamlines](CrossField/README.md), [Fiber Curves](Fibers/README.md), [Spot](Spot/README.md), [Surface Skeleton](Skeleton/README.md), [UV Seams](Seams/README.md)
 - **computed-normal**: [Developable Surface Flow](Developable/README.md)
 - **conductor**: [Penny](Penny/README.md)
-- **curve**: [Fiber Curves](Fibers/README.md), [Layout Embedding](Layout/README.md), [Powell-Sabin Splines](PowellSabin/README.md), [Reconstructed 3D Sketches](Sketch/README.md), [Spot](Spot/README.md), [Surface Skeleton](Skeleton/README.md), [TetWild Cutaway](TetWild/README.md)
+- **cross-field**: [Cross-Field Streamlines](CrossField/README.md)
+- **curve**: [Cross-Field Streamlines](CrossField/README.md), [Fiber Curves](Fibers/README.md), [Layout Embedding](Layout/README.md), [Powell-Sabin Splines](PowellSabin/README.md), [Reconstructed 3D Sketches](Sketch/README.md), [Spot](Spot/README.md), [Surface Skeleton](Skeleton/README.md), [TetWild Cutaway](TetWild/README.md), [UV Seams](Seams/README.md)
 - **deformation**: [Incremental Potential Contact](IPC/README.md)
 - **depth**: [Penny](Penny/README.md)
 - **environment**: [Reconstructed 3D Sketches](Sketch/README.md)
@@ -60,11 +64,13 @@ Generated from `recipe.toml` manifests. See [the manifest contract](RECIPE_MANIF
 - **render-passes**: [Penny](Penny/README.md)
 - **rotation**: [Scalable Locally Injective Maps](Slim/README.md)
 - **scalar-field**: [Elevation Map](Elevation/README.md), [Mean Curvature Flow](Flow/README.md), [Smoothed Particle Hydrodynamics](SPH/README.md), [The Heat Method](Heat/README.md)
-- **surface**: [Connected Components](Components/README.md), [Developable Surface Flow](Developable/README.md), [Elevation Map](Elevation/README.md), [Face Texture and UV Layout](Face/README.md), [Incremental Potential Contact](IPC/README.md), [Layout Embedding](Layout/README.md), [Mean Curvature Flow](Flow/README.md), [Mesh Deformation](Deformation/README.md), [Moon](Moon/README.md), [Penny](Penny/README.md), [Powell-Sabin Splines](PowellSabin/README.md), [Scalable Locally Injective Maps](Slim/README.md), [Spot](Spot/README.md), [Surface Skeleton](Skeleton/README.md), [TetWild Cutaway](TetWild/README.md), [The Heat Method](Heat/README.md)
+- **seams**: [UV Seams](Seams/README.md)
+- **streamline**: [Cross-Field Streamlines](CrossField/README.md)
+- **surface**: [Connected Components](Components/README.md), [Cross-Field Streamlines](CrossField/README.md), [Developable Surface Flow](Developable/README.md), [Elevation Map](Elevation/README.md), [Face Texture and UV Layout](Face/README.md), [Incremental Potential Contact](IPC/README.md), [Layout Embedding](Layout/README.md), [Mean Curvature Flow](Flow/README.md), [Mesh Deformation](Deformation/README.md), [Moon](Moon/README.md), [Penny](Penny/README.md), [Powell-Sabin Splines](PowellSabin/README.md), [Scalable Locally Injective Maps](Slim/README.md), [Spot](Spot/README.md), [Surface Skeleton](Skeleton/README.md), [TetWild Cutaway](TetWild/README.md), [The Heat Method](Heat/README.md), [UV Seams](Seams/README.md)
 - **tetrahedral**: [TetWild Cutaway](TetWild/README.md)
 - **texture**: [Face Texture and UV Layout](Face/README.md)
 - **two-view**: [Moon](Moon/README.md), [The Heat Method](Heat/README.md)
-- **uv**: [Face Texture and UV Layout](Face/README.md), [Scalable Locally Injective Maps](Slim/README.md)
+- **uv**: [Face Texture and UV Layout](Face/README.md), [Scalable Locally Injective Maps](Slim/README.md), [UV Seams](Seams/README.md)
 - **vector-norm**: [Smoothed Particle Hydrodynamics](SPH/README.md)
 - **wireframe**: [Spot](Spot/README.md)
-- **z-up**: [Mean Curvature Flow](Flow/README.md), [Moon](Moon/README.md)
+- **z-up**: [Cross-Field Streamlines](CrossField/README.md), [Mean Curvature Flow](Flow/README.md), [Moon](Moon/README.md)

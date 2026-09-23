@@ -1,0 +1,27 @@
+id = "cross-field-streamlines"
+title = "Cross-Field Streamlines"
+script = "cross_field.py"
+summary = "Trace a smooth facet cross field across a shark surface as dense screen-space streamlines."
+features = ["surface", "curve", "cross-field", "streamline", "composition", "z-up"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "mesh"
+path = "data/shark.msh"
+geometry = "surface"
+
+[[inputs.attributes]]
+name = "smooth_direction_field_facets"
+element = "facet"
+channels = 3
+usage = "vector"
+
+[[outputs]]
+path = "results/shark_stream_lines.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/shark_stream_lines.html"
+kind = "interactive"
+backend = "webgl"

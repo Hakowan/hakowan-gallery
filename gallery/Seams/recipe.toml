@@ -1,0 +1,27 @@
+id = "uv-seams"
+title = "UV Seams"
+script = "seam.py"
+summary = "Extract indexed UV discontinuities and overlay them as screen-space seam curves."
+features = ["surface", "curve", "uv", "seams", "boundary", "composition"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "mesh"
+path = "data/spot_quadrangulated.obj"
+geometry = "surface"
+
+[[inputs.attributes]]
+name = "texcoord"
+element = "indexed"
+channels = 2
+usage = "uv"
+
+[[outputs]]
+path = "results/spot_seam.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/spot_seam.html"
+kind = "interactive"
+backend = "webgl"
