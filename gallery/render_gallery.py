@@ -11,7 +11,6 @@ Usage::
     pixi run -e full python render_gallery.py --check
     pixi run -e full python render_gallery.py --artifacts
     python render_gallery.py --check-artifacts
-    python render_gallery.py --publish-dir ../agent/v1
 """
 
 from __future__ import annotations
@@ -21,7 +20,6 @@ import hashlib
 import json
 import os
 import runpy
-import shutil
 import subprocess
 import sys
 import time
@@ -244,93 +242,6 @@ def _check_artifacts(work: Path, manifest: dict[str, Any]) -> None:
             )
 
 
-def _write_backend_capabilities() -> None:
-    import hakowan as hkw
-
-    _write_json(
-        GALLERY / "backend_capabilities.json",
-        {
-            "hakowan_version": hkw.__version__,
-            "backends": {
-                name: capability.to_dict()
-                for name, capability in hkw.list_backend_capabilities().items()
-            },
-        },
-    )
-
-
-def _publish(manifests: dict[str, dict[str, Any]], destination: Path) -> None:
-    """Build the versioned static agent corpus from checked-in artifacts."""
-    destination = destination.expanduser().resolve()
-    staging = destination.with_name(destination.name + ".tmp")
-    if staging.exists():
-        shutil.rmtree(staging)
-    staging.mkdir(parents=True)
-    backend_path = GALLERY / "backend_capabilities.json"
-    instructions_path = GALLERY / "agent-instructions.txt"
-    if not backend_path.is_file() or not instructions_path.is_file():
-        raise ValueError(
-            "backend_capabilities.json and agent-instructions.txt are required"
-        )
-    shutil.copyfile(backend_path, staging / "backends.json")
-    shutil.copyfile(instructions_path, staging / "instructions.txt")
-    recipes = []
-    versions: set[str] = set()
-    schema_versions: set[str] = set()
-    for folder, manifest in sorted(manifests.items(), key=lambda item: item[1]["id"]):
-        work = GALLERY / folder
-        _check_artifacts(work, manifest)
-        target = staging / "recipes" / manifest["id"]
-        target.mkdir(parents=True)
-        _write_json(target / "manifest.json", manifest)
-        references = {"manifest": f"recipes/{manifest['id']}/manifest.json"}
-        hashes = {"manifest": _sha256(target / "manifest.json")}
-        for name, source in _artifact_paths(work).items():
-            payload = json.loads(source.read_text(encoding="utf-8"))
-            output = target / f"{name}.json"
-            _write_json(output, payload)
-            references[name] = f"recipes/{manifest['id']}/{name}.json"
-            hashes[name] = _sha256(output)
-        render = json.loads((target / "render.json").read_text(encoding="utf-8"))
-        versions.add(render["hakowan_version"])
-        schema_versions.add(render["schema_version"])
-        recipes.append(
-            {
-                "id": manifest["id"],
-                "title": manifest["title"],
-                "summary": manifest["summary"],
-                "features": manifest["features"],
-                "backends": manifest["backends"],
-                "inputs": manifest["inputs"],
-                "outputs": manifest["outputs"],
-                "artifacts": references,
-                "sha256": hashes,
-            }
-        )
-    if len(versions) != 1 or len(schema_versions) != 1:
-        raise ValueError(
-            f"Artifacts mix Hakowan/schema versions: {versions}, {schema_versions}"
-        )
-    corpus_digest = hashlib.sha256(
-        json.dumps(recipes, sort_keys=True, separators=(",", ":")).encode()
-    ).hexdigest()
-    _write_json(
-        staging / "index.json",
-        {
-            "corpus_version": "1",
-            "corpus_digest": corpus_digest,
-            "hakowan_version": next(iter(versions)),
-            "schema_version": next(iter(schema_versions)),
-            "schema": "https://hakowan.github.io/hakowan/schema/v1.json",
-            "instructions": "instructions.txt",
-            "backends": "backends.json",
-            "recipes": recipes,
-        },
-    )
-    if destination.exists():
-        shutil.rmtree(destination)
-    staging.rename(destination)
-    print(f"published: {destination}")
 
 
 def _write_json(path: str | Path, value: Any) -> None:
@@ -554,9 +465,6 @@ def _generate_index(manifests: dict[str, dict[str, Any]]) -> None:
         "",
         "Generated from `recipe.toml` manifests. See [the manifest contract](RECIPE_MANIFEST.md).",
         "",
-        "Published agent corpus: "
-        "[agent/v1/index.json](../agent/v1/index.json)",
-        "",
         "## Recipes",
         "",
         "| Recipe | Features | Backends | Result |",
@@ -594,11 +502,6 @@ def main() -> int:
         help="verify checked-in artifacts match code, data, and outputs",
     )
     parser.add_argument(
-        "--publish-dir",
-        type=Path,
-        help="build the complete static agent corpus without rendering",
-    )
-    parser.add_argument(
         "--index", action="store_true", help="generate gallery/README.md"
     )
     parser.add_argument("--one", metavar="EXAMPLE", help=argparse.SUPPRESS)
@@ -617,12 +520,8 @@ def main() -> int:
         for folder in targets:
             _check_artifacts(GALLERY / folder, manifests[folder])
             print(f"fresh: {folder}")
-    if args.publish_dir is not None:
-        if args.examples:
-            parser.error("--publish-dir always publishes the complete corpus")
-        _publish(manifests, args.publish_dir)
     if (
-        (args.index or args.check_artifacts or args.publish_dir is not None)
+        (args.index or args.check_artifacts)
         and not args.check
         and not args.artifacts
         and args.force_backend is None
@@ -662,8 +561,6 @@ def main() -> int:
     print(f"\nDone. {len(targets) - len(failures)}/{len(targets)} succeeded.")
     if failures:
         print(f"Failed: {failures}")
-    if args.artifacts and not failures:
-        _write_backend_capabilities()
     return 1 if failures else 0
 
 

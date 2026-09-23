@@ -2,8 +2,6 @@
 
 Generated from `recipe.toml` manifests. See [the manifest contract](RECIPE_MANIFEST.md).
 
-Published agent corpus: [agent/v1/index.json](../agent/v1/index.json)
-
 ## Recipes
 
 | Recipe | Features | Backends | Result |

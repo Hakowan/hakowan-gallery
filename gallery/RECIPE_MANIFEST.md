@@ -80,20 +80,6 @@ python gallery/render_gallery.py --check-artifacts
 fails with the exact recipe regeneration command when any source or output is
 stale. README-only changes do not require artifact regeneration.
 
-The `Publish agent corpus` GitHub Actions workflow runs the fast check on pull
-requests. On pushes to `main`, it deterministically rebuilds `agent/v1` and
-commits changes with `[skip ci]`. Configure GitHub Pages to deploy from the
-`main` branch root, and grant Actions read/write repository permission so the
-workflow can push its generated commit.
-
-The published corpus is available at:
-
-```text
-https://hakowan.github.io/hakowan-gallery/agent/v1/index.json
-```
-
-For a local preview without changing checked-in files:
-
-```sh
-python gallery/render_gallery.py --publish-dir /tmp/hakowan-agent/v1
-```
+The `Check gallery` GitHub Actions workflow verifies artifact freshness and
+regenerates the documentation index to ensure checked-in documentation remains
+current.
