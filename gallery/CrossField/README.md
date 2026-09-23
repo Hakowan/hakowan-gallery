@@ -1,6 +1,6 @@
 # Cross-Field Streamlines
 
-This example traces both orthogonal arms of a smooth four-fold rotationally symmetric field across a triangulated shark surface. The field is stored per facet, transported across mesh edges, and rendered as one-pixel screen-space curves over the surface.
+This example traces both orthogonal arms of a smooth four-fold rotationally symmetric (4-RoSy) field across a triangulated shark surface. The field is stored per facet, transported across mesh edges, and rendered as one-pixel screen-space curves over the surface.
 
 [<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/CrossField/results/shark_stream_lines.webp?raw=true"/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/CrossField/results/shark_stream_lines.webp?raw=true)
 
@@ -8,7 +8,9 @@ This example traces both orthogonal arms of a smooth four-fold rotationally symm
 
 ## Data
 
-`data/shark.msh` contains the triangular surface and the precomputed facet attribute `smooth_direction_field_facets`. `prepare.py` records how the smooth direction field was generated with Lagrange's PolyDDG operators.
+The cartoon shark model is designed by [Calrais](https://www.thingiverse.com/Calrais/designs) and published on [Thingiverse](https://www.thingiverse.com/thing:6306551).
+
+It contains the triangular surface and the precomputed facet attribute `smooth_direction_field_facets` computed via the paper ["Globally Optimal Direction Fields"](https://www.cs.cmu.edu/~kmcrane/Projects/GloballyOptimalDirectionFields/).
 
 ## Input contract
 
