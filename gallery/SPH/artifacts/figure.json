@@ -117,7 +117,8 @@
                 "shape": null,
                 "size": {
                   "data": 0.01,
-                  "kind": "size"
+                  "kind": "size",
+                  "space": "world"
                 },
                 "vector_field": null
               },
@@ -149,15 +150,7 @@
                     10.0
                   ],
                   "kind": "scalar_field",
-                  "legend": {
-                    "category_labels": null,
-                    "format": ".3g",
-                    "position": "right",
-                    "ticks": 5,
-                    "title": "Speed",
-                    "units": null,
-                    "width": 180
-                  },
+                  "legend": false,
                   "range": null,
                   "reverse": false
                 },

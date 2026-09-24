@@ -220,7 +220,8 @@
                     "shape": null,
                     "size": {
                       "data": 0.02,
-                      "kind": "size"
+                      "kind": "size",
+                      "space": "world"
                     },
                     "vector_field": null
                   },
@@ -465,7 +466,10 @@
                         "domain": null,
                         "kind": "scalar_field",
                         "legend": {
-                          "category_labels": null,
+                          "category_labels": {
+                            "0": "Exterior",
+                            "1": "Cut surface"
+                          },
                           "format": ".3g",
                           "position": "right",
                           "ticks": 5,
@@ -578,7 +582,8 @@
                       "shape": null,
                       "size": {
                         "data": 0.02,
-                        "kind": "size"
+                        "kind": "size",
+                        "space": "world"
                       },
                       "vector_field": null
                     },
@@ -766,7 +771,7 @@
     },
     "lights": null,
     "output": {
-      "background": "dark",
+      "background": null,
       "height": 800,
       "passes": [
         "beauty"
