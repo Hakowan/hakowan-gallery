@@ -350,7 +350,7 @@
         }
       }
     ],
-    "gap": 0.05,
+    "gap": -0.4,
     "kind": "layout",
     "normalize": false,
     "reverse": false,

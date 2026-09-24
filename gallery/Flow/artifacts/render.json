@@ -32,11 +32,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 58234434,
+      "bytes": 58234450,
       "exists": true,
       "kind": "interactive",
       "path": "results/bust_all.html",
-      "sha256": "794ab93a9d6c10fb57294f5ea356bbe039eb47cb7b6850207ce7a1ad5d29e4f9"
+      "sha256": "538e7a932dc705beee32e1768405c23ed1ea2f858b85de855a08065943c5529b"
     }
   ],
   "recipe": "mean-curvature-flow",
@@ -108,9 +108,9 @@
       "sha256": "43147a6dc3ef2cd39bbfc3149cf8783fc8adcacd889468c077d152496e7c7577"
     },
     {
-      "bytes": 1669,
+      "bytes": 1686,
       "path": "flow.py",
-      "sha256": "aecab30c1411db4a9d67abddb2565f8dd4ef588b606c81cdfb77009be6c1374f"
+      "sha256": "7347348739fd8443c25a6259d77c2e0a122b7773f8e37b2cd12fb26e7e851a6e"
     },
     {
       "bytes": 1161,
