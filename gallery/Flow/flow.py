@@ -32,7 +32,7 @@ dist9 = flow9.name("Distance 9").channel(material=copy.deepcopy(mat))
 comp = flow0.compare(flow9, gap=-0.4, labels=["itr 0", "itr 9"])
 mix0 = hkw.grid([flow0, dist0], columns=2, column_gap=-0.4)
 mix9 = hkw.grid([flow9, dist9], columns=2, column_gap=-0.4)
-comp_all = hkw.grid([flow0, dist0, flow9, dist9], columns=4)
+comp_all = hkw.grid([flow0, dist0, flow9, dist9], columns=4, column_gap=-0.4)
 
 scene = hkw.SceneSettings(
     camera=hkw.PerspectiveCamera(eye=(0, -4, 0), up=(0, 0, 1)),
