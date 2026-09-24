@@ -6,7 +6,7 @@ features = ["surface", "scalar-field", "comparison", "layout", "legend", "z-up"]
 backends = ["mitsuba", "webgl"]
 
 [[inputs]]
-id = "surface"
+id = "initial-surface"
 path = "data/flow_00.ply"
 geometry = "surface"
 
@@ -16,8 +16,29 @@ element = "indexed"
 channels = 1
 usage = "scalar"
 
+[[inputs]]
+id = "final-surface"
+path = "data/flow_09.ply"
+geometry = "surface"
+
+[[inputs.attributes]]
+name = "dist"
+element = "indexed"
+channels = 1
+usage = "scalar"
+
 [[outputs]]
-path = "results/bust.webp"
+path = "results/bust_comp.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/bust_00.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/bust_09.webp"
 kind = "image"
 backend = "mitsuba"
 

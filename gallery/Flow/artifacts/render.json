@@ -1,25 +1,42 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.0",
   "input_ids": [
-    "surface"
+    "final-surface",
+    "initial-surface"
   ],
   "outputs": [
     {
       "backend": "mitsuba",
-      "bytes": 32778,
+      "bytes": 54688,
       "exists": true,
       "kind": "image",
-      "path": "results/bust.webp",
-      "sha256": "eb95a0c042ab07f24bdbbb58bf8947570cf553d1e96c87ca2ad0b7949ebd7db7"
+      "path": "results/bust_comp.webp",
+      "sha256": "51a2f8ebf13ba9fd9947e3161ec93b0f2c6e98fbb60b7c594498b1f2ffb82051"
+    },
+    {
+      "backend": "mitsuba",
+      "bytes": 56778,
+      "exists": true,
+      "kind": "image",
+      "path": "results/bust_00.webp",
+      "sha256": "ee083f70b7cfa7d360fbf9986f29218fda663505e478a2ffb71ca3ee32d14bc3"
+    },
+    {
+      "backend": "mitsuba",
+      "bytes": 60614,
+      "exists": true,
+      "kind": "image",
+      "path": "results/bust_09.webp",
+      "sha256": "db2c1238f5da0eb7c78430bfd9f9836a96471c2bc17bdcd81dda264912cdf5d1"
     },
     {
       "backend": "webgl",
-      "bytes": 609569,
+      "bytes": 58234434,
       "exists": true,
       "kind": "interactive",
       "path": "results/bust_all.html",
-      "sha256": "ddaa098e124ce2be30330b58f0b313e1befaee1809f917ce1055097553543daf"
+      "sha256": "794ab93a9d6c10fb57294f5ea356bbe039eb47cb7b6850207ce7a1ad5d29e4f9"
     }
   ],
   "recipe": "mean-curvature-flow",
@@ -91,9 +108,9 @@
       "sha256": "43147a6dc3ef2cd39bbfc3149cf8783fc8adcacd889468c077d152496e7c7577"
     },
     {
-      "bytes": 1530,
+      "bytes": 1669,
       "path": "flow.py",
-      "sha256": "b83ebc6b54051a054888f93f8c86eb5453d76878e00914866d76e643a66bf9a0"
+      "sha256": "aecab30c1411db4a9d67abddb2565f8dd4ef588b606c81cdfb77009be6c1374f"
     },
     {
       "bytes": 1161,
@@ -101,9 +118,9 @@
       "sha256": "2ac983129c387e0a9928ca23346910c3552ba67b8ea03a6921a01395ba2854ae"
     },
     {
-      "bytes": 589,
+      "bytes": 925,
       "path": "recipe.toml",
-      "sha256": "7b1e1240be4bb0fc1f80a510d3b6234c84d293d7cdd09a7f9d78c1fc3525c98b"
+      "sha256": "7365506cb7419db310b2390f052fadf378696848871dc2060ae09345b5ce0795"
     }
   ]
 }
