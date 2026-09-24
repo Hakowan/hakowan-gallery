@@ -1,567 +1,35 @@
 {
   "$schema": "https://hakowan.github.io/hakowan/schema/v1.json",
   "root": {
-    "axis": "z",
+    "axis": "x",
     "children": [
       {
-        "axis": "x",
-        "children": [
-          {
-            "axis": "x",
-            "children": [
-              {
-                "axis": "x",
-                "children": [
-                  {
-                    "child": {
-                      "child": {
-                        "child": {
-                          "kind": "layer",
-                          "spec": {
-                            "annotations": [],
-                            "channels": {
-                              "bump_map": null,
-                              "covariance": null,
-                              "material": null,
-                              "normal": null,
-                              "normal_map": null,
-                              "position": null,
-                              "shape": null,
-                              "size": null,
-                              "vector_field": null
-                            },
-                            "data": {
-                              "kind": "mesh_file",
-                              "path": "data/flow_00.ply",
-                              "roi_box": null
-                            },
-                            "mark": null,
-                            "name": null,
-                            "transforms": []
-                          }
-                        },
-                        "kind": "inherit",
-                        "spec": {
-                          "annotations": [],
-                          "channels": {
-                            "bump_map": null,
-                            "covariance": null,
-                            "material": null,
-                            "normal": null,
-                            "normal_map": null,
-                            "position": null,
-                            "shape": null,
-                            "size": null,
-                            "vector_field": null
-                          },
-                          "data": null,
-                          "mark": null,
-                          "name": "Surface 0",
-                          "transforms": []
-                        }
-                      },
-                      "kind": "inherit",
-                      "spec": {
-                        "annotations": [],
-                        "channels": {
-                          "bump_map": null,
-                          "covariance": null,
-                          "material": null,
-                          "normal": null,
-                          "normal_map": null,
-                          "position": null,
-                          "shape": null,
-                          "size": null,
-                          "vector_field": null
-                        },
-                        "data": null,
-                        "mark": null,
-                        "name": "Distance 0",
-                        "transforms": []
-                      }
-                    },
-                    "kind": "inherit",
-                    "spec": {
-                      "annotations": [],
-                      "channels": {
-                        "bump_map": null,
-                        "covariance": null,
-                        "material": {
-                          "anisotropic": 0.0,
-                          "back_side": null,
-                          "color": {
-                            "categories": false,
-                            "colormap": "viridis",
-                            "data": {
-                              "name": "dist",
-                              "scales": [
-                                {
-                                  "domain_max": 0.3,
-                                  "domain_min": -0.3,
-                                  "kind": "normalize",
-                                  "range_max": 1,
-                                  "range_min": 0
-                                }
-                              ],
-                              "unit": null
-                            },
-                            "domain": null,
-                            "kind": "scalar_field",
-                            "legend": {
-                              "category_labels": null,
-                              "format": ".3g",
-                              "position": "right",
-                              "ticks": 5,
-                              "title": "Distance",
-                              "units": null,
-                              "width": 180
-                            },
-                            "range": null,
-                            "reverse": false
-                          },
-                          "eta": 1.5,
-                          "flatness": 0.0,
-                          "kind": "principled",
-                          "metallic": 0.2,
-                          "roughness": 0.5,
-                          "sheen": 0.0,
-                          "sheen_tint": 0.0,
-                          "spec_tint": 0.0,
-                          "spec_trans": 0.0,
-                          "two_sided": false
-                        },
-                        "normal": null,
-                        "normal_map": null,
-                        "position": null,
-                        "shape": null,
-                        "size": null,
-                        "vector_field": null
-                      },
-                      "data": null,
-                      "mark": null,
-                      "name": null,
-                      "transforms": []
-                    }
-                  },
-                  {
-                    "child": {
-                      "child": {
-                        "child": {
-                          "kind": "layer",
-                          "spec": {
-                            "annotations": [],
-                            "channels": {
-                              "bump_map": null,
-                              "covariance": null,
-                              "material": null,
-                              "normal": null,
-                              "normal_map": null,
-                              "position": null,
-                              "shape": null,
-                              "size": null,
-                              "vector_field": null
-                            },
-                            "data": {
-                              "kind": "mesh_file",
-                              "path": "data/flow_02.ply",
-                              "roi_box": null
-                            },
-                            "mark": null,
-                            "name": null,
-                            "transforms": []
-                          }
-                        },
-                        "kind": "inherit",
-                        "spec": {
-                          "annotations": [],
-                          "channels": {
-                            "bump_map": null,
-                            "covariance": null,
-                            "material": null,
-                            "normal": null,
-                            "normal_map": null,
-                            "position": null,
-                            "shape": null,
-                            "size": null,
-                            "vector_field": null
-                          },
-                          "data": null,
-                          "mark": null,
-                          "name": "Surface 2",
-                          "transforms": []
-                        }
-                      },
-                      "kind": "inherit",
-                      "spec": {
-                        "annotations": [],
-                        "channels": {
-                          "bump_map": null,
-                          "covariance": null,
-                          "material": null,
-                          "normal": null,
-                          "normal_map": null,
-                          "position": null,
-                          "shape": null,
-                          "size": null,
-                          "vector_field": null
-                        },
-                        "data": null,
-                        "mark": null,
-                        "name": "Distance 2",
-                        "transforms": []
-                      }
-                    },
-                    "kind": "inherit",
-                    "spec": {
-                      "annotations": [],
-                      "channels": {
-                        "bump_map": null,
-                        "covariance": null,
-                        "material": {
-                          "anisotropic": 0.0,
-                          "back_side": null,
-                          "color": {
-                            "categories": false,
-                            "colormap": "viridis",
-                            "data": {
-                              "name": "dist",
-                              "scales": [
-                                {
-                                  "domain_max": 0.3,
-                                  "domain_min": -0.3,
-                                  "kind": "normalize",
-                                  "range_max": 1,
-                                  "range_min": 0
-                                }
-                              ],
-                              "unit": null
-                            },
-                            "domain": null,
-                            "kind": "scalar_field",
-                            "legend": false,
-                            "range": null,
-                            "reverse": false
-                          },
-                          "eta": 1.5,
-                          "flatness": 0.0,
-                          "kind": "principled",
-                          "metallic": 0.2,
-                          "roughness": 0.5,
-                          "sheen": 0.0,
-                          "sheen_tint": 0.0,
-                          "spec_tint": 0.0,
-                          "spec_trans": 0.0,
-                          "two_sided": false
-                        },
-                        "normal": null,
-                        "normal_map": null,
-                        "position": null,
-                        "shape": null,
-                        "size": null,
-                        "vector_field": null
-                      },
-                      "data": null,
-                      "mark": null,
-                      "name": null,
-                      "transforms": []
-                    }
-                  }
-                ],
-                "gap": 0.05,
-                "kind": "layout",
-                "normalize": false,
-                "spec": {
-                  "annotations": [],
-                  "channels": {
-                    "bump_map": null,
-                    "covariance": null,
-                    "material": null,
-                    "normal": null,
-                    "normal_map": null,
-                    "position": null,
-                    "shape": null,
-                    "size": null,
-                    "vector_field": null
-                  },
-                  "data": null,
-                  "mark": null,
-                  "name": null,
-                  "transforms": []
-                }
-              },
-              {
-                "child": {
-                  "child": {
-                    "child": {
-                      "kind": "layer",
-                      "spec": {
-                        "annotations": [],
-                        "channels": {
-                          "bump_map": null,
-                          "covariance": null,
-                          "material": null,
-                          "normal": null,
-                          "normal_map": null,
-                          "position": null,
-                          "shape": null,
-                          "size": null,
-                          "vector_field": null
-                        },
-                        "data": {
-                          "kind": "mesh_file",
-                          "path": "data/flow_05.ply",
-                          "roi_box": null
-                        },
-                        "mark": null,
-                        "name": null,
-                        "transforms": []
-                      }
-                    },
-                    "kind": "inherit",
-                    "spec": {
-                      "annotations": [],
-                      "channels": {
-                        "bump_map": null,
-                        "covariance": null,
-                        "material": null,
-                        "normal": null,
-                        "normal_map": null,
-                        "position": null,
-                        "shape": null,
-                        "size": null,
-                        "vector_field": null
-                      },
-                      "data": null,
-                      "mark": null,
-                      "name": "Surface 5",
-                      "transforms": []
-                    }
-                  },
-                  "kind": "inherit",
-                  "spec": {
-                    "annotations": [],
-                    "channels": {
-                      "bump_map": null,
-                      "covariance": null,
-                      "material": null,
-                      "normal": null,
-                      "normal_map": null,
-                      "position": null,
-                      "shape": null,
-                      "size": null,
-                      "vector_field": null
-                    },
-                    "data": null,
-                    "mark": null,
-                    "name": "Distance 5",
-                    "transforms": []
-                  }
-                },
-                "kind": "inherit",
-                "spec": {
-                  "annotations": [],
-                  "channels": {
-                    "bump_map": null,
-                    "covariance": null,
-                    "material": {
-                      "anisotropic": 0.0,
-                      "back_side": null,
-                      "color": {
-                        "categories": false,
-                        "colormap": "viridis",
-                        "data": {
-                          "name": "dist",
-                          "scales": [
-                            {
-                              "domain_max": 0.3,
-                              "domain_min": -0.3,
-                              "kind": "normalize",
-                              "range_max": 1,
-                              "range_min": 0
-                            }
-                          ],
-                          "unit": null
-                        },
-                        "domain": null,
-                        "kind": "scalar_field",
-                        "legend": false,
-                        "range": null,
-                        "reverse": false
-                      },
-                      "eta": 1.5,
-                      "flatness": 0.0,
-                      "kind": "principled",
-                      "metallic": 0.2,
-                      "roughness": 0.5,
-                      "sheen": 0.0,
-                      "sheen_tint": 0.0,
-                      "spec_tint": 0.0,
-                      "spec_trans": 0.0,
-                      "two_sided": false
-                    },
-                    "normal": null,
-                    "normal_map": null,
-                    "position": null,
-                    "shape": null,
-                    "size": null,
-                    "vector_field": null
-                  },
-                  "data": null,
-                  "mark": null,
-                  "name": null,
-                  "transforms": []
-                }
-              }
-            ],
-            "gap": 0.05,
-            "kind": "layout",
-            "normalize": false,
-            "spec": {
-              "annotations": [],
-              "channels": {
-                "bump_map": null,
-                "covariance": null,
-                "material": null,
-                "normal": null,
-                "normal_map": null,
-                "position": null,
-                "shape": null,
-                "size": null,
-                "vector_field": null
-              },
-              "data": null,
-              "mark": null,
-              "name": null,
-              "transforms": []
-            }
-          },
-          {
-            "child": {
-              "child": {
-                "child": {
-                  "kind": "layer",
-                  "spec": {
-                    "annotations": [],
-                    "channels": {
-                      "bump_map": null,
-                      "covariance": null,
-                      "material": null,
-                      "normal": null,
-                      "normal_map": null,
-                      "position": null,
-                      "shape": null,
-                      "size": null,
-                      "vector_field": null
-                    },
-                    "data": {
-                      "kind": "mesh_file",
-                      "path": "data/flow_09.ply",
-                      "roi_box": null
-                    },
-                    "mark": null,
-                    "name": null,
-                    "transforms": []
-                  }
-                },
-                "kind": "inherit",
-                "spec": {
-                  "annotations": [],
-                  "channels": {
-                    "bump_map": null,
-                    "covariance": null,
-                    "material": null,
-                    "normal": null,
-                    "normal_map": null,
-                    "position": null,
-                    "shape": null,
-                    "size": null,
-                    "vector_field": null
-                  },
-                  "data": null,
-                  "mark": null,
-                  "name": "Surface 9",
-                  "transforms": []
-                }
-              },
-              "kind": "inherit",
-              "spec": {
-                "annotations": [],
-                "channels": {
-                  "bump_map": null,
-                  "covariance": null,
-                  "material": null,
-                  "normal": null,
-                  "normal_map": null,
-                  "position": null,
-                  "shape": null,
-                  "size": null,
-                  "vector_field": null
-                },
-                "data": null,
-                "mark": null,
-                "name": "Distance 9",
-                "transforms": []
-              }
+        "child": {
+          "kind": "layer",
+          "spec": {
+            "annotations": [],
+            "channels": {
+              "bump_map": null,
+              "covariance": null,
+              "material": null,
+              "normal": null,
+              "normal_map": null,
+              "position": null,
+              "shape": null,
+              "size": null,
+              "vector_field": null
             },
-            "kind": "inherit",
-            "spec": {
-              "annotations": [],
-              "channels": {
-                "bump_map": null,
-                "covariance": null,
-                "material": {
-                  "anisotropic": 0.0,
-                  "back_side": null,
-                  "color": {
-                    "categories": false,
-                    "colormap": "viridis",
-                    "data": {
-                      "name": "dist",
-                      "scales": [
-                        {
-                          "domain_max": 0.3,
-                          "domain_min": -0.3,
-                          "kind": "normalize",
-                          "range_max": 1,
-                          "range_min": 0
-                        }
-                      ],
-                      "unit": null
-                    },
-                    "domain": null,
-                    "kind": "scalar_field",
-                    "legend": false,
-                    "range": null,
-                    "reverse": false
-                  },
-                  "eta": 1.5,
-                  "flatness": 0.0,
-                  "kind": "principled",
-                  "metallic": 0.2,
-                  "roughness": 0.5,
-                  "sheen": 0.0,
-                  "sheen_tint": 0.0,
-                  "spec_tint": 0.0,
-                  "spec_trans": 0.0,
-                  "two_sided": false
-                },
-                "normal": null,
-                "normal_map": null,
-                "position": null,
-                "shape": null,
-                "size": null,
-                "vector_field": null
-              },
-              "data": null,
-              "mark": null,
-              "name": null,
-              "transforms": []
-            }
+            "data": {
+              "kind": "mesh_file",
+              "path": "data/flow_00.ply",
+              "roi_box": null
+            },
+            "mark": null,
+            "name": null,
+            "transforms": []
           }
-        ],
-        "gap": 0.05,
-        "kind": "layout",
-        "normalize": false,
+        },
+        "kind": "inherit",
         "spec": {
           "annotations": [],
           "channels": {
@@ -577,184 +45,39 @@
           },
           "data": null,
           "mark": null,
-          "name": null,
+          "name": "Surface 0",
           "transforms": []
         }
       },
       {
-        "axis": "x",
-        "children": [
-          {
-            "axis": "x",
-            "children": [
-              {
-                "axis": "x",
-                "children": [
-                  {
-                    "child": {
-                      "kind": "layer",
-                      "spec": {
-                        "annotations": [],
-                        "channels": {
-                          "bump_map": null,
-                          "covariance": null,
-                          "material": null,
-                          "normal": null,
-                          "normal_map": null,
-                          "position": null,
-                          "shape": null,
-                          "size": null,
-                          "vector_field": null
-                        },
-                        "data": {
-                          "kind": "mesh_file",
-                          "path": "data/flow_00.ply",
-                          "roi_box": null
-                        },
-                        "mark": null,
-                        "name": null,
-                        "transforms": []
-                      }
-                    },
-                    "kind": "inherit",
-                    "spec": {
-                      "annotations": [],
-                      "channels": {
-                        "bump_map": null,
-                        "covariance": null,
-                        "material": null,
-                        "normal": null,
-                        "normal_map": null,
-                        "position": null,
-                        "shape": null,
-                        "size": null,
-                        "vector_field": null
-                      },
-                      "data": null,
-                      "mark": null,
-                      "name": "Surface 0",
-                      "transforms": []
-                    }
-                  },
-                  {
-                    "child": {
-                      "kind": "layer",
-                      "spec": {
-                        "annotations": [],
-                        "channels": {
-                          "bump_map": null,
-                          "covariance": null,
-                          "material": null,
-                          "normal": null,
-                          "normal_map": null,
-                          "position": null,
-                          "shape": null,
-                          "size": null,
-                          "vector_field": null
-                        },
-                        "data": {
-                          "kind": "mesh_file",
-                          "path": "data/flow_02.ply",
-                          "roi_box": null
-                        },
-                        "mark": null,
-                        "name": null,
-                        "transforms": []
-                      }
-                    },
-                    "kind": "inherit",
-                    "spec": {
-                      "annotations": [],
-                      "channels": {
-                        "bump_map": null,
-                        "covariance": null,
-                        "material": null,
-                        "normal": null,
-                        "normal_map": null,
-                        "position": null,
-                        "shape": null,
-                        "size": null,
-                        "vector_field": null
-                      },
-                      "data": null,
-                      "mark": null,
-                      "name": "Surface 2",
-                      "transforms": []
-                    }
-                  }
-                ],
-                "gap": 0.05,
-                "kind": "layout",
-                "normalize": false,
-                "spec": {
-                  "annotations": [],
-                  "channels": {
-                    "bump_map": null,
-                    "covariance": null,
-                    "material": null,
-                    "normal": null,
-                    "normal_map": null,
-                    "position": null,
-                    "shape": null,
-                    "size": null,
-                    "vector_field": null
-                  },
-                  "data": null,
-                  "mark": null,
-                  "name": null,
-                  "transforms": []
-                }
-              },
-              {
-                "child": {
-                  "kind": "layer",
-                  "spec": {
-                    "annotations": [],
-                    "channels": {
-                      "bump_map": null,
-                      "covariance": null,
-                      "material": null,
-                      "normal": null,
-                      "normal_map": null,
-                      "position": null,
-                      "shape": null,
-                      "size": null,
-                      "vector_field": null
-                    },
-                    "data": {
-                      "kind": "mesh_file",
-                      "path": "data/flow_05.ply",
-                      "roi_box": null
-                    },
-                    "mark": null,
-                    "name": null,
-                    "transforms": []
-                  }
+        "child": {
+          "child": {
+            "child": {
+              "kind": "layer",
+              "spec": {
+                "annotations": [],
+                "channels": {
+                  "bump_map": null,
+                  "covariance": null,
+                  "material": null,
+                  "normal": null,
+                  "normal_map": null,
+                  "position": null,
+                  "shape": null,
+                  "size": null,
+                  "vector_field": null
                 },
-                "kind": "inherit",
-                "spec": {
-                  "annotations": [],
-                  "channels": {
-                    "bump_map": null,
-                    "covariance": null,
-                    "material": null,
-                    "normal": null,
-                    "normal_map": null,
-                    "position": null,
-                    "shape": null,
-                    "size": null,
-                    "vector_field": null
-                  },
-                  "data": null,
-                  "mark": null,
-                  "name": "Surface 5",
-                  "transforms": []
-                }
+                "data": {
+                  "kind": "mesh_file",
+                  "path": "data/flow_00.ply",
+                  "roi_box": null
+                },
+                "mark": null,
+                "name": null,
+                "transforms": []
               }
-            ],
-            "gap": 0.05,
-            "kind": "layout",
-            "normalize": false,
+            },
+            "kind": "inherit",
             "spec": {
               "annotations": [],
               "channels": {
@@ -770,11 +93,142 @@
               },
               "data": null,
               "mark": null,
-              "name": null,
+              "name": "Surface 0",
               "transforms": []
             }
           },
-          {
+          "kind": "inherit",
+          "spec": {
+            "annotations": [],
+            "channels": {
+              "bump_map": null,
+              "covariance": null,
+              "material": null,
+              "normal": null,
+              "normal_map": null,
+              "position": null,
+              "shape": null,
+              "size": null,
+              "vector_field": null
+            },
+            "data": null,
+            "mark": null,
+            "name": "Distance 0",
+            "transforms": []
+          }
+        },
+        "kind": "inherit",
+        "spec": {
+          "annotations": [],
+          "channels": {
+            "bump_map": null,
+            "covariance": null,
+            "material": {
+              "anisotropic": 0.0,
+              "back_side": null,
+              "color": {
+                "categories": false,
+                "colormap": "viridis",
+                "data": {
+                  "name": "dist",
+                  "scales": [
+                    {
+                      "domain_max": 0.3,
+                      "domain_min": 0,
+                      "kind": "normalize",
+                      "range_max": 1,
+                      "range_min": 0
+                    }
+                  ],
+                  "unit": null
+                },
+                "domain": null,
+                "kind": "scalar_field",
+                "legend": {
+                  "category_labels": null,
+                  "format": ".3g",
+                  "position": "right",
+                  "ticks": 5,
+                  "title": "Distance",
+                  "units": null,
+                  "width": 180
+                },
+                "range": null,
+                "reverse": false
+              },
+              "eta": 1.5,
+              "flatness": 0.0,
+              "kind": "principled",
+              "metallic": 0.2,
+              "roughness": 0.2,
+              "sheen": 0.0,
+              "sheen_tint": 0.0,
+              "spec_tint": 0.0,
+              "spec_trans": 0.0,
+              "two_sided": false
+            },
+            "normal": null,
+            "normal_map": null,
+            "position": null,
+            "shape": null,
+            "size": null,
+            "vector_field": null
+          },
+          "data": null,
+          "mark": null,
+          "name": null,
+          "transforms": []
+        }
+      },
+      {
+        "child": {
+          "kind": "layer",
+          "spec": {
+            "annotations": [],
+            "channels": {
+              "bump_map": null,
+              "covariance": null,
+              "material": null,
+              "normal": null,
+              "normal_map": null,
+              "position": null,
+              "shape": null,
+              "size": null,
+              "vector_field": null
+            },
+            "data": {
+              "kind": "mesh_file",
+              "path": "data/flow_09.ply",
+              "roi_box": null
+            },
+            "mark": null,
+            "name": null,
+            "transforms": []
+          }
+        },
+        "kind": "inherit",
+        "spec": {
+          "annotations": [],
+          "channels": {
+            "bump_map": null,
+            "covariance": null,
+            "material": null,
+            "normal": null,
+            "normal_map": null,
+            "position": null,
+            "shape": null,
+            "size": null,
+            "vector_field": null
+          },
+          "data": null,
+          "mark": null,
+          "name": "Surface 9",
+          "transforms": []
+        }
+      },
+      {
+        "child": {
+          "child": {
             "child": {
               "kind": "layer",
               "spec": {
@@ -819,17 +273,69 @@
               "name": "Surface 9",
               "transforms": []
             }
+          },
+          "kind": "inherit",
+          "spec": {
+            "annotations": [],
+            "channels": {
+              "bump_map": null,
+              "covariance": null,
+              "material": null,
+              "normal": null,
+              "normal_map": null,
+              "position": null,
+              "shape": null,
+              "size": null,
+              "vector_field": null
+            },
+            "data": null,
+            "mark": null,
+            "name": "Distance 9",
+            "transforms": []
           }
-        ],
-        "gap": 0.05,
-        "kind": "layout",
-        "normalize": false,
+        },
+        "kind": "inherit",
         "spec": {
           "annotations": [],
           "channels": {
             "bump_map": null,
             "covariance": null,
-            "material": null,
+            "material": {
+              "anisotropic": 0.0,
+              "back_side": null,
+              "color": {
+                "categories": false,
+                "colormap": "viridis",
+                "data": {
+                  "name": "dist",
+                  "scales": [
+                    {
+                      "domain_max": 0.3,
+                      "domain_min": 0,
+                      "kind": "normalize",
+                      "range_max": 1,
+                      "range_min": 0
+                    }
+                  ],
+                  "unit": null
+                },
+                "domain": null,
+                "kind": "scalar_field",
+                "legend": false,
+                "range": null,
+                "reverse": false
+              },
+              "eta": 1.5,
+              "flatness": 0.0,
+              "kind": "principled",
+              "metallic": 0.2,
+              "roughness": 0.2,
+              "sheen": 0.0,
+              "sheen_tint": 0.0,
+              "spec_tint": 0.0,
+              "spec_trans": 0.0,
+              "two_sided": false
+            },
             "normal": null,
             "normal_map": null,
             "position": null,
@@ -847,6 +353,7 @@
     "gap": 0.05,
     "kind": "layout",
     "normalize": false,
+    "reverse": false,
     "spec": {
       "annotations": [],
       "channels": {
@@ -870,7 +377,7 @@
     "camera": {
       "eye": [
         0.0,
-        -2.5,
+        -4.0,
         0.0
       ],
       "far": 10000.0,
@@ -903,13 +410,13 @@
     },
     "lights": null,
     "output": {
-      "background": "dark",
-      "height": 1024,
+      "background": null,
+      "height": 800,
       "passes": [
         "beauty"
       ],
       "sampler_seed": 0,
-      "width": 600
+      "width": 1000
     }
   },
   "version": "1.1"

@@ -1,27 +1,25 @@
 # Mean Curvature Flow
 
-This example visualize the mean curvature flow of a bust sculpture.
-In addition to the shapes, we also visualize the distance to the origin mesh using color.
+This example compares the initial and final surfaces of a mean-curvature flow
+and visualizes each surface's distance from the original mesh as a scalar field.
 
-[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_00.webp?raw=true" width=22%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_00.webp?raw=true)
-[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_02.webp?raw=true" width=22%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_02.webp?raw=true)
-[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_05.webp?raw=true" width=22%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_05.webp?raw=true)
-[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_09.webp?raw=true" width=22%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_09.webp?raw=true)
+[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_comp.webp?raw=true" width=90%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_comp.webp?raw=true)
 
-[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_dist_00.webp?raw=true" width=22%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_dist_00.webp?raw=true)
-[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_dist_02.webp?raw=true" width=22%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_dist_02.webp?raw=true)
-[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_dist_05.webp?raw=true" width=22%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_dist_05.webp?raw=true)
-[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_dist_09.webp?raw=true" width=22%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_dist_09.webp?raw=true)
+[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_00.webp?raw=true" width=45%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_00.webp?raw=true)
+[<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_09.webp?raw=true" width=45%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_09.webp?raw=true)
 
-[Interactive demo](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/Flow/results/bust_all.html)
+[Interactive demo](https://qnzhou.github.io/hakowan-gallery/gallery/Flow/results/bust_all.html)
 
 ## Data
 
-The bust sculpture used is design by [Luke Chilson](https://www.thingiverse.com/lukechilson/designs) and published on [Thingiverse](https://www.thingiverse.com/thing:14565).
+The bust sculpture was designed by [Luke Chilson](https://www.thingiverse.com/lukechilson/designs)
+and published on [Thingiverse](https://www.thingiverse.com/thing:14565). The `dist`
+field stores the distance from each flow iterate to the original mesh.
 
 ## Input contract
 
-- `surface`: surface from `data/flow_00.ply`; `dist` (indexed 1-channel scalar).
+- `initial-surface`: surface from `data/flow_00.ply`; `dist` (indexed 1-channel scalar).
+- `final-surface`: surface from `data/flow_09.ply`; `dist` (indexed 1-channel scalar).
 
 ## Reproduce and inspect
 

@@ -14,7 +14,7 @@ Generated from `recipe.toml` manifests. See [the manifest contract](RECIPE_MANIF
 | [Fiber Curves](Fibers/README.md) | `curve, categorical, composition, materials` | `mitsuba, webgl` | [fibers.webp](Fibers/results/fibers.webp) |
 | [Incremental Potential Contact](IPC/README.md) | `surface, deformation, glass, orthographic, multi-view` | `mitsuba, webgl` | [ipc_side_10.webp](IPC/results/ipc_side_10.webp) |
 | [Layout Embedding](Layout/README.md) | `surface, curve, categorical, legend, glass, comparison` | `mitsuba, webgl` | [pig_embedded.webp](Layout/results/pig_embedded.webp) |
-| [Mean Curvature Flow](Flow/README.md) | `surface, scalar-field, comparison, layout, legend, z-up` | `mitsuba, webgl` | [bust.webp](Flow/results/bust.webp) |
+| [Mean Curvature Flow](Flow/README.md) | `surface, scalar-field, comparison, layout, legend, z-up` | `mitsuba, webgl` | [bust_comp.webp](Flow/results/bust_comp.webp) |
 | [Mesh Deformation](Deformation/README.md) | `surface, filter, comparison, multi-view, materials` | `mitsuba, webgl` | [cylinder_1.webp](Deformation/results/cylinder_1.webp) |
 | [Moon](Moon/README.md) | `surface, image-texture, bump-map, z-up, two-view` | `mitsuba, webgl` | [moon.webp](Moon/results/moon.webp) |
 | [Penny](Penny/README.md) | `surface, conductor, render-passes, normal, depth` | `blender, webgl` | [penny.webp](Penny/results/penny.webp) |
