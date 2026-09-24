@@ -38,7 +38,7 @@ for i in [10, 30, 60, 133]:
         .material(
             "Principled",
             hkw.texture.ScalarField(
-                "speed", domain=[0, 10], legend=hkw.Legend(title="Speed")
+                "speed", domain=[0, 10], legend=False,
             ),
         )
     ).transform(hkw.transform.Norm("velocity", "speed"))
