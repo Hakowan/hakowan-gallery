@@ -1,0 +1,69 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.5.3",
+  "input_ids": [
+    "mesh"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 44362,
+      "exists": true,
+      "kind": "image",
+      "path": "results/cylinder_1.webp",
+      "sha256": "69d3a3660dbedef719529899d4004d542d0d9819ef5857eceec5b918328d711c"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 2326009,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/cylinders.html",
+      "sha256": "3f98c61281d4b265bf52162719e0a61da7d547c454a975098b84c43fb037363e"
+    }
+  ],
+  "recipe": "mesh-deformation",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 96399,
+      "path": "data/cylinder.ply",
+      "sha256": "0decff96dd74c4f293ebd0914b674c80bdff4c4f3fd9ec674405a01f1c67fa7c"
+    },
+    {
+      "bytes": 290343,
+      "path": "data/cylinder_1.msh",
+      "sha256": "a61fad9567d904828338ec64751408c28469905dd1a172b2dbbe8c0cb96a9a5e"
+    },
+    {
+      "bytes": 290343,
+      "path": "data/cylinder_2.msh",
+      "sha256": "d8d094500dd0e4d654e17ad8503003c9839d938fcf960483dbd8fb287ab70b60"
+    },
+    {
+      "bytes": 290343,
+      "path": "data/cylinder_3.msh",
+      "sha256": "1063f989e1e049b5c3e0b7cd4001591de8fd4345e2fc851c134b81260dac1639"
+    },
+    {
+      "bytes": 290343,
+      "path": "data/cylinder_4.msh",
+      "sha256": "f242351f2c02c5b2f62ede5e766311c33c0f4fc7e9506a20070c8ea4ee327ce4"
+    },
+    {
+      "bytes": 2006,
+      "path": "deform.py",
+      "sha256": "764d0216ad09da8d5c54cb225b3c97ee7db7c0ef402c2c09c48fde34adf5e3ab"
+    },
+    {
+      "bytes": 584,
+      "path": "recipe.toml",
+      "sha256": "66bf7e5425f736940eb280cd698679018ff63affecf94130bfae6fbbae39771c"
+    },
+    {
+      "bytes": 1474,
+      "path": "render.py",
+      "sha256": "8654c04abff353169a7a5497ba2e4fdccf1aa0e3554d70b0ccb8ed5d440f9d2a"
+    }
+  ]
+}

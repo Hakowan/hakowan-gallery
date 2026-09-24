@@ -1,0 +1,50 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.5.3",
+  "input_ids": [
+    "skeleton",
+    "surface"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 246476,
+      "exists": true,
+      "kind": "image",
+      "path": "results/fertility_skeleton.webp",
+      "sha256": "c687554e8862fb83dbfdeaf8815a1920bfaeb398b3a18fa05dd01f83c803f07a"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 4671234,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/fertility_skeleton.html",
+      "sha256": "a548b67af46edd2364d5a63529fc622b66340988f2d8f0ac22d66b58579298ba"
+    }
+  ],
+  "recipe": "surface-skeleton",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 1518087,
+      "path": "data/fertility.obj",
+      "sha256": "5f2021020fd312c7b2b072065a9ae1ea1729c15766adc4d252f713230aa11029"
+    },
+    {
+      "bytes": 21077,
+      "path": "data/fertility_skeleton.obj",
+      "sha256": "9fdb3cf6deda97daa210f94f0fce8e3352b249b9442ba1c61d8d6b42a39f6513"
+    },
+    {
+      "bytes": 587,
+      "path": "recipe.toml",
+      "sha256": "17302397b1641e1d4457a5a7b4de97bb02026b5bfd4896c08201be0a34009e0b"
+    },
+    {
+      "bytes": 1577,
+      "path": "skeleton.py",
+      "sha256": "87d992d948baab20b47e5e4dff22f3c9e7e400136262d8956ff7e25c5ca2e6bc"
+    }
+  ]
+}

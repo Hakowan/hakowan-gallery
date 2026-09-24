@@ -1,0 +1,44 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.6.0",
+  "input_ids": [
+    "mesh"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 49752,
+      "exists": true,
+      "kind": "image",
+      "path": "results/spot_seam.webp",
+      "sha256": "0cf654e9c5e33990135843c0f69025497f12b868b53c769ba73455cf8fef5956"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 1274898,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/spot_seam.html",
+      "sha256": "1afa2362104e7554a6ae08d48abd9e9eb5c93129e34701aa8f5f327ff2b49645"
+    }
+  ],
+  "recipe": "uv-seams",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 270477,
+      "path": "data/spot_quadrangulated.obj",
+      "sha256": "08bf90be56612f0d2643a75a8764c4ca8fac7fe983ab91b53b51d37981e5757c"
+    },
+    {
+      "bytes": 587,
+      "path": "recipe.toml",
+      "sha256": "091700ba80e9fd84854878187565b233f101ec34db1299d078c4bb5243bf5145"
+    },
+    {
+      "bytes": 738,
+      "path": "seam.py",
+      "sha256": "4ee2c4424ef11a4e932869429dbcfe86ac3f8d410bb1caa9e1469d5dcb39b2f9"
+    }
+  ]
+}

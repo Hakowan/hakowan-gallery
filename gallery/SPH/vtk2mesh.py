@@ -4,9 +4,9 @@ import pyvista as pv
 import numpy as np
 import lagrange
 
-#mesh = pv.read("ParticleData_Fluid_0_133.vtk")
-#mesh = pv.read("ParticleData_Fluid_0_10.vtk")
-#mesh = pv.read("ParticleData_Fluid_0_60.vtk")
+# mesh = pv.read("ParticleData_Fluid_0_133.vtk")
+# mesh = pv.read("ParticleData_Fluid_0_10.vtk")
+# mesh = pv.read("ParticleData_Fluid_0_60.vtk")
 mesh = pv.read("ParticleData_Fluid_0_30.vtk")
 
 vertices = np.array(mesh.points)

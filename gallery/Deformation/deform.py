@@ -46,10 +46,10 @@ M = igl.massmatrix(
 )
 MI = scipy.sparse.diags(1.0 / M.diagonal())
 
-L2 = -L * MI * L
-L3 = -L2 * MI * L
-L4 = L3 * MI * L
-
+# Polyharmonic operators of increasing order: L, -L·M⁻¹·L, L·M⁻¹·L·M⁻¹·L, ...
+laplacians = [L]
+for _ in range(3):
+    laplacians.append(-laplacians[-1] * MI * L)
 
 num_constraints = len(handle_indices)
 C = scipy.sparse.coo_matrix(
@@ -57,26 +57,11 @@ C = scipy.sparse.coo_matrix(
     shape=(num_constraints, mesh.num_vertices),
 )
 
-M = scipy.sparse.bmat([[L, C.transpose()], [C, None]]).tocsc()
-M2 = scipy.sparse.bmat([[L2, C.transpose()], [C, None]]).tocsc()
-M3 = scipy.sparse.bmat([[L3, C.transpose()], [C, None]]).tocsc()
-M4 = scipy.sparse.bmat([[L4, C.transpose()], [C, None]]).tocsc()
-
 b = np.zeros((mesh.num_vertices + num_constraints, 3))
 b[-num_constraints:] = handle_pos
 
-vertices = scipy.sparse.linalg.spsolve(M, b)[: mesh.num_vertices]
-mesh.vertices[:] = vertices
-lagrange.io.save_mesh("data/cylinder_1.msh", mesh)
-
-vertices = scipy.sparse.linalg.spsolve(M2, b)[: mesh.num_vertices]
-mesh.vertices[:] = vertices
-lagrange.io.save_mesh("data/cylinder_2.msh", mesh)
-
-vertices = scipy.sparse.linalg.spsolve(M3, b)[: mesh.num_vertices]
-mesh.vertices[:] = vertices
-lagrange.io.save_mesh("data/cylinder_3.msh", mesh)
-
-vertices = scipy.sparse.linalg.spsolve(M4, b)[: mesh.num_vertices]
-mesh.vertices[:] = vertices
-lagrange.io.save_mesh("data/cylinder_4.msh", mesh)
+for i, Lk in enumerate(laplacians, start=1):
+    kkt = scipy.sparse.bmat([[Lk, C.transpose()], [C, None]]).tocsc()
+    vertices = scipy.sparse.linalg.spsolve(kkt, b)[: mesh.num_vertices]
+    mesh.vertices[:] = vertices
+    lagrange.io.save_mesh(f"data/cylinder_{i}.msh", mesh)

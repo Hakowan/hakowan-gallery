@@ -1,0 +1,21 @@
+id = "spot"
+title = "Spot"
+script = "spot.py"
+summary = "Render a basic surface mesh with its polygon-edge wireframe overlaid."
+features = ["surface", "curve", "wireframe", "composition"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "mesh"
+path = "data/spot_quadrangulated.obj"
+geometry = "surface"
+
+[[outputs]]
+path = "results/spot_wireframe.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/spot_wireframe.html"
+kind = "interactive"
+backend = "webgl"

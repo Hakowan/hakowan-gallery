@@ -1,0 +1,20 @@
+id = "penny-material-passes"
+title = "Penny"
+script = "penny.py"
+summary = "Render a scanned penny with copper material and semantic passes."
+features = ["surface", "conductor", "render-passes", "normal", "depth"]
+backends = ["blender", "webgl"]
+
+[[inputs]]
+id = "mesh"
+path = "data/penny.glb"
+geometry = "surface"
+
+[[outputs]]
+path = "results/penny.webp"
+kind = "image"
+backend = "blender"
+[[outputs]]
+path = "results/penny.html"
+kind = "interactive"
+backend = "webgl"

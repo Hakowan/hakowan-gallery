@@ -1,0 +1,44 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.6.0",
+  "input_ids": [
+    "mesh"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 130836,
+      "exists": true,
+      "kind": "image",
+      "path": "results/shark_stream_lines.webp",
+      "sha256": "8b2026e6732f79815afe45b4b8da75792d5e5000302593b91aea030396de7112"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 17954056,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/shark_stream_lines.html",
+      "sha256": "bf5f2cac29ead70a6575599f130ff7c83fd3aebe7b4236189c458152bde7067f"
+    }
+  ],
+  "recipe": "cross-field-streamlines",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 951,
+      "path": "cross_field.py",
+      "sha256": "ac5b544b687fd7a88853e91f2180525ce5335980460478277b8b23999b7ba844"
+    },
+    {
+      "bytes": 30556216,
+      "path": "data/shark.msh",
+      "sha256": "7a8c30ba85c813c0b1753e58101556f24922fad915fbfca64ba3328678d7b218"
+    },
+    {
+      "bytes": 671,
+      "path": "recipe.toml",
+      "sha256": "b3ec0d3c5b83819c228cfd1114c96f9ab5d92108d786adc2c7069a086e385ca6"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+id = "mean-curvature-flow"
+title = "Mean Curvature Flow"
+script = "flow.py"
+summary = "Compare a surface evolution and its signed distance field over time."
+features = ["surface", "scalar-field", "comparison", "layout", "legend", "z-up"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "surface"
+path = "data/flow_00.ply"
+geometry = "surface"
+
+[[inputs.attributes]]
+name = "dist"
+element = "indexed"
+channels = 1
+usage = "scalar"
+
+[[outputs]]
+path = "results/bust.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/bust_all.html"
+kind = "interactive"
+backend = "webgl"

@@ -1,30 +1,28 @@
 #!/usr/bin/env python
 
 import hakowan as hkw
-import mitsuba as mi
+
+# Blender provides faithful conductor albedo for this multi-pass example.
+hkw.set_default_backend("blender")
 
 # Step 1: Generate a base layer with normal and depth attributes.
 base = hkw.layer("data/penny.glb").transform(
     hkw.transform.Compute(normal="normal", z="depth")
 )
-config = hkw.config()
-config.sensor.location = [0, 0, 3]
 
 # Step 2: Render with copper material.
-l0 = base.material("RoughConductor", "Cu")
-hkw.render(l0, config, filename="results/penny.png")
+l0 = base.name("Penny").material("RoughConductor", "Cu")
 
-# Step 3: Update config setting for albedo-only rendering.
-config.albedo_only = True
+# Step 3: Declare the camera and render passes as reproducible scene intent.
+scene = hkw.SceneSettings(
+    camera=hkw.PerspectiveCamera(eye=(0, 0, 3)),
+    output=hkw.OutputSettings(passes=("beauty", "albedo", "depth", "normal")),
+)
+RECIPE_FIGURE = hkw.Figure(l0, scene)
+RECIPE_INSPECTIONS = {"mesh": "data/penny.glb"}
 
-# Step 4: Render with normal AOV.
-l1 = base.material("Principled", hkw.texture.ScalarField("normal", colormap="identity"))
-hkw.render(l1, config, filename="results/penny_normal_aov.png")
+# Step 4: Render
+hkw.render(RECIPE_FIGURE, filename="results/penny.webp")
 
-# Step 5: Render with depth AOV.
-l2 = base.material("Principled", hkw.texture.ScalarField("depth", colormap=[0, 1]))
-hkw.render(l2, config, filename="results/penny_depth_aov.png")
-
-# Step 6: Render with depth AOV using colormap.
-l3 = base.material("Principled", color=hkw.texture.ScalarField("depth"))
-hkw.render(l3, config, filename="results/penny_depth_aov_color.png")
+# Step 5: Interactive demo
+hkw.render(RECIPE_FIGURE, backend="webgl", filename="results/penny.html")

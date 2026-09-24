@@ -1,0 +1,25 @@
+id = "powell-sabin"
+title = "Powell-Sabin Splines"
+script = "powell_sabin.py"
+summary = "Combine categorized vertices, edges, surfaces, and exploded components."
+features = ["surface", "point", "curve", "categorical", "explode", "legend"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "mesh"
+path = "data/powell_sabin.ply"
+geometry = "surface"
+[[inputs.attributes]]
+name = "vertex_label"
+element = "indexed"
+channels = 1
+usage = "scalar"
+
+[[outputs]]
+path = "results/powell_sabin.webp"
+kind = "image"
+backend = "mitsuba"
+[[outputs]]
+path = "results/powell_sabin.html"
+kind = "interactive"
+backend = "webgl"

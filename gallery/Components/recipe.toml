@@ -1,0 +1,31 @@
+id = "connected-components"
+title = "Connected Components"
+script = "components.py"
+summary = "Compute and render connected surface components as categorical colors."
+features = ["surface", "categorical", "components", "legend", "multi-view"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "mesh"
+path = "data/foot.ply"
+geometry = "surface"
+
+[[outputs]]
+path = "results/foot_front.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/foot_top.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/foot_side.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/foot.html"
+kind = "interactive"
+backend = "webgl"

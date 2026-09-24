@@ -1,0 +1,20 @@
+id = "tetwild-cutaway"
+title = "TetWild Cutaway"
+script = "tetwild.py"
+summary = "Compare tetrahedral boundaries, clipped interiors, edges, and glass."
+features = ["surface", "curve", "tetrahedral", "clipping", "categorical", "glass"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "tetrahedral"
+path = "data/bust.msh"
+geometry = "tetrahedral"
+
+[[outputs]]
+path = "results/bust.webp"
+kind = "image"
+backend = "mitsuba"
+[[outputs]]
+path = "results/bust.html"
+kind = "interactive"
+backend = "webgl"

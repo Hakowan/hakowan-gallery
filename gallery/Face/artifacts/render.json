@@ -1,0 +1,60 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.5.3",
+  "input_ids": [
+    "mesh"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 67078,
+      "exists": true,
+      "kind": "image",
+      "path": "results/face.webp",
+      "sha256": "34e553b9e2dfefb04d81dbc800e84d322501fbf5137e6ab901cbdf415aa8273e"
+    },
+    {
+      "backend": "mitsuba",
+      "bytes": 68968,
+      "exists": true,
+      "kind": "image",
+      "path": "results/face_checkerboard.webp",
+      "sha256": "7724da65a1370cd96fecc78aa5d78eaa5b6210452915863d88ac9631c33d6c12"
+    },
+    {
+      "backend": "mitsuba",
+      "bytes": 80658,
+      "exists": true,
+      "kind": "image",
+      "path": "results/face_uv.webp",
+      "sha256": "0443adc1af753c88db0d7d52ff4b9ed1ce496dd634380a8c61977b224de47138"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 852992,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/face_all.html",
+      "sha256": "c17ad4932a0c1b84a2b0841dc06c1b71d25a772e19a8c4de3ec2b3a3b36f5269"
+    }
+  ],
+  "recipe": "face-uv-texture",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 45999,
+      "path": "data/canonical_face_model.obj",
+      "sha256": "8bac80443397e113f41a8b565ea72c59390bc031d9defab289dba7bc0c54e618"
+    },
+    {
+      "bytes": 1667,
+      "path": "face.py",
+      "sha256": "e63b375d1e88aa34189767716987df0808e9ab4b034899e5355aa183d8b22b80"
+    },
+    {
+      "bytes": 676,
+      "path": "recipe.toml",
+      "sha256": "8c6a8e4102ed8c2d04be8d10c277a4ad00aee365fce1f8c37f014f178925c8c0"
+    }
+  ]
+}

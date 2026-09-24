@@ -1,0 +1,54 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.5.3",
+  "input_ids": [
+    "mesh"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 117520,
+      "exists": true,
+      "kind": "image",
+      "path": "results/fig3.webp",
+      "sha256": "152d212f02f106aec5d283527c5a5bd566ac873f631004d681cb17054fccf4e2"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 2142769,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/fig3.html",
+      "sha256": "011fdb17f0f1103cc900cdb239f8644da71487b0f828dc67c4141b444692865c"
+    }
+  ],
+  "recipe": "slim-uv-texture",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 7264017,
+      "path": "data/fig10_uniform.obj",
+      "sha256": "eca7557dc6a25795e7b7949ad6ba6b96af11dd10123c85ad60ffd50ca6664ed7"
+    },
+    {
+      "bytes": 757093,
+      "path": "data/fig3.obj",
+      "sha256": "3fafe9a879b806943f8885a9b8583c2e3e16140c572857d98bc6c958d7279b34"
+    },
+    {
+      "bytes": 3260,
+      "path": "data/texture.png",
+      "sha256": "c9d13d071bda92623ecfa2a79501534f61ccbd016dfe2c280514f61bf80e43e9"
+    },
+    {
+      "bytes": 554,
+      "path": "recipe.toml",
+      "sha256": "c41ad82e112f62309c8ee82ed23c6218b412d1a417db04c7acac18605d859417"
+    },
+    {
+      "bytes": 1668,
+      "path": "slim.py",
+      "sha256": "6619ee880da2bb221360fac7bbd206ad009982d8b089d3f571dc8d37e52fd22b"
+    }
+  ]
+}

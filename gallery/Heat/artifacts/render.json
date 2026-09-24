@@ -1,0 +1,57 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.5.3",
+  "input_ids": [
+    "mesh"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 103678,
+      "exists": true,
+      "kind": "image",
+      "path": "results/bunny_heat.webp",
+      "sha256": "ee7a6b015e24820eba98b14180741463c77c8a96b6a339de6dc80f044d9b0462"
+    },
+    {
+      "backend": "mitsuba",
+      "bytes": 80644,
+      "exists": true,
+      "kind": "image",
+      "path": "results/bunny_heat_back.webp",
+      "sha256": "7fa38c6f5a9fd0ceb45c760a4b9d20f9c02ca21df1a9177163da44c781203fae"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 16171224,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/bunny_heat.html",
+      "sha256": "1b7703c4847cb04cfa469bc45f403d56fc9e42afdde84d49004656b0f509f758"
+    }
+  ],
+  "recipe": "heat-geodesic",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 3409554,
+      "path": "data/bunny_heat.ply",
+      "sha256": "138e42ecb08396192d7dae05c6f72b82a7087b1942ff3b3223ae964296362c5c"
+    },
+    {
+      "bytes": 2408417,
+      "path": "data/stanford-bunny.obj",
+      "sha256": "1eb35d1e21ce99e5ce911353b6be278990713448dd9e8f5c9387f9de39b32205"
+    },
+    {
+      "bytes": 1425,
+      "path": "heat.py",
+      "sha256": "315db274815ccb0d746c03205051c8b111dedc93a96e88a80bf79a7851abc5a0"
+    },
+    {
+      "bytes": 668,
+      "path": "recipe.toml",
+      "sha256": "815d064f7b398efd21e019000ea58fe39cf95a5b4e59ebf06b8146fb69c806cf"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.5.3",
+  "input_ids": [
+    "layout",
+    "surface"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 80098,
+      "exists": true,
+      "kind": "image",
+      "path": "results/pig_embedded.webp",
+      "sha256": "0df644fab4095ab6e952c6e45424b9a89872fea3b192376a980bd947838d1775"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 5636292,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/pig_embedded.html",
+      "sha256": "9ac4ed649e7482af96087889e57bf065fb1729466c4fb557b120e1faff31ce54"
+    }
+  ],
+  "recipe": "layout-embedding",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 28995,
+      "path": "data/teaser_pig_bnb.lem",
+      "sha256": "84969b6fd25eedbb65f4d682af80f1b97ab945fdf855c34fc39f7a38bc970df8"
+    },
+    {
+      "bytes": 541193,
+      "path": "data/teaser_pig_bnb_target.obj",
+      "sha256": "9248142fded46b9918c6c0ad6ef3e8e76244af2ebb6f746c9edfb0f224936221"
+    },
+    {
+      "bytes": 1172,
+      "path": "data.py",
+      "sha256": "ce894e618ff34eee8f8b7f7179b44fa5af132cac2fad1cdc58e5c2556283e7bd"
+    },
+    {
+      "bytes": 1735,
+      "path": "layout.py",
+      "sha256": "da4a4b59714e579fcb318eb7af6f26ec05aa28c966a287ff356f5d499f602e5e"
+    },
+    {
+      "bytes": 693,
+      "path": "recipe.toml",
+      "sha256": "7edabbd44c994fbeb734b4d3c5d57e270dcd1a64340531ed05e70e0d45b424ba"
+    }
+  ]
+}
