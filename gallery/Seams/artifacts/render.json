@@ -7,19 +7,19 @@
   "outputs": [
     {
       "backend": "mitsuba",
-      "bytes": 49752,
+      "bytes": 59888,
       "exists": true,
       "kind": "image",
       "path": "results/spot_seam.webp",
-      "sha256": "0cf654e9c5e33990135843c0f69025497f12b868b53c769ba73455cf8fef5956"
+      "sha256": "c1bb1cf2656b47c5fa8cac0a30c613aed7e3dd64c2ff7a3327df614b8a628c6e"
     },
     {
       "backend": "webgl",
-      "bytes": 1274898,
+      "bytes": 1463234,
       "exists": true,
       "kind": "interactive",
       "path": "results/spot_seam.html",
-      "sha256": "1afa2362104e7554a6ae08d48abd9e9eb5c93129e34701aa8f5f327ff2b49645"
+      "sha256": "0b378811f95e38532d70c7ac6885e14318c338acfb14f9f48611f599cab6212a"
     }
   ],
   "recipe": "uv-seams",
@@ -36,9 +36,9 @@
       "sha256": "091700ba80e9fd84854878187565b233f101ec34db1299d078c4bb5243bf5145"
     },
     {
-      "bytes": 738,
+      "bytes": 895,
       "path": "seam.py",
-      "sha256": "4ee2c4424ef11a4e932869429dbcfe86ac3f8d410bb1caa9e1469d5dcb39b2f9"
+      "sha256": "68805d4824a76b985e4a62347675b0b9ff89586ba38c197ee745fcc867d0f4ab"
     }
   ]
 }

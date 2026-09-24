@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.0",
   "input_ids": [
     "emitter",
     "particles"
@@ -8,27 +8,27 @@
   "outputs": [
     {
       "backend": "mitsuba",
-      "bytes": 21074,
+      "bytes": 25476,
       "exists": true,
       "kind": "image",
       "path": "results/waterbell_010_all.webp",
-      "sha256": "b0e232c6266065700e100234757bb585a99e2ca050fb79c8da840d376015af92"
+      "sha256": "573586c7ce5ffbad36ba5e08064a6222cb88086d0bd44a8c6d7e069cf68fd026"
     },
     {
       "backend": "mitsuba",
-      "bytes": 22748,
+      "bytes": 27620,
       "exists": true,
       "kind": "image",
       "path": "results/waterbell_010.webp",
-      "sha256": "f49ccba02e3557bac45efb57195fa4eb7fedd9d09843efa8bab2503dc3c66059"
+      "sha256": "350786bb6026b3a4945cefdb39fc00eec1119f17ca9c1e7fe930c6fc38cb52e6"
     },
     {
       "backend": "webgl",
-      "bytes": 1380705,
+      "bytes": 1378755,
       "exists": true,
       "kind": "interactive",
       "path": "results/waterbell_010_all.html",
-      "sha256": "61541b595005f8940830ed80736354f16ace4e3bf82cf036ba2f8f493d891b9a"
+      "sha256": "a9497f1f6a77bd62ad2f1e9bb6bd85ec372641626c0220ad4c4e99df7ce3a24c"
     }
   ],
   "recipe": "sph-speed",
@@ -85,9 +85,9 @@
       "sha256": "2dd4b517caa006a6e29cd4fc90208c2f87f9e3b9382063e314f054f550ea8017"
     },
     {
-      "bytes": 2120,
+      "bytes": 2101,
       "path": "sph.py",
-      "sha256": "890ddf0a8167f4ccf8456fbf52ecbb6fc7a4baf9a7f97da69b517d1c0ca1b283"
+      "sha256": "3eae22e2e9ce64ee41f09817ee4a2453ce19c707ec5569698da4394d90dda276"
     },
     {
       "bytes": 629,

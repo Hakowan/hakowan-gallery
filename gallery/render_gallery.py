@@ -172,6 +172,7 @@ def _sha256(path: Path) -> str:
             digest.update(chunk)
     return digest.hexdigest()
 
+
 def _source_records(work: Path, manifest: dict[str, Any]) -> list[dict[str, Any]]:
     """Hash code, manifest, and input data affecting generated artifacts."""
     paths = {work / "recipe.toml", *work.glob("*.py")}
@@ -200,7 +201,11 @@ def _artifact_paths(work: Path) -> dict[str, Path]:
 def _check_artifacts(work: Path, manifest: dict[str, Any]) -> None:
     """Reject missing, stale, inconsistent, or manually modified artifacts."""
     paths = _artifact_paths(work)
-    missing = [path.relative_to(work).as_posix() for path in paths.values() if not path.is_file()]
+    missing = [
+        path.relative_to(work).as_posix()
+        for path in paths.values()
+        if not path.is_file()
+    ]
     if missing:
         raise ValueError(f"{work.name}: missing artifacts {missing}")
     payloads = {
@@ -225,9 +230,7 @@ def _check_artifacts(work: Path, manifest: dict[str, Any]) -> None:
             f"python gallery/render_gallery.py --artifacts {work.name}"
         )
     if render.get("artifact_format_version") != ARTIFACT_FORMAT_VERSION:
-        raise ValueError(
-            f"{work.name}: artifact format is stale; regenerate artifacts"
-        )
+        raise ValueError(f"{work.name}: artifact format is stale; regenerate artifacts")
     declared = {item["path"] for item in manifest["outputs"]}
     recorded = {item["path"] for item in render.get("outputs", [])}
     if declared != recorded:
@@ -240,8 +243,6 @@ def _check_artifacts(work: Path, manifest: dict[str, Any]) -> None:
             raise ValueError(
                 f"{work.name}: output changed: {item['path']}; regenerate artifacts"
             )
-
-
 
 
 def _write_json(path: str | Path, value: Any) -> None:
@@ -515,18 +516,24 @@ def main() -> int:
 
     if args.index:
         _generate_index(manifests)
+    artifact_failures: list[str] = []
     if args.check_artifacts:
         targets = args.examples or sorted(manifests)
         for folder in targets:
-            _check_artifacts(GALLERY / folder, manifests[folder])
-            print(f"fresh: {folder}")
+            try:
+                _check_artifacts(GALLERY / folder, manifests[folder])
+            except Exception as error:
+                artifact_failures.append(folder)
+                print(f"stale: {folder}: {error}", file=sys.stderr)
+            else:
+                print(f"fresh: {folder}")
     if (
         (args.index or args.check_artifacts)
         and not args.check
         and not args.artifacts
         and args.force_backend is None
     ):
-        return 0
+        return 1 if artifact_failures else 0
     if args.one is not None:
         _run_one(
             args.one,
@@ -561,7 +568,9 @@ def main() -> int:
     print(f"\nDone. {len(targets) - len(failures)}/{len(targets)} succeeded.")
     if failures:
         print(f"Failed: {failures}")
-    return 1 if failures else 0
+    if artifact_failures:
+        print(f"Stale artifacts: {artifact_failures}")
+    return 1 if failures or artifact_failures else 0
 
 
 if __name__ == "__main__":

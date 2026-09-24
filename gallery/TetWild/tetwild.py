@@ -51,7 +51,9 @@ surface = surface.material(
         "boundary_tag",
         colormap=["#FBCD50", "#0FB2F2"],
         categories=True,
-        legend=hkw.Legend(title="Boundary type"),
+        legend=hkw.Legend(
+            title="Boundary type", category_labels={"0": "Exterior", "1": "Cut surface"}
+        ),
     ),
     roughness=0.2,
 )

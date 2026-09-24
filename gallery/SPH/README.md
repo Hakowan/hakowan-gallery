@@ -14,7 +14,8 @@ This example aims to reproduce Figure 9 from the paper "[Implicit Surface Tensio
 [<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/SPH/results/waterbell_133.webp?raw=true" width=45%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/SPH/results/waterbell_133.webp?raw=true)
 [<img src="https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/SPH/results/waterbell_133_all.webp?raw=true" width=45%/>](https://github.com/qnzhou/hakowan-gallery/blob/main/gallery/SPH/results/waterbell_133_all.webp?raw=true)
 
-[Interactive demo](https://qnzhou.github.io/hakowan-gallery/gallery/SPH/results/waterbell_010_all.html)
+[Interactive demo](https://qnzhou.github.io/hakowan-gallery/gallery/SPH/results/waterbell_133_all.html)
+[Interactive demo (cut)](https://qnzhou.github.io/hakowan-gallery/gallery/SPH/results/waterbell_133.html)
 
 ## Data
 
