@@ -58,7 +58,7 @@
               "scale": 0.1,
               "texture": {
                 "kind": "image",
-                "path": "data/ldem_16_uint.png",
+                "path": "data/ldem_16_uint.jpg",
                 "raw": false,
                 "saturation": 1.0,
                 "uv": null,
@@ -91,7 +91,7 @@
             "back_side": null,
             "color": {
               "kind": "image",
-              "path": "data/lroc_color_poles_8k.png",
+              "path": "data/lroc_color_poles_8k.jpg",
               "raw": false,
               "saturation": 1.0,
               "uv": null,

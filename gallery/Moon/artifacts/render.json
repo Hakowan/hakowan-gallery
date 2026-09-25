@@ -1,34 +1,44 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.0",
   "input_ids": [
     "mesh"
   ],
   "outputs": [
     {
       "backend": "mitsuba",
-      "bytes": 83112,
+      "bytes": 84390,
       "exists": true,
       "kind": "image",
       "path": "results/moon.webp",
-      "sha256": "97bd2be16bc2b1d66110d7e8748ed88cc62df5454f7e33f1c99f4a54b1c823b0"
+      "sha256": "7142148b0caf94396f8cdb1cdc8a5259df603b4b9d874b2157d2892ebb269d38"
     },
     {
       "backend": "webgl",
-      "bytes": 610467,
+      "bytes": 42408093,
       "exists": true,
       "kind": "interactive",
       "path": "results/moon.html",
-      "sha256": "1b7efab9b2c3772a11bb6c63d905d5867c65da6a85f20d334fa8726a6d4f44cf"
+      "sha256": "af6c6b09592d0f44cb48044021ac8e6bd16061c828d974126c5ab7120e153d56"
     }
   ],
   "recipe": "moon-textures",
   "schema_version": "1.1",
   "sources": [
     {
+      "bytes": 1355909,
+      "path": "data/ldem_16_uint.jpg",
+      "sha256": "c912daf0f186eac14c3189b5be8042431f8ce24f0000e50c6725761d3aa5b5a3"
+    },
+    {
       "bytes": 23023412,
       "path": "data/ldem_16_uint.png",
       "sha256": "79f263c524c29c6082e6247dd2f36d63bad0ced6a410fd145255a243d5a6c4be"
+    },
+    {
+      "bytes": 8881796,
+      "path": "data/lroc_color_poles_8k.jpg",
+      "sha256": "27cd30a328b6415c78fce6201ad37b8b9bbacf09d232194f5a1ac93c9ed16b0b"
     },
     {
       "bytes": 47026920,
@@ -43,7 +53,7 @@
     {
       "bytes": 1014,
       "path": "moon.py",
-      "sha256": "8b69e67f599babe3499452147457f62d58ffe2f3ee48db1c002bcbab9e2896f8"
+      "sha256": "a2412bffc8e0b213497cff1e581308e374d7519a359448b93739bdadd5c9817d"
     },
     {
       "bytes": 461,
