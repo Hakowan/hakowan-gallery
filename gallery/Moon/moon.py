@@ -11,10 +11,10 @@ base = (
     .name("Moon")
     .channel(
         bump_map=hkw.channel.BumpMap(
-            hkw.texture.Image("data/ldem_16_uint.png"), scale=0.1
+            hkw.texture.Image("data/ldem_16_uint.jpg"), scale=0.1
         ),
     )
-    .material("Principled", hkw.texture.Image("data/lroc_color_poles_8k.png"))
+    .material("Principled", hkw.texture.Image("data/lroc_color_poles_8k.jpg"))
 )
 
 # Define both views consistently; the front view is also the recipe figure.
