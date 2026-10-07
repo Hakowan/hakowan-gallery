@@ -1,0 +1,27 @@
+id = "box"
+title = "Box"
+script = "box.py"
+summary = "Render a categorically colored box with polygon-edge wireframe and world-space face annotations."
+features = ["surface", "curve", "categorical", "wireframe", "composition", "orthographic", "annotation"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "mesh"
+path = "data/box.msh"
+geometry = "surface"
+
+[[inputs.attributes]]
+name = "facet_id"
+element = "facet"
+channels = 1
+usage = "scalar"
+
+[[outputs]]
+path = "results/box.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/box.html"
+kind = "interactive"
+backend = "webgl"

@@ -1,0 +1,60 @@
+id = "flowers"
+title = "Flowers"
+script = "flowers.py"
+summary = "Render four scanned flower point clouds with their captured RGB colors in a normalized 2×2 grid."
+features = ["point-cloud", "composition", "orthographic", "rotation"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "golden_lily_130"
+path = "data/golden_lily_130.pcd"
+geometry = "point-cloud"
+
+[[inputs.attributes]]
+name = "color"
+element = "vertex"
+channels = 3
+usage = "color"
+
+[[inputs]]
+id = "lily_127"
+path = "data/lily_127.pcd"
+geometry = "point-cloud"
+
+[[inputs.attributes]]
+name = "color"
+element = "vertex"
+channels = 3
+usage = "color"
+
+[[inputs]]
+id = "orchid_113"
+path = "data/orchid_113.pcd"
+geometry = "point-cloud"
+
+[[inputs.attributes]]
+name = "color"
+element = "vertex"
+channels = 3
+usage = "color"
+
+[[inputs]]
+id = "water_lily_72"
+path = "data/water_lily_72.pcd"
+geometry = "point-cloud"
+
+[[inputs.attributes]]
+name = "color"
+element = "vertex"
+channels = 3
+usage = "color"
+
+[[outputs]]
+path = "results/flowers.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/flowers.html"
+kind = "interactive"
+backend = "webgl"
