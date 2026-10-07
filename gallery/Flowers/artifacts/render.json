@@ -1,0 +1,62 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.6.1",
+  "input_ids": [
+    "golden_lily_130",
+    "lily_127",
+    "orchid_113",
+    "water_lily_72"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 182162,
+      "exists": true,
+      "kind": "image",
+      "path": "results/flowers.webp",
+      "sha256": "6ad0e21e4627a3172efe61c7048d6b405578e80d56ae151782b45a676cc771e6"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 4971045,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/flowers.html",
+      "sha256": "3bf69e03ed8cbb55d06217dffa1d7a737b601a265c07045207afad9bc226aafd"
+    }
+  ],
+  "recipe": "flowers",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 541931,
+      "path": "data/golden_lily_130.pcd",
+      "sha256": "35df7e9f99625a529092a93b20bda2cae8d436e4227e1f15d2501d9b26a6025c"
+    },
+    {
+      "bytes": 309821,
+      "path": "data/lily_127.pcd",
+      "sha256": "d47f8d2ac34ad06c241b9071ee2ce0f40be1c7cd0cb26dcb5593c88497cb9884"
+    },
+    {
+      "bytes": 278468,
+      "path": "data/orchid_113.pcd",
+      "sha256": "473809fa1cc2199d48bb62ef753b786bc93e245ec153ec1576f968b2fa037810"
+    },
+    {
+      "bytes": 567324,
+      "path": "data/water_lily_72.pcd",
+      "sha256": "ea916bf8ef122082ff06ed6c282e7d042049e77308b52c3ed9673a177b74829a"
+    },
+    {
+      "bytes": 1556,
+      "path": "flowers.py",
+      "sha256": "08ca320d742e9184dc5b422095c032079b591a2c3c37d82c5afb315ae5b4c852"
+    },
+    {
+      "bytes": 1119,
+      "path": "recipe.toml",
+      "sha256": "fb0e0fe747db9f3860698613683240c9f9afb1510794f65e4f7d0f27d361e895"
+    }
+  ]
+}
