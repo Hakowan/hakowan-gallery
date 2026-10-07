@@ -1,0 +1,44 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.6.1",
+  "input_ids": [
+    "mesh"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 31848,
+      "exists": true,
+      "kind": "image",
+      "path": "results/box.webp",
+      "sha256": "459a47a4bd1b9205145b7d74f74d8fa4d27ba8d6f8acf2e497433d785bec1696"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 652423,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/box.html",
+      "sha256": "06b74fe47b89a0f3fae3a52b7ac9576aff82c257ecf19b972568b992c16fa6a8"
+    }
+  ],
+  "recipe": "box",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 1128,
+      "path": "box.py",
+      "sha256": "549923d6aa472dda60fafc2499c245ed7b458bc116a35d844518646134bf2f93"
+    },
+    {
+      "bytes": 807,
+      "path": "data/box.msh",
+      "sha256": "55bc450e6e5e264f5d91b9a0593dc57de80b8a1be5b12879648eb60c5fc88776"
+    },
+    {
+      "bytes": 597,
+      "path": "recipe.toml",
+      "sha256": "99ce27fda7b9cec72af2b7073fe687b96e3fec42bfc661751e60f10ce0b7b68c"
+    }
+  ]
+}
