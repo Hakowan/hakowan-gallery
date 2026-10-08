@@ -1,0 +1,60 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.6.1",
+  "input_ids": [
+    "paths",
+    "torus"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 327292,
+      "exists": true,
+      "kind": "image",
+      "path": "results/geodesics.webp",
+      "sha256": "4a337a4e95b4e6a7a0cc01fe2a6c5997a92f3b830e00d2690c51ea67ed7ccb13"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 6094773,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/geodesics.html",
+      "sha256": "b6447fff181b2d273a2eeb66420e0d427ea22473f3d3599932181bdd8f42a2cb"
+    }
+  ],
+  "recipe": "torus-geodesics",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 1274359,
+      "path": "data/donut.obj",
+      "sha256": "f8812ae0bd56f519b300cbc4da7c24c43f1f4625571d05d58b1a68179de2fc92"
+    },
+    {
+      "bytes": 5080035,
+      "path": "data/geodesics.obj",
+      "sha256": "6681c189ed54b7ff54db9b830e1293275c182663f904824427da737b64809c01"
+    },
+    {
+      "bytes": 1166,
+      "path": "generate_data.py",
+      "sha256": "98ea7776bffddd86921596c45a981673414a25527cc7aef7108d3424cd6aa787"
+    },
+    {
+      "bytes": 822,
+      "path": "geodesics.py",
+      "sha256": "d2a6439f09fac19110cb534dcf5de98f59b56eb30d7b371df081bd207a3390a3"
+    },
+    {
+      "bytes": 593,
+      "path": "recipe.toml",
+      "sha256": "0d4e7223602070eb4a26173f73fd47f958dff0ed846c161eeafd330d68293f4b"
+    },
+    {
+      "bytes": 1522,
+      "path": "run.py",
+      "sha256": "0dda3ae2500e7d82dec11050a16eba30cb9bd53f6c65d25ba2c74dfde41c85c5"
+    }
+  ]
+}
