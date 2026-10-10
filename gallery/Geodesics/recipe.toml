@@ -1,0 +1,26 @@
+id = "torus-geodesics"
+title = "Geodesics"
+script = "geodesics.py"
+summary = "Render 1,000 shortest surface paths across a torus as component-colored curves."
+features = ["surface", "curve", "geodesic", "components", "categorical", "composition", "z-up"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "torus"
+path = "data/donut.obj"
+geometry = "surface"
+
+[[inputs]]
+id = "paths"
+path = "data/geodesics.obj"
+geometry = "curve"
+
+[[outputs]]
+path = "results/geodesics.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/geodesics.html"
+kind = "interactive"
+backend = "webgl"
