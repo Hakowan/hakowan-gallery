@@ -8,7 +8,7 @@ Compare sphere, cube, and disk point marks at the vertices of a subdivided icosp
 
 ## Input contract
 
-- `icosphere`: surface from `data/icosahedron.ply`.
+- `icosphere`: surface from `data/icosahedron.ply`; no pre-existing attributes required.
 
 ## Reproduce and inspect
 
