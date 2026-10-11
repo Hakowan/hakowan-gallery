@@ -1,0 +1,21 @@
+id = "icosphere-point-marks"
+title = "Points"
+script = "points.py"
+summary = "Compare sphere, cube, and disk glyphs oriented by computed vertex normals on an icosphere."
+features = ["point-cloud", "comparison", "computed-normal"]
+backends = ["mitsuba", "webgl"]
+
+[[inputs]]
+id = "icosphere"
+path = "data/icosahedron.ply"
+geometry = "surface"
+
+[[outputs]]
+path = "results/points.webp"
+kind = "image"
+backend = "mitsuba"
+
+[[outputs]]
+path = "results/points.html"
+kind = "interactive"
+backend = "webgl"
