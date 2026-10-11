@@ -21,6 +21,7 @@ Generated from `recipe.toml` manifests. See [the manifest contract](RECIPE_MANIF
 | [Mesh Deformation](Deformation/README.md) | `surface, filter, comparison, multi-view, materials` | `mitsuba, webgl` | [cylinder_1.webp](Deformation/results/cylinder_1.webp) |
 | [Moon](Moon/README.md) | `surface, image-texture, bump-map, z-up, two-view` | `mitsuba, webgl` | [moon.webp](Moon/results/moon.webp) |
 | [Penny](Penny/README.md) | `surface, conductor, render-passes, normal, depth` | `blender, webgl` | [penny.webp](Penny/results/penny.webp) |
+| [Points](Points/README.md) | `point-cloud, comparison, computed-normal` | `mitsuba, webgl` | [points.webp](Points/results/points.webp) |
 | [Powell-Sabin Splines](PowellSabin/README.md) | `surface, point, curve, categorical, explode, legend` | `mitsuba, webgl` | [powell_sabin.webp](PowellSabin/results/powell_sabin.webp) |
 | [Reconstructed 3D Sketches](Sketch/README.md) | `curve, line-art, materials, camera, environment` | `mitsuba, webgl` | [Prof2task2_guitar_01_rough_dark.webp](Sketch/results/Prof2task2_guitar_01_rough_dark.webp) |
 | [Scalable Locally Injective Maps](Slim/README.md) | `surface, uv, image-texture, rotation` | `mitsuba, webgl` | [fig3.webp](Slim/results/fig3.webp) |
@@ -40,10 +41,10 @@ Generated from `recipe.toml` manifests. See [the manifest contract](RECIPE_MANIF
 - **camera-fit**: [Face Texture and UV Layout](Face/README.md)
 - **categorical**: [Box](Box/README.md), [Connected Components](Components/README.md), [Fiber Curves](Fibers/README.md), [Geodesics](Geodesics/README.md), [Layout Embedding](Layout/README.md), [Powell-Sabin Splines](PowellSabin/README.md), [TetWild Cutaway](TetWild/README.md)
 - **clipping**: [TetWild Cutaway](TetWild/README.md)
-- **comparison**: [Developable Surface Flow](Developable/README.md), [Face Texture and UV Layout](Face/README.md), [Layout Embedding](Layout/README.md), [Mean Curvature Flow](Flow/README.md), [Mesh Deformation](Deformation/README.md)
+- **comparison**: [Developable Surface Flow](Developable/README.md), [Face Texture and UV Layout](Face/README.md), [Layout Embedding](Layout/README.md), [Mean Curvature Flow](Flow/README.md), [Mesh Deformation](Deformation/README.md), [Points](Points/README.md)
 - **components**: [Connected Components](Components/README.md), [Geodesics](Geodesics/README.md)
 - **composition**: [Box](Box/README.md), [Cross-Field Streamlines](CrossField/README.md), [Fiber Curves](Fibers/README.md), [Flowers](Flowers/README.md), [Geodesics](Geodesics/README.md), [Spot](Spot/README.md), [Surface Skeleton](Skeleton/README.md), [UV Seams](Seams/README.md)
-- **computed-normal**: [Developable Surface Flow](Developable/README.md)
+- **computed-normal**: [Developable Surface Flow](Developable/README.md), [Points](Points/README.md)
 - **conductor**: [Penny](Penny/README.md)
 - **cross-field**: [Cross-Field Streamlines](CrossField/README.md)
 - **curve**: [Box](Box/README.md), [Cross-Field Streamlines](CrossField/README.md), [Fiber Curves](Fibers/README.md), [Geodesics](Geodesics/README.md), [Layout Embedding](Layout/README.md), [Powell-Sabin Splines](PowellSabin/README.md), [Reconstructed 3D Sketches](Sketch/README.md), [Spot](Spot/README.md), [Surface Skeleton](Skeleton/README.md), [TetWild Cutaway](TetWild/README.md), [UV Seams](Seams/README.md)
@@ -65,7 +66,7 @@ Generated from `recipe.toml` manifests. See [the manifest contract](RECIPE_MANIF
 - **normal**: [Face Texture and UV Layout](Face/README.md), [Penny](Penny/README.md)
 - **orthographic**: [Box](Box/README.md), [Flowers](Flowers/README.md), [Incremental Potential Contact](IPC/README.md)
 - **point**: [Powell-Sabin Splines](PowellSabin/README.md), [Surface Skeleton](Skeleton/README.md)
-- **point-cloud**: [Flowers](Flowers/README.md), [Smoothed Particle Hydrodynamics](SPH/README.md)
+- **point-cloud**: [Flowers](Flowers/README.md), [Points](Points/README.md), [Smoothed Particle Hydrodynamics](SPH/README.md)
 - **render-passes**: [Penny](Penny/README.md)
 - **rotation**: [Flowers](Flowers/README.md), [Scalable Locally Injective Maps](Slim/README.md)
 - **scalar-field**: [Elevation Map](Elevation/README.md), [Mean Curvature Flow](Flow/README.md), [Smoothed Particle Hydrodynamics](SPH/README.md), [The Heat Method](Heat/README.md)

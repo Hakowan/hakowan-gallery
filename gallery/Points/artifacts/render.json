@@ -1,0 +1,44 @@
+{
+  "artifact_format_version": "1",
+  "hakowan_version": "0.6.1",
+  "input_ids": [
+    "icosphere"
+  ],
+  "outputs": [
+    {
+      "backend": "mitsuba",
+      "bytes": 36830,
+      "exists": true,
+      "kind": "image",
+      "path": "results/points.webp",
+      "sha256": "0a851e3f19e49a7b9110a5dea9129666ff39580efe36ef5b03c241073a23b93c"
+    },
+    {
+      "backend": "webgl",
+      "bytes": 660770,
+      "exists": true,
+      "kind": "interactive",
+      "path": "results/points.html",
+      "sha256": "dd5e05ccb1484f73bd0b485063a81f3dac6aebd1dc0beca215a57257ba19ddbe"
+    }
+  ],
+  "recipe": "icosphere-point-marks",
+  "schema_version": "1.1",
+  "sources": [
+    {
+      "bytes": 3420,
+      "path": "data/icosahedron.ply",
+      "sha256": "a25257f81edfe66db0df65829c230fec8ba4524e82dbad5b147095006c5a6961"
+    },
+    {
+      "bytes": 834,
+      "path": "points.py",
+      "sha256": "cc9a4603653c651509e9dbd6db419822d617c5353a0ba1b91b05fcf975fa86fa"
+    },
+    {
+      "bytes": 500,
+      "path": "recipe.toml",
+      "sha256": "83d9a5bfc4a7ad9a3d90595d2772e277e65ea9588b87f88873f69de7d2304396"
+    }
+  ]
+}
