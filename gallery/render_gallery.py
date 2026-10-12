@@ -556,7 +556,7 @@ def main() -> int:
             command.append("--check")
         if args.artifacts:
             command.append("--artifacts")
-        process = subprocess.run(command)
+        process = subprocess.run(command, cwd=GALLERY / folder)
         duration = time.time() - started
         status = (
             "ok" if process.returncode == 0 else f"FAILED (exit {process.returncode})"
