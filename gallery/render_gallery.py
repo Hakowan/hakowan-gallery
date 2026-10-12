@@ -23,6 +23,7 @@ import runpy
 import subprocess
 import sys
 import time
+import tempfile
 import tomllib
 from pathlib import Path
 from typing import Any
@@ -316,12 +317,14 @@ def _run_one(
     *,
     check: bool = False,
     artifacts: bool = False,
+    similarity_threshold: float = 0.995,
+    force_image_updates: bool = False,
 ) -> None:
     """Run, validate, or generate artifacts for one isolated recipe."""
     import hakowan as hkw
     from PIL import Image
 
-    work = GALLERY / folder
+    work = (GALLERY / folder).resolve()
     manifest_path = work / "recipe.toml"
     if not manifest_path.is_file():
         raise ValueError(f"{folder}: recipe.toml is required")
@@ -331,8 +334,10 @@ def _run_one(
 
     os.chdir(work)
     sys.path.insert(0, str(work))
-    converted_outputs: list[tuple[Path, Path]] = []
-    if force_backend is not None or check or artifacts:
+    with tempfile.TemporaryDirectory(prefix=".gallery-candidates-", dir=work) as temp:
+        candidate_root = Path(temp)
+        converted_outputs: list[tuple[Path, Path]] = []
+        candidate_outputs: dict[Path, Path] = {}
         original_render = hkw.render
 
         def managed_render(root, config=None, filename=None, backend=None, **kwargs):
@@ -356,15 +361,33 @@ def _run_one(
                 return hkw.RenderResult(backend=capabilities.name)
 
             output_filename = filename
+            if filename is not None and Path(filename).suffix.lower() == ".webp":
+                requested_path = Path(filename)
+                target_path = (
+                    requested_path
+                    if requested_path.is_absolute()
+                    else work / requested_path
+                ).resolve()
+                if target_path.is_relative_to(work):
+                    candidate_path = candidate_outputs.get(target_path)
+                    if candidate_path is None:
+                        candidate_path = candidate_root / (
+                            f"{len(candidate_outputs):04d}{requested_path.suffix.lower()}"
+                        )
+                        candidate_outputs[target_path] = candidate_path
+                    output_filename = candidate_path
+
             if (
                 backend is None
                 and selected_backend == "mitsuba"
-                and filename is not None
+                and output_filename is not None
             ):
-                requested_path = Path(filename)
+                requested_path = Path(output_filename)
                 output_filename = requested_path.with_suffix(".png")
                 if requested_path.suffix.lower() == ".webp":
-                    converted_outputs.append((output_filename, requested_path))
+                    conversion = (output_filename, requested_path)
+                    if conversion not in converted_outputs:
+                        converted_outputs.append(conversion)
             return original_render(
                 root,
                 config,
@@ -374,35 +397,89 @@ def _run_one(
             )
 
         hkw.render = managed_render
+        try:
+            namespace = runpy.run_path(script, run_name="__main__")
+        finally:
+            hkw.render = original_render
 
-    namespace = runpy.run_path(script, run_name="__main__")
-    if manifest is not None and (check or artifacts):
-        _inspect_contracts(manifest, namespace, write=False)
-        missing_outputs = [
-            output["path"]
-            for output in manifest["outputs"]
-            if not Path(output["path"]).is_file()
+        if check or artifacts:
+            _inspect_contracts(manifest, namespace, write=False)
+            missing_outputs = [
+                output["path"]
+                for output in manifest["outputs"]
+                if not Path(output["path"]).is_file()
+            ]
+            if missing_outputs:
+                raise ValueError(
+                    f"{folder}: declared outputs are missing: {missing_outputs}"
+                )
+        if artifacts:
+            _generate_artifacts(work, manifest, namespace)
+
+        for png, webp in converted_outputs:
+            with Image.open(png) as image:
+                image.save(webp, "WEBP", quality=WEBP_QUALITY, method=6)
+
+        if not check and not artifacts:
+            import numpy as np
+
+            for target_path, candidate_path in candidate_outputs.items():
+                if not candidate_path.is_file():
+                    continue
+                if force_image_updates or not target_path.is_file():
+                    target_path.parent.mkdir(parents=True, exist_ok=True)
+                    os.replace(candidate_path, target_path)
+                    print(f"updated image: {target_path.relative_to(work)}")
+                    continue
+
+                if target_path.read_bytes() == candidate_path.read_bytes():
+                    print(f"unchanged image: {target_path.relative_to(work)}")
+                    continue
+
+                with Image.open(candidate_path) as image:
+                    candidate_rgba = np.asarray(image.convert("RGBA"), dtype=np.float32)
+                try:
+                    with Image.open(target_path) as image:
+                        previous_rgba = np.asarray(
+                            image.convert("RGBA"), dtype=np.float32
+                        )
+                except (OSError, ValueError):
+                    previous_rgba = None
+
+                score = None
+                if (
+                    previous_rgba is not None
+                    and previous_rgba.shape == candidate_rgba.shape
+                ):
+                    score = _structural_similarity(previous_rgba, candidate_rgba)
+
+                if score is not None and score >= similarity_threshold:
+                    print(
+                        f"kept image: {target_path.relative_to(work)} "
+                        f"(SSIM {score:.6f})"
+                    )
+                    continue
+
+                target_path.parent.mkdir(parents=True, exist_ok=True)
+                os.replace(candidate_path, target_path)
+                detail = (
+                    f"SSIM {score:.6f}"
+                    if score is not None
+                    else "different dimensions or unreadable previous image"
+                )
+                print(f"updated image: {target_path.relative_to(work)} ({detail})")
+
+        results = work / "results"
+        missing_formats = [
+            suffix
+            for suffix in (".webp", ".html")
+            if not any(results.glob(f"*{suffix}"))
         ]
-        if missing_outputs:
+        if missing_formats:
             raise ValueError(
-                f"{folder}: declared outputs are missing: {missing_outputs}"
+                f"{folder}: results must include WebP and HTML outputs; "
+                f"missing {missing_formats}"
             )
-    if manifest is not None and artifacts:
-        _generate_artifacts(work, manifest, namespace)
-
-    for png, webp in converted_outputs:
-        with Image.open(png) as image:
-            image.save(webp, "WEBP", quality=WEBP_QUALITY, method=6)
-
-    results = work / "results"
-    missing_formats = [
-        suffix for suffix in (".webp", ".html") if not any(results.glob(f"*{suffix}"))
-    ]
-    if missing_formats:
-        raise ValueError(
-            f"{folder}: results must include WebP and HTML outputs; "
-            f"missing {missing_formats}"
-        )
 
 
 def _update_recipe_readme(folder: str, manifest: dict[str, Any]) -> None:
@@ -485,6 +562,67 @@ def _generate_index(manifests: dict[str, dict[str, Any]]) -> None:
     print(f"index: {GALLERY / 'README.md'}")
 
 
+def _structural_similarity(reference: Any, candidate: Any) -> float:
+    """Compute sampled, Gaussian-windowed SSIM over equally sized RGBA arrays."""
+    import numpy as np
+
+    window_size = 11
+    stride = 8
+    sigma = 1.5
+    padding = window_size // 2
+    reference = reference.astype(np.float32, copy=False) - 128.0
+    candidate = candidate.astype(np.float32, copy=False) - 128.0
+    if min(reference.shape[:2]) < window_size:
+        pad_width = ((padding, padding), (padding, padding), (0, 0))
+        reference = np.pad(reference, pad_width, mode="edge")
+        candidate = np.pad(candidate, pad_width, mode="edge")
+
+    ref_windows = np.lib.stride_tricks.sliding_window_view(
+        reference, (window_size, window_size), axis=(0, 1)
+    )[::stride, ::stride]
+    candidate_windows = np.lib.stride_tricks.sliding_window_view(
+        candidate, (window_size, window_size), axis=(0, 1)
+    )[::stride, ::stride]
+
+    coordinates = np.arange(window_size, dtype=np.float64) - padding
+    gaussian = np.exp(-0.5 * (coordinates / sigma) ** 2)
+    weights = np.outer(gaussian, gaussian)
+    weights /= weights.sum()
+
+    def weighted_sum(windows: Any) -> Any:
+        return np.einsum("...ij,ij->...", windows, weights, optimize=True)
+
+    def weighted_product_sum(left: Any, right: Any) -> Any:
+        return np.einsum("...ij,...ij,ij->...", left, right, weights, optimize=False)
+
+    mean_ref_centered = weighted_sum(ref_windows)
+    mean_candidate_centered = weighted_sum(candidate_windows)
+    variance_ref = np.maximum(
+        weighted_product_sum(ref_windows, ref_windows)
+        - mean_ref_centered * mean_ref_centered,
+        0.0,
+    )
+    variance_candidate = np.maximum(
+        weighted_product_sum(candidate_windows, candidate_windows)
+        - mean_candidate_centered * mean_candidate_centered,
+        0.0,
+    )
+    covariance = (
+        weighted_product_sum(ref_windows, candidate_windows)
+        - mean_ref_centered * mean_candidate_centered
+    )
+    mean_ref = mean_ref_centered + 128.0
+    mean_candidate = mean_candidate_centered + 128.0
+
+    c1 = (0.01 * 255) ** 2
+    c2 = (0.03 * 255) ** 2
+    numerator = (2 * mean_ref * mean_candidate + c1) * (2 * covariance + c2)
+    denominator = (mean_ref**2 + mean_candidate**2 + c1) * (
+        variance_ref + variance_candidate + c2
+    )
+    return float(np.clip(numerator / denominator, -1.0, 1.0).mean())
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("examples", nargs="*", metavar="EXAMPLE")
@@ -503,10 +641,29 @@ def main() -> int:
         help="verify checked-in artifacts match code, data, and outputs",
     )
     parser.add_argument(
+        "--similarity-threshold",
+        type=float,
+        default=0.995,
+        help="SSIM score at or above which images are retained during rendering",
+    )
+    parser.add_argument(
+        "--force-image-updates",
+        action="store_true",
+        help="replace rendered WebP files even when SSIM marks them similar",
+    )
+    parser.add_argument(
         "--index", action="store_true", help="generate gallery/README.md"
     )
     parser.add_argument("--one", metavar="EXAMPLE", help=argparse.SUPPRESS)
     args = parser.parse_args()
+    if not 0.0 <= args.similarity_threshold <= 1.0:
+        parser.error("--similarity-threshold must be between 0 and 1")
+    if args.force_image_updates and (
+        args.check or args.artifacts or args.check_artifacts or args.index
+    ):
+        parser.error(
+            "--force-image-updates cannot be combined with check, artifacts, or index options"
+        )
 
     manifests = _manifests()
     known = sorted(manifests)
@@ -540,6 +697,8 @@ def main() -> int:
             args.force_backend,
             check=args.check,
             artifacts=args.artifacts,
+            similarity_threshold=args.similarity_threshold,
+            force_image_updates=args.force_image_updates,
         )
         return 0
 
@@ -556,6 +715,9 @@ def main() -> int:
             command.append("--check")
         if args.artifacts:
             command.append("--artifacts")
+        command.extend(("--similarity-threshold", str(args.similarity_threshold)))
+        if args.force_image_updates:
+            command.append("--force-image-updates")
         process = subprocess.run(command, cwd=GALLERY / folder)
         duration = time.time() - started
         status = (

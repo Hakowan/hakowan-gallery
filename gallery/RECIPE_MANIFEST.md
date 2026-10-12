@@ -80,6 +80,21 @@ python gallery/render_gallery.py --check-artifacts
 fails with the exact recipe regeneration command when any source or output is
 stale. README-only changes do not require artifact regeneration.
 
+Normal rendering compares each generated WebP with the existing file at that
+path using sampled, Gaussian-windowed SSIM. Images scoring at least `0.995` are
+kept byte-for-byte; lower scores and dimension changes replace the old image.
+New images are written normally. Override the threshold with
+`--similarity-threshold`, or explicitly replace every rendered image with
+`--force-image-updates`:
+
+```sh
+python gallery/render_gallery.py [RecipeFolder ...]
+python gallery/render_gallery.py --force-image-updates [RecipeFolder ...]
+```
+
+SSIM is a perceptual heuristic, not a guarantee that two images are
+interchangeable. Artifact SHA-256 hashes continue to verify exact output bytes.
+
 The `Check gallery` GitHub Actions workflow verifies artifact freshness and
 regenerates the documentation index to ensure checked-in documentation remains
 current.
