@@ -1,0 +1,24 @@
+[workspace]
+name = "hakowan-gallery"
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-64"]
+
+[dependencies]
+python = "==3.13"
+numpy = ">=2"
+pillow = ">=11"
+# Mitsuba initializes Dr.Jit's JIT even for scalar_rgb and needs a loadable LLVM.
+libllvm18 = ">=18.1.8,<19"
+
+[pypi-dependencies]
+flip-evaluator = ">=1.7"
+# Same optional set as hakowan's `full` environment: mitsuba, blender, observe.
+hakowan = { git = "https://github.com/Hakowan/hakowan.git", branch = "qnzhou/0.6.1", extras = ["mitsuba", "blender", "observe"] }
+
+# macOS only: Dr.Jit dlopens "libLLVM.dylib", but libllvm18 ships "libLLVM-18.dylib".
+[target.osx-arm64.activation.env]
+DRJIT_LIBLLVM_PATH = "$CONDA_PREFIX/lib/libLLVM-18.dylib"
+
+[environments]
+default = { solve-group = "default" }
+full = { solve-group = "default" }
