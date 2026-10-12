@@ -12,7 +12,7 @@ base = base.material(
         "comp",
         colormap="set1",
         categories=True,
-        legend=hkw.Legend(title="Connected component"),
+        legend=False,
     ),
     roughness=0.2,
 ).transform(hkw.transform.Compute(component="comp"))
