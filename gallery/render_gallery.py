@@ -11,6 +11,10 @@ Usage::
     pixi run -e full python render_gallery.py --check
     pixi run -e full python render_gallery.py --artifacts
     python render_gallery.py --check-artifacts
+
+Image updates import ``flip-evaluator`` from the active interpreter. This
+repository's pixi environment installs it (``pixi install`` / ``pixi run``).
+``--check-artifacts`` and ``--index`` do not import it.
 """
 
 from __future__ import annotations
@@ -35,6 +39,9 @@ GALLERY = Path(__file__).resolve().parent
 
 WEBP_QUALITY = 90
 ARTIFACT_FORMAT_VERSION = "1"
+# Mean LDR-FLIP error at or below which a regenerated WebP is kept.
+# 0 is identical; 1 is the maximum perceived difference.
+DEFAULT_FLIP_THRESHOLD = 0.01
 _REQUIRED_MANIFEST_KEYS = {
     "id",
     "title",
@@ -317,7 +324,7 @@ def _run_one(
     *,
     check: bool = False,
     artifacts: bool = False,
-    similarity_threshold: float = 0.995,
+    flip_threshold: float = DEFAULT_FLIP_THRESHOLD,
     force_image_updates: bool = False,
 ) -> None:
     """Run, validate, or generate artifacts for one isolated recipe."""
@@ -446,25 +453,25 @@ def _run_one(
                 except (OSError, ValueError):
                     previous_rgba = None
 
-                score = None
+                error = None
                 if (
                     previous_rgba is not None
                     and previous_rgba.shape == candidate_rgba.shape
                 ):
-                    score = _structural_similarity(previous_rgba, candidate_rgba)
+                    error = _flip_error(previous_rgba, candidate_rgba)
 
-                if score is not None and score >= similarity_threshold:
+                if error is not None and error <= flip_threshold:
                     print(
                         f"kept image: {target_path.relative_to(work)} "
-                        f"(SSIM {score:.6f})"
+                        f"(FLIP {error:.6f})"
                     )
                     continue
 
                 target_path.parent.mkdir(parents=True, exist_ok=True)
                 os.replace(candidate_path, target_path)
                 detail = (
-                    f"SSIM {score:.6f}"
-                    if score is not None
+                    f"FLIP {error:.6f}"
+                    if error is not None
                     else "different dimensions or unreadable previous image"
                 )
                 print(f"updated image: {target_path.relative_to(work)} ({detail})")
@@ -562,65 +569,49 @@ def _generate_index(manifests: dict[str, dict[str, Any]]) -> None:
     print(f"index: {GALLERY / 'README.md'}")
 
 
-def _structural_similarity(reference: Any, candidate: Any) -> float:
-    """Compute sampled, Gaussian-windowed SSIM over equally sized RGBA arrays."""
+def _flip_error(reference: Any, candidate: Any) -> float:
+    """Return mean LDR-FLIP error for equally sized RGBA images.
+
+    FLIP expects display-referred sRGB in ``[0, 1]`` with three channels.
+    Partial transparency is composited over white and black; the larger error
+    is used so a transparency-only change is not hidden by one background.
+    """
+    try:
+        import flip_evaluator
+    except ImportError as error:
+        raise RuntimeError(
+            "image comparison requires flip-evaluator; "
+            "install it with `pixi install` in this repository"
+        ) from error
     import numpy as np
 
-    window_size = 11
-    stride = 8
-    sigma = 1.5
-    padding = window_size // 2
-    reference = reference.astype(np.float32, copy=False) - 128.0
-    candidate = candidate.astype(np.float32, copy=False) - 128.0
-    if min(reference.shape[:2]) < window_size:
-        pad_width = ((padding, padding), (padding, padding), (0, 0))
-        reference = np.pad(reference, pad_width, mode="edge")
-        candidate = np.pad(candidate, pad_width, mode="edge")
+    def composited(image: Any, background: float) -> Any:
+        color = np.ascontiguousarray(image[..., :3], dtype=np.float32) / 255.0
+        if image.shape[-1] < 4:
+            return color
+        alpha = image[..., 3:4].astype(np.float32, copy=False) / 255.0
+        if float(np.min(alpha)) == 1.0:
+            return color
+        return np.ascontiguousarray(
+            color * alpha + background * (1.0 - alpha), dtype=np.float32
+        )
 
-    ref_windows = np.lib.stride_tricks.sliding_window_view(
-        reference, (window_size, window_size), axis=(0, 1)
-    )[::stride, ::stride]
-    candidate_windows = np.lib.stride_tricks.sliding_window_view(
-        candidate, (window_size, window_size), axis=(0, 1)
-    )[::stride, ::stride]
+    def mean_error(background: float) -> float:
+        _error_map, error, _parameters = flip_evaluator.evaluate(
+            composited(reference, background),
+            composited(candidate, background),
+            "LDR",
+            applyMagma=False,
+        )
+        return float(error)
 
-    coordinates = np.arange(window_size, dtype=np.float64) - padding
-    gaussian = np.exp(-0.5 * (coordinates / sigma) ** 2)
-    weights = np.outer(gaussian, gaussian)
-    weights /= weights.sum()
-
-    def weighted_sum(windows: Any) -> Any:
-        return np.einsum("...ij,ij->...", windows, weights, optimize=True)
-
-    def weighted_product_sum(left: Any, right: Any) -> Any:
-        return np.einsum("...ij,...ij,ij->...", left, right, weights, optimize=False)
-
-    mean_ref_centered = weighted_sum(ref_windows)
-    mean_candidate_centered = weighted_sum(candidate_windows)
-    variance_ref = np.maximum(
-        weighted_product_sum(ref_windows, ref_windows)
-        - mean_ref_centered * mean_ref_centered,
-        0.0,
+    opaque = reference.shape[-1] < 4 or (
+        float(np.min(reference[..., 3])) == 255.0
+        and float(np.min(candidate[..., 3])) == 255.0
     )
-    variance_candidate = np.maximum(
-        weighted_product_sum(candidate_windows, candidate_windows)
-        - mean_candidate_centered * mean_candidate_centered,
-        0.0,
-    )
-    covariance = (
-        weighted_product_sum(ref_windows, candidate_windows)
-        - mean_ref_centered * mean_candidate_centered
-    )
-    mean_ref = mean_ref_centered + 128.0
-    mean_candidate = mean_candidate_centered + 128.0
-
-    c1 = (0.01 * 255) ** 2
-    c2 = (0.03 * 255) ** 2
-    numerator = (2 * mean_ref * mean_candidate + c1) * (2 * covariance + c2)
-    denominator = (mean_ref**2 + mean_candidate**2 + c1) * (
-        variance_ref + variance_candidate + c2
-    )
-    return float(np.clip(numerator / denominator, -1.0, 1.0).mean())
+    if opaque:
+        return mean_error(1.0)
+    return max(mean_error(1.0), mean_error(0.0))
 
 
 def main() -> int:
@@ -641,23 +632,26 @@ def main() -> int:
         help="verify checked-in artifacts match code, data, and outputs",
     )
     parser.add_argument(
-        "--similarity-threshold",
+        "--flip-threshold",
         type=float,
-        default=0.995,
-        help="SSIM score at or above which images are retained during rendering",
+        default=DEFAULT_FLIP_THRESHOLD,
+        help=(
+            "maximum mean LDR-FLIP error at or below which existing WebP "
+            "files are retained during rendering"
+        ),
     )
     parser.add_argument(
         "--force-image-updates",
         action="store_true",
-        help="replace rendered WebP files even when SSIM marks them similar",
+        help="replace rendered WebP files even when FLIP marks them similar",
     )
     parser.add_argument(
         "--index", action="store_true", help="generate gallery/README.md"
     )
     parser.add_argument("--one", metavar="EXAMPLE", help=argparse.SUPPRESS)
     args = parser.parse_args()
-    if not 0.0 <= args.similarity_threshold <= 1.0:
-        parser.error("--similarity-threshold must be between 0 and 1")
+    if not 0.0 <= args.flip_threshold <= 1.0:
+        parser.error("--flip-threshold must be between 0 and 1")
     if args.force_image_updates and (
         args.check or args.artifacts or args.check_artifacts or args.index
     ):
@@ -697,7 +691,7 @@ def main() -> int:
             args.force_backend,
             check=args.check,
             artifacts=args.artifacts,
-            similarity_threshold=args.similarity_threshold,
+            flip_threshold=args.flip_threshold,
             force_image_updates=args.force_image_updates,
         )
         return 0
@@ -715,7 +709,7 @@ def main() -> int:
             command.append("--check")
         if args.artifacts:
             command.append("--artifacts")
-        command.extend(("--similarity-threshold", str(args.similarity_threshold)))
+        command.extend(("--flip-threshold", str(args.flip_threshold)))
         if args.force_image_updates:
             command.append("--force-image-updates")
         process = subprocess.run(command, cwd=GALLERY / folder)
