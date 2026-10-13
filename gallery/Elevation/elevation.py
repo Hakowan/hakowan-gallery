@@ -19,7 +19,7 @@ def elevation_layer(data):
             hkw.texture.ScalarField(
                 "elevation",
                 colormap=["#15A887", "#8C4E37", "#E9ECF2"],
-                legend=hkw.Legend(title="Elevation"),
+                legend=False,
             ),
         )
         .transform(hkw.transform.Compute(z="elevation"))
