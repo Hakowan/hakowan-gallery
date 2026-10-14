@@ -22,7 +22,7 @@ plate = hkw.layer("data/plate2.obj").material("ThinDielectric")
 
 # Step 3: Declare the orthographic scene. The volume integrator remains a
 # renderer-specific override.
-scene = hkw.SceneSettings(camera=hkw.OrthographicCamera())
+scene = hkw.SceneSettings()
 config = scene.to_config()
 config.integrator = hkw.setup.integrator.VolPath()
 
@@ -36,7 +36,7 @@ for i in [7, 8, 9, 10]:
     # The side view shows the ball-plate collision from the side.
     side_view = frame_ball + plate
     hkw.render(
-        hkw.Figure(side_view, scene),
+        hkw.Figure(side_view, scene).camera("orthographic", scale=1.5625),
         config,
         filename=f"results/ipc_side_{i}.webp",
     )
@@ -44,16 +44,16 @@ for i in [7, 8, 9, 10]:
     # The back view shows the ball-plate collision from behind the plate.
     back_view = side_view.rotate(axis=[0, 1, 0], angle=-math.pi / 2)
     hkw.render(
-        hkw.Figure(back_view, scene),
+        hkw.Figure(back_view, scene).camera("orthographic", scale=1.5625),
         config,
         filename=f"results/ipc_back_{i}.webp",
     )
 
 interactive_view = ball.data("data/10_decimated.msh") + plate
-RECIPE_FIGURE = hkw.Figure(side_view, scene)
+RECIPE_FIGURE = hkw.Figure(side_view, scene).camera("orthographic", scale=1.5625)
 RECIPE_INSPECTIONS = {"ball": "data/10_decimated.msh", "plate": "data/plate2.obj"}
 hkw.render(
-    hkw.Figure(interactive_view, scene),
+    hkw.Figure(interactive_view, scene).camera("orthographic", scale=1.5625),
     backend="webgl",
     filename="results/ipc.html",
 )
