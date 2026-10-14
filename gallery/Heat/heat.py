@@ -17,7 +17,7 @@ base = hkw.layer("data/bunny_heat.ply").material(
             colormap="fire",
             reverse=True,
             domain=(0, 0.12),
-            legend=hkw.Legend(title="Geodesic distance"),
+            legend=False,
         ),
         texture2=hkw.texture.ScalarField(
             "dist",
