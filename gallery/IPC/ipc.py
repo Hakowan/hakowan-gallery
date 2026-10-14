@@ -2,7 +2,6 @@
 
 import hakowan as hkw
 import math
-import lagrange
 
 hkw.set_default_backend("mitsuba")
 
@@ -50,17 +49,9 @@ for i in [7, 8, 9, 10]:
         filename=f"results/ipc_back_{i}.webp",
     )
 
-# Export a decimated final collision state as an interactive WebGL demo.
-interactive_mesh = lagrange.io.load_mesh("data/10.obj")
-decimation_options = lagrange.decimation.DecimationOptions()
-decimation_options.max_facets = 50_000
-interactive_mesh = lagrange.decimation.decimate_quadric(
-    interactive_mesh,
-    decimation_options,
-)
-interactive_view = ball.data(interactive_mesh) + plate
+interactive_view = ball.data("data/10_decimated.msh") + plate
 RECIPE_FIGURE = hkw.Figure(side_view, scene)
-RECIPE_INSPECTIONS = {"ball": "data/10.obj", "plate": "data/plate2.obj"}
+RECIPE_INSPECTIONS = {"ball": "data/10_decimated.msh", "plate": "data/plate2.obj"}
 hkw.render(
     hkw.Figure(interactive_view, scene),
     backend="webgl",
