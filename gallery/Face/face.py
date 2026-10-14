@@ -23,7 +23,7 @@ hkw.render(
 # Step 3: Render the 3D face mesh with checkerboard pattern.
 face_checkerboard = face.name("Checkerboard").material(
     "Principled",
-    color=hkw.texture.Checkerboard(size=8),
+    color=hkw.texture.Checkerboard(size=16),
     roughness=0.1,
 )
 hkw.render(
@@ -39,7 +39,11 @@ face_uv = (
     .channel(normal="normal")
     .material("Diffuse", "ivory")
 )
-uv_figure = hkw.figure(face_uv).camera("orthographic").output(width=1024, height=800)
+uv_figure = (
+    hkw.figure(face_uv)
+    .camera("orthographic", scale=1.5625)
+    .output(width=1024, height=800)
+)
 hkw.render(uv_figure, filename="results/face_uv.webp")
 
 # Step 5: Interactive web demo
