@@ -41,7 +41,7 @@ WEBP_QUALITY = 90
 ARTIFACT_FORMAT_VERSION = "1"
 # Mean LDR-FLIP error at or below which a regenerated WebP is kept.
 # 0 is identical; 1 is the maximum perceived difference.
-DEFAULT_FLIP_THRESHOLD = 0.01
+DEFAULT_FLIP_THRESHOLD = 0.05
 _REQUIRED_MANIFEST_KEYS = {
     "id",
     "title",
