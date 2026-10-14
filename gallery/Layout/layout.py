@@ -23,7 +23,7 @@ mesh_layer = (
             "chart",
             colormap="set1",
             categories=True,
-            legend=hkw.Legend(title="Chart"),
+            legend=False,
         ),
         roughness=0.0,
         metallic=0.0,
