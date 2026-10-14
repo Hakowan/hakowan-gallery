@@ -25,7 +25,7 @@ roi_box = np.vstack([box_min, box_max])
 for i in [10, 30, 60, 133]:
     particle_file = f"data/waterbell_{i:03}.pcd"
     fluid = (
-        hkw.layer(particle_file)
+        hkw.layer().data(particle_file, roi_box=roi_box)
         .name(f"Fluid {i:03}")
         .mark("Point")
         .channel(size=0.01)
