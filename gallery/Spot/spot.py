@@ -9,7 +9,7 @@ view = (
     base.name("Surface")
     .mark("Surface")
     .material("Principled", "ivory", roughness=0.35)
-    .show_edges(color="#202020", width=0.002, name="Wireframe")
+    .show_edges(color="#202020", width=0.0015, name="Wireframe")
 )
 
 figure = (

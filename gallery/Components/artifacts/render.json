@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "mesh"
   ],
@@ -31,20 +31,20 @@
     },
     {
       "backend": "webgl",
-      "bytes": 35155800,
+      "bytes": 35194284,
       "exists": true,
       "kind": "interactive",
       "path": "results/foot.html",
-      "sha256": "8adee77ff4e19dfcaecec5084363c320dfaa70a6a6741f848b42dc31d0086aa6"
+      "sha256": "e45ec259e403e64baf006e7959201e4b63f00f8c17cbcdad9881338f54c7a4d1"
     }
   ],
   "recipe": "connected-components",
   "schema_version": "1.1",
   "sources": [
     {
-      "bytes": 1104,
+      "bytes": 1070,
       "path": "components.py",
-      "sha256": "195b79695383d98b951ebd364794c44e8256408d3b76dd432f7a83423478e0e7"
+      "sha256": "b27d8259907ab3c5180d9aacb884ddf02988f16b4635b1caa86f488d1edaf883"
     },
     {
       "bytes": 7265056,

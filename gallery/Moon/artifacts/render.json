@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.6.0",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "mesh"
   ],
@@ -15,11 +15,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 42408093,
+      "bytes": 42427533,
       "exists": true,
       "kind": "interactive",
       "path": "results/moon.html",
-      "sha256": "af6c6b09592d0f44cb48044021ac8e6bd16061c828d974126c5ab7120e153d56"
+      "sha256": "5a762f5284d0fa9bda652b19dea53574e1e4b985b71adca55c543cb6847f8007"
     }
   ],
   "recipe": "moon-textures",

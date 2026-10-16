@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.6.0",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "mesh"
   ],
@@ -15,11 +15,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 17954056,
+      "bytes": 17973584,
       "exists": true,
       "kind": "interactive",
       "path": "results/shark_stream_lines.html",
-      "sha256": "bf5f2cac29ead70a6575599f130ff7c83fd3aebe7b4236189c458152bde7067f"
+      "sha256": "abab8452ef729570a63f3fc93ec8cc49281fd2a557cf17cd89a2d16bec9b88d7"
     }
   ],
   "recipe": "cross-field-streamlines",

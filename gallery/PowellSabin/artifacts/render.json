@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "mesh"
   ],
@@ -15,11 +15,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 691159,
+      "bytes": 729016,
       "exists": true,
       "kind": "interactive",
       "path": "results/powell_sabin.html",
-      "sha256": "a1503859be6248a1c711be2d78c18002a9c9cc061e7dfc7130cfd5b11f7aa92c"
+      "sha256": "e59cafa535c3f823abc04ea3b79ef32375c3db0aafaaf616fdd75f09ef216957"
     }
   ],
   "recipe": "powell-sabin",
@@ -36,9 +36,9 @@
       "sha256": "c97c6ecf2ca86e9b15a383913a5f73f16b3ebacb951eeae7f4fc217ad60b043c"
     },
     {
-      "bytes": 1651,
+      "bytes": 1601,
       "path": "powell_sabin.py",
-      "sha256": "210e8d295389e17ad4a011c281aa485d08932cb4fb38925ac74c06f25cf72d3b"
+      "sha256": "ba7019e6a92afb6b5c997c67e67d5ad2b358c07b50d83c4823111cc270731906"
     },
     {
       "bytes": 610,

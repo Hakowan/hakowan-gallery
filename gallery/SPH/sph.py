@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import hakowan as hkw
-import pyvista as pv
 import numpy as np
 from hakowan.spec import compile_expression
 
@@ -24,15 +23,10 @@ box_min = [-1.223, -0.5, -1.226]
 box_max = [1.224, 4.0, 1.222]
 roi_box = np.vstack([box_min, box_max])
 for i in [10, 30, 60, 133]:
-    # Lagrange's MSH writer does not retain vertex attributes on facet-free
-    # point clouds. Load the original VTK particles so velocity reaches the
-    # Norm transform and ScalarField colormap.
-    particles = pv.read(f"data/ParticleData_Fluid_0_{i}.vtk")
-    particle_frame = hkw.dataframe.to_dataframe(particles, roi_box=roi_box)
+    particle_file = f"data/waterbell_{i:03}.pcd"
     fluid = (
-        hkw.layer()
+        hkw.layer().data(particle_file, roi_box=roi_box)
         .name(f"Fluid {i:03}")
-        .data(particle_frame)
         .mark("Point")
         .channel(size=0.01)
         .material(
@@ -46,7 +40,7 @@ for i in [10, 30, 60, 133]:
     if i == 10:
         RECIPE_FIGURE = all_particles
         RECIPE_INSPECTIONS = {
-            "particles": particles,
+            "particles": particle_file,
             "emitter": "data/emitter.msh",
         }
         RECIPE_DATA_IDS = _recipe_data_id

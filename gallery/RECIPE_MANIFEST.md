@@ -80,6 +80,24 @@ python gallery/render_gallery.py --check-artifacts
 fails with the exact recipe regeneration command when any source or output is
 stale. README-only changes do not require artifact regeneration.
 
+Normal rendering compares each generated WebP with the existing file at that
+path using NVIDIA [LDR-FLIP](https://github.com/NVlabs/flip) (`flip-evaluator`).
+Images whose mean FLIP error is at most `0.01` are kept byte-for-byte; higher
+errors and dimension changes replace the old image. New images are written
+normally. Override the threshold with `--flip-threshold`, or explicitly replace
+every rendered image with `--force-image-updates`:
+
+```sh
+pixi install
+python gallery/render_gallery.py [RecipeFolder ...]
+python gallery/render_gallery.py --force-image-updates [RecipeFolder ...]
+```
+
+`pixi install` in this repository provides `flip-evaluator`. FLIP is a
+perceptual error metric (0 is identical, 1 is the maximum difference), not a
+guarantee that two images are interchangeable. Artifact SHA-256 hashes continue
+to verify exact output bytes.
+
 The `Check gallery` GitHub Actions workflow verifies artifact freshness and
 regenerates the documentation index to ensure checked-in documentation remains
 current.

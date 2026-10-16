@@ -131,15 +131,7 @@
                 },
                 "domain": null,
                 "kind": "scalar_field",
-                "legend": {
-                  "category_labels": null,
-                  "format": ".3g",
-                  "position": "right",
-                  "ticks": 5,
-                  "title": "Chart",
-                  "units": null,
-                  "width": 180
-                },
+                "legend": false,
                 "range": null,
                 "reverse": false
               },
@@ -337,7 +329,8 @@
             "shape": null,
             "size": {
               "data": 0.02,
-              "kind": "size"
+              "kind": "size",
+              "space": "world"
             },
             "vector_field": null
           },

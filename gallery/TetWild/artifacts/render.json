@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.6.0",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "tetrahedral"
   ],
@@ -15,11 +15,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 8180664,
+      "bytes": 8200260,
       "exists": true,
       "kind": "interactive",
       "path": "results/bust.html",
-      "sha256": "216df63fda3d21e32f46ddc3e7a7033e7175ea436e502c9e7b3bc8737eb90b3e"
+      "sha256": "7bf325ae45747e98e869cc6dba37b43e32968343de502bfad586260c9a3af749"
     }
   ],
   "recipe": "tetwild-cutaway",

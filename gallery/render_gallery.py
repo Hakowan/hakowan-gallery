@@ -11,6 +11,10 @@ Usage::
     pixi run -e full python render_gallery.py --check
     pixi run -e full python render_gallery.py --artifacts
     python render_gallery.py --check-artifacts
+
+Image updates import ``flip-evaluator`` from the active interpreter. This
+repository's pixi environment installs it (``pixi install`` / ``pixi run``).
+``--check-artifacts`` and ``--index`` do not import it.
 """
 
 from __future__ import annotations
@@ -23,6 +27,7 @@ import runpy
 import subprocess
 import sys
 import time
+import tempfile
 import tomllib
 from pathlib import Path
 from typing import Any
@@ -34,6 +39,9 @@ GALLERY = Path(__file__).resolve().parent
 
 WEBP_QUALITY = 90
 ARTIFACT_FORMAT_VERSION = "1"
+# Mean LDR-FLIP error at or below which a regenerated WebP is kept.
+# 0 is identical; 1 is the maximum perceived difference.
+DEFAULT_FLIP_THRESHOLD = 0.05
 _REQUIRED_MANIFEST_KEYS = {
     "id",
     "title",
@@ -316,12 +324,14 @@ def _run_one(
     *,
     check: bool = False,
     artifacts: bool = False,
+    flip_threshold: float = DEFAULT_FLIP_THRESHOLD,
+    force_image_updates: bool = False,
 ) -> None:
     """Run, validate, or generate artifacts for one isolated recipe."""
     import hakowan as hkw
     from PIL import Image
 
-    work = GALLERY / folder
+    work = (GALLERY / folder).resolve()
     manifest_path = work / "recipe.toml"
     if not manifest_path.is_file():
         raise ValueError(f"{folder}: recipe.toml is required")
@@ -331,8 +341,10 @@ def _run_one(
 
     os.chdir(work)
     sys.path.insert(0, str(work))
-    converted_outputs: list[tuple[Path, Path]] = []
-    if force_backend is not None or check or artifacts:
+    with tempfile.TemporaryDirectory(prefix=".gallery-candidates-", dir=work) as temp:
+        candidate_root = Path(temp)
+        converted_outputs: list[tuple[Path, Path]] = []
+        candidate_outputs: dict[Path, Path] = {}
         original_render = hkw.render
 
         def managed_render(root, config=None, filename=None, backend=None, **kwargs):
@@ -356,15 +368,33 @@ def _run_one(
                 return hkw.RenderResult(backend=capabilities.name)
 
             output_filename = filename
+            if filename is not None and Path(filename).suffix.lower() == ".webp":
+                requested_path = Path(filename)
+                target_path = (
+                    requested_path
+                    if requested_path.is_absolute()
+                    else work / requested_path
+                ).resolve()
+                if target_path.is_relative_to(work):
+                    candidate_path = candidate_outputs.get(target_path)
+                    if candidate_path is None:
+                        candidate_path = candidate_root / (
+                            f"{len(candidate_outputs):04d}{requested_path.suffix.lower()}"
+                        )
+                        candidate_outputs[target_path] = candidate_path
+                    output_filename = candidate_path
+
             if (
                 backend is None
                 and selected_backend == "mitsuba"
-                and filename is not None
+                and output_filename is not None
             ):
-                requested_path = Path(filename)
+                requested_path = Path(output_filename)
                 output_filename = requested_path.with_suffix(".png")
                 if requested_path.suffix.lower() == ".webp":
-                    converted_outputs.append((output_filename, requested_path))
+                    conversion = (output_filename, requested_path)
+                    if conversion not in converted_outputs:
+                        converted_outputs.append(conversion)
             return original_render(
                 root,
                 config,
@@ -374,35 +404,89 @@ def _run_one(
             )
 
         hkw.render = managed_render
+        try:
+            namespace = runpy.run_path(script, run_name="__main__")
+        finally:
+            hkw.render = original_render
 
-    namespace = runpy.run_path(script, run_name="__main__")
-    if manifest is not None and (check or artifacts):
-        _inspect_contracts(manifest, namespace, write=False)
-        missing_outputs = [
-            output["path"]
-            for output in manifest["outputs"]
-            if not Path(output["path"]).is_file()
+        if check or artifacts:
+            _inspect_contracts(manifest, namespace, write=False)
+            missing_outputs = [
+                output["path"]
+                for output in manifest["outputs"]
+                if not Path(output["path"]).is_file()
+            ]
+            if missing_outputs:
+                raise ValueError(
+                    f"{folder}: declared outputs are missing: {missing_outputs}"
+                )
+        if artifacts:
+            _generate_artifacts(work, manifest, namespace)
+
+        for png, webp in converted_outputs:
+            with Image.open(png) as image:
+                image.save(webp, "WEBP", quality=WEBP_QUALITY, method=6)
+
+        if not check and not artifacts:
+            import numpy as np
+
+            for target_path, candidate_path in candidate_outputs.items():
+                if not candidate_path.is_file():
+                    continue
+                if force_image_updates or not target_path.is_file():
+                    target_path.parent.mkdir(parents=True, exist_ok=True)
+                    os.replace(candidate_path, target_path)
+                    print(f"updated image: {target_path.relative_to(work)}")
+                    continue
+
+                if target_path.read_bytes() == candidate_path.read_bytes():
+                    print(f"unchanged image: {target_path.relative_to(work)}")
+                    continue
+
+                with Image.open(candidate_path) as image:
+                    candidate_rgba = np.asarray(image.convert("RGBA"), dtype=np.float32)
+                try:
+                    with Image.open(target_path) as image:
+                        previous_rgba = np.asarray(
+                            image.convert("RGBA"), dtype=np.float32
+                        )
+                except (OSError, ValueError):
+                    previous_rgba = None
+
+                error = None
+                if (
+                    previous_rgba is not None
+                    and previous_rgba.shape == candidate_rgba.shape
+                ):
+                    error = _flip_error(previous_rgba, candidate_rgba)
+
+                if error is not None and error <= flip_threshold:
+                    print(
+                        f"kept image: {target_path.relative_to(work)} "
+                        f"(FLIP {error:.6f})"
+                    )
+                    continue
+
+                target_path.parent.mkdir(parents=True, exist_ok=True)
+                os.replace(candidate_path, target_path)
+                detail = (
+                    f"FLIP {error:.6f}"
+                    if error is not None
+                    else "different dimensions or unreadable previous image"
+                )
+                print(f"updated image: {target_path.relative_to(work)} ({detail})")
+
+        results = work / "results"
+        missing_formats = [
+            suffix
+            for suffix in (".webp", ".html")
+            if not any(results.glob(f"*{suffix}"))
         ]
-        if missing_outputs:
+        if missing_formats:
             raise ValueError(
-                f"{folder}: declared outputs are missing: {missing_outputs}"
+                f"{folder}: results must include WebP and HTML outputs; "
+                f"missing {missing_formats}"
             )
-    if manifest is not None and artifacts:
-        _generate_artifacts(work, manifest, namespace)
-
-    for png, webp in converted_outputs:
-        with Image.open(png) as image:
-            image.save(webp, "WEBP", quality=WEBP_QUALITY, method=6)
-
-    results = work / "results"
-    missing_formats = [
-        suffix for suffix in (".webp", ".html") if not any(results.glob(f"*{suffix}"))
-    ]
-    if missing_formats:
-        raise ValueError(
-            f"{folder}: results must include WebP and HTML outputs; "
-            f"missing {missing_formats}"
-        )
 
 
 def _update_recipe_readme(folder: str, manifest: dict[str, Any]) -> None:
@@ -485,6 +569,51 @@ def _generate_index(manifests: dict[str, dict[str, Any]]) -> None:
     print(f"index: {GALLERY / 'README.md'}")
 
 
+def _flip_error(reference: Any, candidate: Any) -> float:
+    """Return mean LDR-FLIP error for equally sized RGBA images.
+
+    FLIP expects display-referred sRGB in ``[0, 1]`` with three channels.
+    Partial transparency is composited over white and black; the larger error
+    is used so a transparency-only change is not hidden by one background.
+    """
+    try:
+        import flip_evaluator
+    except ImportError as error:
+        raise RuntimeError(
+            "image comparison requires flip-evaluator; "
+            "install it with `pixi install` in this repository"
+        ) from error
+    import numpy as np
+
+    def composited(image: Any, background: float) -> Any:
+        color = np.ascontiguousarray(image[..., :3], dtype=np.float32) / 255.0
+        if image.shape[-1] < 4:
+            return color
+        alpha = image[..., 3:4].astype(np.float32, copy=False) / 255.0
+        if float(np.min(alpha)) == 1.0:
+            return color
+        return np.ascontiguousarray(
+            color * alpha + background * (1.0 - alpha), dtype=np.float32
+        )
+
+    def mean_error(background: float) -> float:
+        _error_map, error, _parameters = flip_evaluator.evaluate(
+            composited(reference, background),
+            composited(candidate, background),
+            "LDR",
+            applyMagma=False,
+        )
+        return float(error)
+
+    opaque = reference.shape[-1] < 4 or (
+        float(np.min(reference[..., 3])) == 255.0
+        and float(np.min(candidate[..., 3])) == 255.0
+    )
+    if opaque:
+        return mean_error(1.0)
+    return max(mean_error(1.0), mean_error(0.0))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("examples", nargs="*", metavar="EXAMPLE")
@@ -503,10 +632,32 @@ def main() -> int:
         help="verify checked-in artifacts match code, data, and outputs",
     )
     parser.add_argument(
+        "--flip-threshold",
+        type=float,
+        default=DEFAULT_FLIP_THRESHOLD,
+        help=(
+            "maximum mean LDR-FLIP error at or below which existing WebP "
+            "files are retained during rendering"
+        ),
+    )
+    parser.add_argument(
+        "--force-image-updates",
+        action="store_true",
+        help="replace rendered WebP files even when FLIP marks them similar",
+    )
+    parser.add_argument(
         "--index", action="store_true", help="generate gallery/README.md"
     )
     parser.add_argument("--one", metavar="EXAMPLE", help=argparse.SUPPRESS)
     args = parser.parse_args()
+    if not 0.0 <= args.flip_threshold <= 1.0:
+        parser.error("--flip-threshold must be between 0 and 1")
+    if args.force_image_updates and (
+        args.check or args.artifacts or args.check_artifacts or args.index
+    ):
+        parser.error(
+            "--force-image-updates cannot be combined with check, artifacts, or index options"
+        )
 
     manifests = _manifests()
     known = sorted(manifests)
@@ -540,6 +691,8 @@ def main() -> int:
             args.force_backend,
             check=args.check,
             artifacts=args.artifacts,
+            flip_threshold=args.flip_threshold,
+            force_image_updates=args.force_image_updates,
         )
         return 0
 
@@ -556,7 +709,10 @@ def main() -> int:
             command.append("--check")
         if args.artifacts:
             command.append("--artifacts")
-        process = subprocess.run(command)
+        command.extend(("--flip-threshold", str(args.flip_threshold)))
+        if args.force_image_updates:
+            command.append("--force-image-updates")
+        process = subprocess.run(command, cwd=GALLERY / folder)
         duration = time.time() - started
         status = (
             "ok" if process.returncode == 0 else f"FAILED (exit {process.returncode})"

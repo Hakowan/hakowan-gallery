@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.6.0",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "mesh"
   ],
@@ -15,11 +15,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 1463234,
+      "bytes": 1482766,
       "exists": true,
       "kind": "interactive",
       "path": "results/spot_seam.html",
-      "sha256": "0b378811f95e38532d70c7ac6885e14318c338acfb14f9f48611f599cab6212a"
+      "sha256": "e50bf573253a8a5b583b4ae285e91f5ed97e9b1c436685b35ad6b954d0f0bc93"
     }
   ],
   "recipe": "uv-seams",

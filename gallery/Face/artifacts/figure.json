@@ -182,7 +182,7 @@
               "back_side": null,
               "color": {
                 "kind": "checkerboard",
-                "size": 8,
+                "size": 16,
                 "texture1": 0.8,
                 "texture2": 0.2,
                 "uv": null
@@ -421,6 +421,7 @@
     "gap": 0.05,
     "kind": "layout",
     "normalize": true,
+    "reverse": false,
     "spec": {
       "annotations": [],
       "channels": {
@@ -466,7 +467,7 @@
     "environment": null,
     "lights": null,
     "output": {
-      "background": "dark",
+      "background": null,
       "height": 800,
       "passes": [
         "beauty"

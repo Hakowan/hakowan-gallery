@@ -18,7 +18,7 @@ vertices = (
             "vertex_label",
             colormap=["steelblue", "green", "yellow", "red"],
             categories=True,
-            legend=hkw.Legend(title="Vertex type"),
+            legend=False,
         ),
         roughness=0,
         metallic=0.3,
@@ -34,7 +34,7 @@ surface = (
             "comp_ids",
             colormap="set1",
             categories=True,
-            legend=hkw.Legend(title="Component"),
+            legend=False,
         ),
     )
 )

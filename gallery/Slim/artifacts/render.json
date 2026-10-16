@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "mesh"
   ],
@@ -15,11 +15,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 2142769,
+      "bytes": 2181563,
       "exists": true,
       "kind": "interactive",
       "path": "results/fig3.html",
-      "sha256": "011fdb17f0f1103cc900cdb239f8644da71487b0f828dc67c4141b444692865c"
+      "sha256": "a0491e8bdec0e5572468d602682ea41269442544c076c0f35ab5a4b03d719ed4"
     }
   ],
   "recipe": "slim-uv-texture",

@@ -16,11 +16,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 6094773,
+      "bytes": 6099451,
       "exists": true,
       "kind": "interactive",
       "path": "results/geodesics.html",
-      "sha256": "b6447fff181b2d273a2eeb66420e0d427ea22473f3d3599932181bdd8f42a2cb"
+      "sha256": "aaa3a74a75e1ac5b3634ebd6e0f5db25f73dd58fa76c69661c6b7d703f305125"
     }
   ],
   "recipe": "torus-geodesics",

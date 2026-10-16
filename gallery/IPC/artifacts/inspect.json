@@ -1,68 +1,25 @@
 {
   "ball": {
-    "attributes": [
-      {
-        "channels": 1,
-        "dtype": "int32",
-        "element": "facet",
-        "element_count": 1064216,
-        "finite_count": 1064216,
-        "indexed": false,
-        "maximum": -1,
-        "minimum": -1,
-        "name": "material_id",
-        "nonfinite_count": 0,
-        "quantiles": {
-          "0": -1.0,
-          "0.25": -1.0,
-          "0.5": -1.0,
-          "0.75": -1.0,
-          "1": -1.0
-        },
-        "usage": "scalar",
-        "value_count": 1064216
-      },
-      {
-        "channels": 1,
-        "dtype": "uint32",
-        "element": "facet",
-        "element_count": 1064216,
-        "finite_count": 1064216,
-        "indexed": false,
-        "maximum": 0,
-        "minimum": 0,
-        "name": "object_id",
-        "nonfinite_count": 0,
-        "quantiles": {
-          "0": 0.0,
-          "0.25": 0.0,
-          "0.5": 0.0,
-          "0.75": 0.0,
-          "1": 0.0
-        },
-        "usage": "scalar",
-        "value_count": 1064216
-      }
-    ],
+    "attributes": [],
     "bounds": [
       [
-        0.049952748133660914,
-        -0.00018581616324540601,
-        -0.00018638828503947003
+        0.05000329912180103,
+        -0.00013628855332947,
+        -0.00013822198343218576
       ],
       [
-        0.11999957917679499,
-        0.10009177421422802,
-        0.10018572572858103
+        0.1200739206947103,
+        0.10003837959359517,
+        0.10012270491376248
       ]
     ],
-    "corner_count": 3192648,
+    "corner_count": 150000,
     "dimension": 3,
     "edge_count": null,
     "edges_initialized": false,
-    "facet_count": 1064216,
-    "source": "data/10.obj",
-    "vertex_count": 532110
+    "facet_count": 50000,
+    "source": "data/10_decimated.msh",
+    "vertex_count": 25002
   },
   "plate": {
     "attributes": [

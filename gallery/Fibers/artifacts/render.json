@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "fibers"
   ],
@@ -15,11 +15,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 3536733,
+      "bytes": 3554942,
       "exists": true,
       "kind": "interactive",
       "path": "results/fibers.html",
-      "sha256": "9ffe599b522594a81482fd393f9c9ed11dde7e69b0f03f61baa8e0b0c1b54d44"
+      "sha256": "a5a3e413d59cd9e4afebf0eac54650ac79e2ff4004082be2311d0dbfa99d625a"
     }
   ],
   "recipe": "fiber-curves",

@@ -67,48 +67,6 @@
   "particles": {
     "attributes": [
       {
-        "channels": 1,
-        "dtype": "float32",
-        "element": "vertex",
-        "element_count": 9984,
-        "finite_count": 9984,
-        "indexed": false,
-        "maximum": 1006.9085083007812,
-        "minimum": 499.2750244140625,
-        "name": "density",
-        "nonfinite_count": 0,
-        "quantiles": {
-          "0": 499.2750244140625,
-          "0.25": 963.7799682617188,
-          "0.5": 1000.1277465820312,
-          "0.75": 1001.201904296875,
-          "1": 1006.9085083007812
-        },
-        "usage": "scalar",
-        "value_count": 9984
-      },
-      {
-        "channels": 1,
-        "dtype": "uint32",
-        "element": "vertex",
-        "element_count": 9984,
-        "finite_count": 9984,
-        "indexed": false,
-        "maximum": 9983,
-        "minimum": 0,
-        "name": "id",
-        "nonfinite_count": 0,
-        "quantiles": {
-          "0": 0.0,
-          "0.25": 2495.75,
-          "0.5": 4991.5,
-          "0.75": 7487.25,
-          "1": 9983.0
-        },
-        "usage": "scalar",
-        "value_count": 9984
-      },
-      {
         "channels": 3,
         "dtype": "float32",
         "element": "vertex",
@@ -156,27 +114,6 @@
         },
         "usage": "vector",
         "value_count": 9984
-      },
-      {
-        "channels": 1,
-        "dtype": "int64",
-        "element": "vertex",
-        "element_count": 9984,
-        "finite_count": 9984,
-        "indexed": false,
-        "maximum": 9983,
-        "minimum": 0,
-        "name": "vtkOriginalPointIds",
-        "nonfinite_count": 0,
-        "quantiles": {
-          "0": 0.0,
-          "0.25": 2495.75,
-          "0.5": 4991.5,
-          "0.75": 7487.25,
-          "1": 9983.0
-        },
-        "usage": "scalar",
-        "value_count": 9984
       }
     ],
     "bounds": [
@@ -196,7 +133,7 @@
     "edge_count": null,
     "edges_initialized": false,
     "facet_count": 0,
-    "source": null,
+    "source": "data/waterbell_010.pcd",
     "vertex_count": 9984
   }
 }

@@ -111,32 +111,7 @@
               "child": {
                 "child": {
                   "child": {
-                    "child": {
-                      "kind": "layer",
-                      "spec": {
-                        "annotations": [],
-                        "channels": {
-                          "bump_map": null,
-                          "covariance": null,
-                          "material": null,
-                          "normal": null,
-                          "normal_map": null,
-                          "position": null,
-                          "shape": null,
-                          "size": null,
-                          "vector_field": null
-                        },
-                        "data": {
-                          "kind": "mesh_file",
-                          "path": "data/spot_quadrangulated.obj",
-                          "roi_box": null
-                        },
-                        "mark": null,
-                        "name": null,
-                        "transforms": []
-                      }
-                    },
-                    "kind": "inherit",
+                    "kind": "layer",
                     "spec": {
                       "annotations": [],
                       "channels": {
@@ -150,9 +125,13 @@
                         "size": null,
                         "vector_field": null
                       },
-                      "data": null,
+                      "data": {
+                        "kind": "mesh_file",
+                        "path": "data/spot_quadrangulated.obj",
+                        "roi_box": null
+                      },
                       "mark": null,
-                      "name": "Surface",
+                      "name": null,
                       "transforms": []
                     }
                   },
@@ -171,8 +150,8 @@
                       "vector_field": null
                     },
                     "data": null,
-                    "mark": "surface",
-                    "name": null,
+                    "mark": null,
+                    "name": "Surface",
                     "transforms": []
                   }
                 },
@@ -182,21 +161,7 @@
                   "channels": {
                     "bump_map": null,
                     "covariance": null,
-                    "material": {
-                      "anisotropic": 0.0,
-                      "back_side": null,
-                      "color": "ivory",
-                      "eta": 1.5,
-                      "flatness": 0.0,
-                      "kind": "principled",
-                      "metallic": 0.0,
-                      "roughness": 0.35,
-                      "sheen": 0.0,
-                      "sheen_tint": 0.0,
-                      "spec_tint": 0.0,
-                      "spec_trans": 0.0,
-                      "two_sided": false
-                    },
+                    "material": null,
                     "normal": null,
                     "normal_map": null,
                     "position": null,
@@ -205,7 +170,7 @@
                     "vector_field": null
                   },
                   "data": null,
-                  "mark": null,
+                  "mark": "surface",
                   "name": null,
                   "transforms": []
                 }
@@ -216,7 +181,21 @@
                 "channels": {
                   "bump_map": null,
                   "covariance": null,
-                  "material": null,
+                  "material": {
+                    "anisotropic": 0.0,
+                    "back_side": null,
+                    "color": "ivory",
+                    "eta": 1.5,
+                    "flatness": 0.0,
+                    "kind": "principled",
+                    "metallic": 0.0,
+                    "roughness": 0.35,
+                    "sheen": 0.0,
+                    "sheen_tint": 0.0,
+                    "spec_tint": 0.0,
+                    "spec_trans": 0.0,
+                    "two_sided": false
+                  },
                   "normal": null,
                   "normal_map": null,
                   "position": null,
@@ -225,7 +204,7 @@
                   "vector_field": null
                 },
                 "data": null,
-                "mark": "curve",
+                "mark": null,
                 "name": null,
                 "transforms": []
               }
@@ -241,14 +220,11 @@
                 "normal_map": null,
                 "position": null,
                 "shape": null,
-                "size": {
-                  "data": 0.002,
-                  "kind": "size"
-                },
+                "size": null,
                 "vector_field": null
               },
               "data": null,
-              "mark": null,
+              "mark": "curve",
               "name": null,
               "transforms": []
             }
@@ -269,7 +245,11 @@
               "normal_map": null,
               "position": null,
               "shape": null,
-              "size": null,
+              "size": {
+                "data": 0.0015,
+                "kind": "size",
+                "space": "scene"
+              },
               "vector_field": null
             },
             "data": null,

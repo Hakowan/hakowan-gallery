@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "ball",
     "plate"
@@ -16,11 +16,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 6252784,
+      "bytes": 6271000,
       "exists": true,
       "kind": "interactive",
       "path": "results/ipc.html",
-      "sha256": "bba70568483fdb29f480bd43931d7d548af69029f9dff564346c070981006200"
+      "sha256": "8816aed0bbee6c9af0de0a7e414924581e8e54a3841f0ed6e54338401e94af9e"
     }
   ],
   "recipe": "ipc-collision",
@@ -30,6 +30,11 @@
       "bytes": 54784556,
       "path": "data/10.obj",
       "sha256": "fbba342a718a99e2695af9cfe16147ba8b3f7115ad5dc9488b35654ae59ad448"
+    },
+    {
+      "bytes": 2400250,
+      "path": "data/10_decimated.msh",
+      "sha256": "135606685d4b45f73ee8d0e5333557126b1e07337718b42df51709e2cf11e0ea"
     },
     {
       "bytes": 54882078,
@@ -57,9 +62,9 @@
       "sha256": "aa1d3d24ba5f87e8878349d0ff535572329ea42ab67ab5f2ff9e1fb2e3c5f7f4"
     },
     {
-      "bytes": 2279,
+      "bytes": 1887,
       "path": "ipc.py",
-      "sha256": "faacacbd14b96f22f9aa2cae31582680f955641c0524cb86a6e486b616b7a6ea"
+      "sha256": "3bd4ae44e2f133219cd23a9b224e84260f3eca69a13859d62430f8be725e97e3"
     },
     {
       "bytes": 567,

@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.6.0",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "final-surface",
     "initial-surface"
@@ -32,11 +32,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 58234450,
+      "bytes": 58253842,
       "exists": true,
       "kind": "interactive",
       "path": "results/bust_all.html",
-      "sha256": "538e7a932dc705beee32e1768405c23ed1ea2f858b85de855a08065943c5529b"
+      "sha256": "3175fce9959f464f320ba0721e1f95e2157d96382a687a3cfdcc80adbac6a045"
     }
   ],
   "recipe": "mean-curvature-flow",

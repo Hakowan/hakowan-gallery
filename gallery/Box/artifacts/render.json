@@ -15,11 +15,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 652423,
+      "bytes": 658911,
       "exists": true,
       "kind": "interactive",
       "path": "results/box.html",
-      "sha256": "06b74fe47b89a0f3fae3a52b7ac9576aff82c257ecf19b972568b992c16fa6a8"
+      "sha256": "1803939a2309f5d142d4952e3456a826a560632be4d48b0e92391aa9d9ee8b5c"
     }
   ],
   "recipe": "box",

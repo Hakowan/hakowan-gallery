@@ -302,7 +302,8 @@
               "shape": null,
               "size": {
                 "data": 0.01,
-                "kind": "size"
+                "kind": "size",
+                "space": "world"
               },
               "vector_field": null
             },

@@ -18,11 +18,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 4971045,
+      "bytes": 4975863,
       "exists": true,
       "kind": "interactive",
       "path": "results/flowers.html",
-      "sha256": "3bf69e03ed8cbb55d06217dffa1d7a737b601a265c07045207afad9bc226aafd"
+      "sha256": "11acee1419b5150c098515d53971fd99edef5261827f4462e4e3a4ddf8ec9678"
     }
   ],
   "recipe": "flowers",

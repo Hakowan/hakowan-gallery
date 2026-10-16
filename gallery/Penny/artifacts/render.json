@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "mesh"
   ],
@@ -15,11 +15,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 3005938,
+      "bytes": 3043521,
       "exists": true,
       "kind": "interactive",
       "path": "results/penny.html",
-      "sha256": "9a60558ee5cdd85048b9d2afda9bed64e9406ec151090f97c10ef449bab6b820"
+      "sha256": "0af658e73389791cbdfae3eb872f0864750c0218423a8d8cee140cc01907b35a"
     }
   ],
   "recipe": "penny-material-passes",
