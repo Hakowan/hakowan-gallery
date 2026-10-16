@@ -14,10 +14,13 @@ libllvm18 = ">=18.1.8,<19"
 flip-evaluator = ">=1.7"
 # Same optional set as hakowan's `full` environment: mitsuba, blender, observe.
 hakowan = { git = "https://github.com/Hakowan/hakowan.git", branch = "qnzhou/0.6.1", extras = ["mitsuba", "blender", "observe"] }
+mtet = { git = "https://github.com/qnzhou/mtet.git" }
 
 # macOS only: Dr.Jit dlopens "libLLVM.dylib", but libllvm18 ships "libLLVM-18.dylib".
 [target.osx-arm64.activation.env]
 DRJIT_LIBLLVM_PATH = "$CONDA_PREFIX/lib/libLLVM-18.dylib"
+# Keep compiled PyPI wheels compatible with Pixi's macOS 11+ platform tags.
+MACOSX_DEPLOYMENT_TARGET = "11.0"
 
 [environments]
 default = { solve-group = "default" }

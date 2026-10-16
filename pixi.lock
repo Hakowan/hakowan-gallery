@@ -64,6 +64,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/python_abi-3.13-9_cp313.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2026c-h151e31d_0.conda
       - pypi: git+https://github.com/Hakowan/hakowan.git?branch=qnzhou%2F0.6.1#7414ac1abe0d5c8e8b3ca87f25a5e1f72785c59b
+      - pypi: git+https://github.com/qnzhou/mtet.git#a798adb85558584364f04474bc4fd54df66e1c26
       - pypi: https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/0b/c2/01664e2107b500a5468f1f214baabe25c872ef095f6cd591ec2ad8892ccc/drjit-1.5.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/1a/83/630c3022e3207e4e918c2b4982689c3a98f92fa85d3d5056be0755ac85f2/mitsuba-3.9.1-cp313-cp313-manylinux_2_28_x86_64.whl
@@ -153,6 +154,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zlib-ng-2.3.3-h31dac16_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.7-hf451053_7.conda
       - pypi: git+https://github.com/Hakowan/hakowan.git?branch=qnzhou%2F0.6.1#7414ac1abe0d5c8e8b3ca87f25a5e1f72785c59b
+      - pypi: git+https://github.com/qnzhou/mtet.git#a798adb85558584364f04474bc4fd54df66e1c26
       - pypi: https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/18/c2/d59e5b6af43e45088c18895035e053c4585bce7d1bde9679368ef5b960e0/nanobind_backend-1.0.0-cp313-cp313-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/1b/24/e95471ae93c08d3606c9c7343cf65d490f154daa88b50581957a0aa780f4/colorcet-3.2.1-py3-none-any.whl
@@ -250,6 +252,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/python_abi-3.13-9_cp313.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2026c-h151e31d_0.conda
       - pypi: git+https://github.com/Hakowan/hakowan.git?branch=qnzhou%2F0.6.1#7414ac1abe0d5c8e8b3ca87f25a5e1f72785c59b
+      - pypi: git+https://github.com/qnzhou/mtet.git#a798adb85558584364f04474bc4fd54df66e1c26
       - pypi: https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/0b/c2/01664e2107b500a5468f1f214baabe25c872ef095f6cd591ec2ad8892ccc/drjit-1.5.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/1a/83/630c3022e3207e4e918c2b4982689c3a98f92fa85d3d5056be0755ac85f2/mitsuba-3.9.1-cp313-cp313-manylinux_2_28_x86_64.whl
@@ -339,6 +342,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zlib-ng-2.3.3-h31dac16_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.7-hf451053_7.conda
       - pypi: git+https://github.com/Hakowan/hakowan.git?branch=qnzhou%2F0.6.1#7414ac1abe0d5c8e8b3ca87f25a5e1f72785c59b
+      - pypi: git+https://github.com/qnzhou/mtet.git#a798adb85558584364f04474bc4fd54df66e1c26
       - pypi: https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/18/c2/d59e5b6af43e45088c18895035e053c4585bce7d1bde9679368ef5b960e0/nanobind_backend-1.0.0-cp313-cp313-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/1b/24/e95471ae93c08d3606c9c7343cf65d490f154daa88b50581957a0aa780f4/colorcet-3.2.1-py3-none-any.whl
@@ -1955,6 +1959,10 @@ packages:
   - mitsuba~=3.9 ; extra == 'mitsuba'
   - playwright>=1.49,<2 ; extra == 'observe'
   requires_python: '>=3.11'
+- pypi: git+https://github.com/qnzhou/mtet.git#a798adb85558584364f04474bc4fd54df66e1c26
+  name: mtet
+  version: 0.1.0
+  requires_python: '>=3.9'
 - pypi: https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl
   name: certifi
   version: 2026.7.22
