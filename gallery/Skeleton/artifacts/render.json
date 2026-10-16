@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "skeleton",
     "surface"
@@ -16,11 +16,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 4671234,
+      "bytes": 4708978,
       "exists": true,
       "kind": "interactive",
       "path": "results/fertility_skeleton.html",
-      "sha256": "a548b67af46edd2364d5a63529fc622b66340988f2d8f0ac22d66b58579298ba"
+      "sha256": "cd6d5c3bd89514da41adc30978da8fb64ce61ed5b5bb5c526af88d21bd4afd41"
     }
   ],
   "recipe": "surface-skeleton",

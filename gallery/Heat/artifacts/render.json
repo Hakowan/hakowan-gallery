@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "mesh"
   ],
@@ -23,11 +23,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 16171224,
+      "bytes": 16208203,
       "exists": true,
       "kind": "interactive",
       "path": "results/bunny_heat.html",
-      "sha256": "1b7703c4847cb04cfa469bc45f403d56fc9e42afdde84d49004656b0f509f758"
+      "sha256": "0450e9f19b4ee7c62a30eecae497104a85c9003300d26b1e6c917d57bbed3eee"
     }
   ],
   "recipe": "heat-geodesic",
@@ -44,9 +44,9 @@
       "sha256": "1eb35d1e21ce99e5ce911353b6be278990713448dd9e8f5c9387f9de39b32205"
     },
     {
-      "bytes": 1425,
+      "bytes": 1393,
       "path": "heat.py",
-      "sha256": "315db274815ccb0d746c03205051c8b111dedc93a96e88a80bf79a7851abc5a0"
+      "sha256": "364322f61c8ffe319ca69b6bb344e647f00c38f6ab566dbe08a840f98c93837b"
     },
     {
       "bytes": 668,

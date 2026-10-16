@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "mesh"
   ],
@@ -15,11 +15,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 2326009,
+      "bytes": 2364706,
       "exists": true,
       "kind": "interactive",
       "path": "results/cylinders.html",
-      "sha256": "3f98c61281d4b265bf52162719e0a61da7d547c454a975098b84c43fb037363e"
+      "sha256": "af3b56141907f10bd5a99e94accbf744b5c553480918c2e6933ba343d3b17bbb"
     }
   ],
   "recipe": "mesh-deformation",

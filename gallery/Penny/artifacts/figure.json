@@ -132,7 +132,7 @@
     "environment": null,
     "lights": null,
     "output": {
-      "background": "dark",
+      "background": null,
       "height": 800,
       "passes": [
         "beauty",

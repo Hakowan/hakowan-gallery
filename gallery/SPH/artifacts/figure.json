@@ -43,9 +43,24 @@
                       "size": null,
                       "vector_field": null
                     },
-                    "data": null,
+                    "data": {
+                      "kind": "mesh_file",
+                      "path": "data/waterbell_010.pcd",
+                      "roi_box": [
+                        [
+                          -1.223,
+                          -0.5,
+                          -1.226
+                        ],
+                        [
+                          1.224,
+                          4.0,
+                          1.222
+                        ]
+                      ]
+                    },
                     "mark": null,
-                    "name": "Fluid 010",
+                    "name": null,
                     "transforms": []
                   }
                 },
@@ -63,24 +78,9 @@
                     "size": null,
                     "vector_field": null
                   },
-                  "data": {
-                    "id": "particles",
-                    "kind": "external",
-                    "roi_box": [
-                      [
-                        -1.223,
-                        -0.5,
-                        -1.226
-                      ],
-                      [
-                        1.224,
-                        4.0,
-                        1.222
-                      ]
-                    ]
-                  },
+                  "data": null,
                   "mark": null,
-                  "name": null,
+                  "name": "Fluid 010",
                   "transforms": []
                 }
               },

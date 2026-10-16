@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "mesh"
   ],
@@ -31,11 +31,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 852992,
+      "bytes": 891731,
       "exists": true,
       "kind": "interactive",
       "path": "results/face_all.html",
-      "sha256": "c17ad4932a0c1b84a2b0841dc06c1b71d25a772e19a8c4de3ec2b3a3b36f5269"
+      "sha256": "8e1851e943ea861a1543bcd48e452ab2eef82d72be4d91fcec7b91e602e6daa5"
     }
   ],
   "recipe": "face-uv-texture",
@@ -47,9 +47,9 @@
       "sha256": "8bac80443397e113f41a8b565ea72c59390bc031d9defab289dba7bc0c54e618"
     },
     {
-      "bytes": 1667,
+      "bytes": 1700,
       "path": "face.py",
-      "sha256": "e63b375d1e88aa34189767716987df0808e9ab4b034899e5355aa183d8b22b80"
+      "sha256": "7f15b5f277b4c69f1409210a2b1368227b186f4867fab1598ade300d47236e3b"
     },
     {
       "bytes": 676,

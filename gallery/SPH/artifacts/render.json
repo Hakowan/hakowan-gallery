@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.6.0",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "emitter",
     "particles"
@@ -24,11 +24,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 1378755,
+      "bytes": 1398223,
       "exists": true,
       "kind": "interactive",
       "path": "results/waterbell_010_all.html",
-      "sha256": "a9497f1f6a77bd62ad2f1e9bb6bd85ec372641626c0220ad4c4e99df7ce3a24c"
+      "sha256": "d83e52cb0a7f94ff524259ea070f361c39b586f46bf9948e56157591512af622"
     }
   ],
   "recipe": "sph-speed",
@@ -60,24 +60,24 @@
       "sha256": "30396c07aadf5ec2285667e84ceeccbd1ba340b8abb24ac8ad3284b5996ce670"
     },
     {
-      "bytes": 599201,
-      "path": "data/waterbell_010.msh",
-      "sha256": "edc6c5ab87517c5b2af51a92bd337d47ff102ad984c6b3725f4aac78d28a6b0d"
+      "bytes": 255437,
+      "path": "data/waterbell_010.pcd",
+      "sha256": "9458dfe5e5dafa19d0dc9e624bb4131334a0a3f25cb5facfb9e5fccfef9d48dd"
     },
     {
-      "bytes": 1947042,
-      "path": "data/waterbell_030.msh",
-      "sha256": "05d2b6dd3c1cebe41e385e3b40d349de98443590846c2389ed3a5b41166b6aa2"
+      "bytes": 896902,
+      "path": "data/waterbell_030.pcd",
+      "sha256": "56359670b46fe4c94c20cba4be4fd678f79df63fe646bd12bf70a702a680ea6e"
     },
     {
-      "bytes": 3943842,
-      "path": "data/waterbell_060.msh",
-      "sha256": "ba06decd56e7e1c028edb7ab3140df68e73e931d48f004960a39770d184b9c57"
+      "bytes": 1862151,
+      "path": "data/waterbell_060.pcd",
+      "sha256": "5965664de93a1fa021c86d12eee20fb389a212cfe0036f50062f3e79d97fe792"
     },
     {
-      "bytes": 8786083,
-      "path": "data/waterbell_133.msh",
-      "sha256": "cad92025f0ccea2e621959b685b007acff9a83ebd997997bf020a4be20b65dc4"
+      "bytes": 4273543,
+      "path": "data/waterbell_133.pcd",
+      "sha256": "81d725a41577bf6e3ee5d6ca4829dce0fca9c8ceaf04d5894efa771faa968934"
     },
     {
       "bytes": 783,
@@ -85,14 +85,14 @@
       "sha256": "2dd4b517caa006a6e29cd4fc90208c2f87f9e3b9382063e314f054f550ea8017"
     },
     {
-      "bytes": 2101,
+      "bytes": 1803,
       "path": "sph.py",
-      "sha256": "3eae22e2e9ce64ee41f09817ee4a2453ce19c707ec5569698da4394d90dda276"
+      "sha256": "8dd29de56b760a33f81b48923930f7e75d6eee80da1d5311896910472f341683"
     },
     {
-      "bytes": 629,
+      "bytes": 582,
       "path": "vtk2mesh.py",
-      "sha256": "dae78be4b7a6549ad1a39513c5ad2bd5963498f0aa65bddabac2aca84e7701dd"
+      "sha256": "fa825cd99fa2dafaf19022a473ca7fe16cab5391822a1491d080b333691ce233"
     }
   ]
 }

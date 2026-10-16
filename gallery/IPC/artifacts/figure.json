@@ -163,7 +163,7 @@
       "far": 10000.0,
       "kind": "orthographic",
       "near": 0.01,
-      "scale": 2.0,
+      "scale": 1.5625,
       "target": [
         0.0,
         0.0,

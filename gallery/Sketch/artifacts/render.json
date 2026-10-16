@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "sketch"
   ],
@@ -15,11 +15,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 709411,
+      "bytes": 727620,
       "exists": true,
       "kind": "interactive",
       "path": "results/Prof2task2_guitar_01_rough.html",
-      "sha256": "56f177853cd2562d5d9a47ddc88f3a8525198ad3df5eec62de76f8808a44b213"
+      "sha256": "0121941c81e9acce44737ae8bf898d1704517f12e354efc3b0d9927ff1ac49d2"
     }
   ],
   "recipe": "reconstructed-sketches",

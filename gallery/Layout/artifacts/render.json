@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "layout",
     "surface"
@@ -16,11 +16,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 5636292,
+      "bytes": 5673413,
       "exists": true,
       "kind": "interactive",
       "path": "results/pig_embedded.html",
-      "sha256": "9ac4ed649e7482af96087889e57bf065fb1729466c4fb557b120e1faff31ce54"
+      "sha256": "1fc7d46d4acabded69ca69c4e1562eb681e8feeaf77ce05dac4ca59935fb1497"
     }
   ],
   "recipe": "layout-embedding",
@@ -42,9 +42,9 @@
       "sha256": "ce894e618ff34eee8f8b7f7179b44fa5af132cac2fad1cdc58e5c2556283e7bd"
     },
     {
-      "bytes": 1735,
+      "bytes": 1715,
       "path": "layout.py",
-      "sha256": "da4a4b59714e579fcb318eb7af6f26ec05aa28c966a287ff356f5d499f602e5e"
+      "sha256": "c5aebf71639816d8b71ae41e1f4831ab5508e77eb3d35d7553084f2473a0a50f"
     },
     {
       "bytes": 693,

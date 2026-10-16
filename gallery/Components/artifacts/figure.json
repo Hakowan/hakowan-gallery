@@ -68,15 +68,7 @@
                 },
                 "domain": null,
                 "kind": "scalar_field",
-                "legend": {
-                  "category_labels": null,
-                  "format": ".3g",
-                  "position": "right",
-                  "ticks": 5,
-                  "title": "Connected component",
-                  "units": null,
-                  "width": 180
-                },
+                "legend": false,
                 "range": null,
                 "reverse": false
               },

@@ -15,11 +15,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 660770,
+      "bytes": 663951,
       "exists": true,
       "kind": "interactive",
       "path": "results/points.html",
-      "sha256": "dd5e05ccb1484f73bd0b485063a81f3dac6aebd1dc0beca215a57257ba19ddbe"
+      "sha256": "7d29506a316d19b2c17c09276d01d21b3b1e7e564e35eb34ca01a586c0ba77a7"
     }
   ],
   "recipe": "icosphere-point-marks",

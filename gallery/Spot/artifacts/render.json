@@ -1,6 +1,6 @@
 {
   "artifact_format_version": "1",
-  "hakowan_version": "0.5.3",
+  "hakowan_version": "0.6.1",
   "input_ids": [
     "mesh"
   ],
@@ -15,11 +15,11 @@
     },
     {
       "backend": "webgl",
-      "bytes": 1557810,
+      "bytes": 1576111,
       "exists": true,
       "kind": "interactive",
       "path": "results/spot_wireframe.html",
-      "sha256": "dbfef201283248448629cc8a01fc3a83ba3c9e8c7a61a797fad8d305a7ca0e6c"
+      "sha256": "8ab50c2128128b3623d41058fae0cdfa17a2f6687092002ce5d5e3d8830ce5ab"
     }
   ],
   "recipe": "spot",
@@ -36,9 +36,9 @@
       "sha256": "d9dd8e20d97f7391d3688fa5a863946678b8996b960a8a7869f42368d423be85"
     },
     {
-      "bytes": 650,
+      "bytes": 651,
       "path": "spot.py",
-      "sha256": "3449a2e7faff8bb28ddc85c89d436a961e2db56354ffc302f113ac63b0fdeea2"
+      "sha256": "e6cd04782caaed0cd18addf2f1364b16ef156b8dc1d0e887df3f959addee0bd4"
     }
   ]
 }
